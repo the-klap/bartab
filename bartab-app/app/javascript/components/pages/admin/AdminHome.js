@@ -4,6 +4,7 @@ class AdminHome extends React.Component {
   render () {
     return (
       <React.Fragment>
+      <h1>test</h1>
       </React.Fragment>
     );
   }
