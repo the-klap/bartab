@@ -10,9 +10,11 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <HomePage />
-        <br /><br /><br />
-        <div id="menu">
-          <Login />
+        <br />
+        <br />
+        <br />
+          <div id="menu">
+          <Login /> <button id="User">Beer Drinker</button>
         </div>
       </React.Fragment>
     );
