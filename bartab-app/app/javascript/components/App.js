@@ -12,7 +12,7 @@ class App extends React.Component {
         <HomePage />
         <br /><br /><br />
         <div id="menu">
-          <Login /><Login /><Login />
+          <Login />
         </div>
       </React.Fragment>
     );
