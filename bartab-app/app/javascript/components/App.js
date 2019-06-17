@@ -29,7 +29,7 @@ class App extends React.Component {
           <Button href='/user_home'>User Login
           </Button>
           
-          <Route path="/admin_home" exact component={AdminHome} />
+          <Route path="/admin_home" component={AdminHome} />
           <Route path="/user_home" component={UserHome} />
         </Router>
         
