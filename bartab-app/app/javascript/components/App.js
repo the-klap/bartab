@@ -26,7 +26,8 @@ class App extends React.Component {
       user_sign_in_route,
       user_sign_out_route,
     } =this.props
-  
+    console.log(`Admin: ${admin_logged_in}`)
+    console.log(`User: ${user_logged_in}`)
     return (
       <React.Fragment>
        <Container>
