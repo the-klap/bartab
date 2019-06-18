@@ -48,7 +48,7 @@ class App extends React.Component {
             {!admin_logged_in &&
               <Button href={admin_sign_in_route}>Admin Login</Button>
             }
-            
+
              {!user_logged_in &&
               <Button href={user_sign_in_route}>User Login</Button>
             }
@@ -63,11 +63,13 @@ class App extends React.Component {
               admin_sign_out_route={admin_sign_out_route}
             />} />
             
+    
             <Route path="/user_home" render={(props) => <UserHome {...props} 
               user_logged_in={user_logged_in}
               user_sign_in_route={user_sign_in_route}
               user_sign_out_route={user_sign_out_route}
             />} />
+
             
           </Router>
         </Container>
