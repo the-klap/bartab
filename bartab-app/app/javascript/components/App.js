@@ -29,12 +29,14 @@ class App extends React.Component {
   
     return (
       <React.Fragment>
-        <Container>
-          <HomePage />
-          <br /><br /><br />
+       <Container>
+        <HomePage />
+        <br />
+        <br />
+        <br />
           <div id="menu">
-            <Login /><Login /><Login />
-          </div>
+          <Login /> <button id="User">Beer Drinker</button>
+        </div>
           
           <Router>
             
