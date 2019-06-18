@@ -9,6 +9,7 @@ export default class TabHistory extends React.Component {
          render(){
             return(
                 <React.Fragment>
+                <h3>this is the tab history</h3>
                 </React.Fragment>
                 )
     }
