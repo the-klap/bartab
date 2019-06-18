@@ -1,0 +1,3 @@
+class BarMapController < ApplicationController
+    
+end

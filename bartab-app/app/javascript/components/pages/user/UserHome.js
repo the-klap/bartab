@@ -3,10 +3,11 @@ import PropTypes from "prop-types"
 
 //components imported to main UserHome
 import HappyHour from './HappyHour.js'
-import Map from './Map.js'
+// import MapContainer from './MapContainer.js'
 import Profile from './Profile.js'
 import Tab from './Tab.js'
 import TabHistory from './TabHistory.js'
+import MapContainer from './MapContainer.js'
 
 
 class UserHome extends React.Component {
@@ -15,7 +16,7 @@ class UserHome extends React.Component {
       <React.Fragment>
       
       <Tab />
-      <Map />
+      <MapContainer />
       <Profile />
       <TabHistory />
       <HappyHour />

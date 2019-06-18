@@ -1,0 +1,2 @@
+class BarMap < ApplicationRecord
+end

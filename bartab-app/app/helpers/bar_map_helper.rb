@@ -1,0 +1,2 @@
+module BarMapHelper
+end
