@@ -74,6 +74,8 @@ class UserHome extends React.Component {
                   
                   
               }
+              
+              {/* changing /userhome to user_home will create an error*/}
             <Route exact path="/userhome" exact component={UserHome} />
             <Route exact path="/user_home/tabhistory" exact component={TabHistory} />
             <Route path="/user_home/map" exact component={Map} />
