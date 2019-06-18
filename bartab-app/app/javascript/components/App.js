@@ -26,6 +26,8 @@ class App extends React.Component {
       user_sign_in_route,
       user_sign_out_route,
     } =this.props
+    console.log(`Admin: ${admin_logged_in}`)
+    console.log(`User: ${user_logged_in}`)
   
     return (
       <React.Fragment>
@@ -46,10 +48,14 @@ class App extends React.Component {
             {!admin_logged_in &&
               <Button href={admin_sign_in_route}>Admin Login</Button>
             }
-
+            
+             {!user_logged_in &&
+              <Button href={user_sign_in_route}>User Login</Button>
+            }
+             {user_logged_in &&
             <Button href='/user_home'>User Login
             </Button>
-            
+            }
             
             <Route path="/admin_home" render={(props) => <AdminHome {...props} 
               admin_logged_in={admin_logged_in}
@@ -57,7 +63,11 @@ class App extends React.Component {
               admin_sign_out_route={admin_sign_out_route}
             />} />
             
-            <Route path="/user_home" component={UserHome} />
+            <Route path="/user_home" render={(props) => <UserHome {...props} 
+              user_logged_in={user_logged_in}
+              user_sign_in_route={user_sign_in_route}
+              user_sign_out_route={user_sign_out_route}
+            />} />
             
           </Router>
         </Container>

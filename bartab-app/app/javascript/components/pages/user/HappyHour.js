@@ -9,6 +9,7 @@ export default class HappyHour extends React.Component {
         render(){
             return(
                  <React.Fragment>
+                 <h3>Happy Hour in your Area</h3>
                  </React.Fragment>
                 )
     }

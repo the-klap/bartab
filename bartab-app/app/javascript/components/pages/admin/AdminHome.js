@@ -14,29 +14,43 @@ class AdminHome extends React.Component {
       this.state = {
       }
   }
+  
+  
   render () {
      const {admin_logged_in, 
         admin_sign_in_route, 
         admin_sign_out_route,
      }=this.props
+     
     return (
       <React.Fragment>
           <Router>
             <div>
               {admin_logged_in &&
                 <Nav>
-                  <NavItem>
-                    <NavLink href="/admin_home/open_tabs">Open Tabs</NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink href="/admin_home/menu">Menu</NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink href="/admin_home/profile">Profile</NavLink>
-                  </NavItem>
+                 <div class="container">
+                   <div class="row">
+                    <div class="col-sm">
+                      <NavItem>
+                        <NavLink href="/admin_home/open_tabs">Open Tabs</NavLink>
+                      </NavItem>
+                    </div>
+                    <div class="col-sm">
+                      <NavItem>
+                        <NavLink href="/admin_home/menu">Menu</NavLink>
+                      </NavItem>
+                    </div>
+                    <div class="col-sm">
+                      <NavItem>
+                        <NavLink href="/admin_home/profile">Profile</NavLink>
+                      </NavItem>
+                    </div>  
+                   </div>
+                 </div>
                 </Nav>
+  
+                
               }
-
             <Route path="/admin_home/open_tabs" exact component={OpenTabs} />
             <Route path="/admin_home/menu" exact component={Menu} />
             <Route path="/admin_home/profile" exact component={Profile} />
