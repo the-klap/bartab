@@ -9,7 +9,7 @@ export default class Tab extends React.Component {
         render(){
             return(
                  <React.Fragment>
-                 <h3> this is your tab!:</h3>
+                 <h3>abcd</h3>
                  </React.Fragment>
                 )
     }
