@@ -37,12 +37,17 @@ class App extends React.Component {
           </div>
           
           <Router>
-            
+            {admin_logged_in &&
             <Button href='/admin_home'>Admin Login
             </Button>
-            
+            }
+            {!admin_logged_in &&
+              <Button href={admin_sign_in_route}>Admin Login</Button>
+            }
+
             <Button href='/user_home'>User Login
             </Button>
+            
             
             <Route path="/admin_home" render={(props) => <AdminHome {...props} 
               admin_logged_in={admin_logged_in}

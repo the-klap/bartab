@@ -36,10 +36,6 @@ class AdminHome extends React.Component {
                   </NavItem>
                 </Nav>
               }
-            {!admin_logged_in &&
-              <a href={admin_sign_in_route}>Log In</a>
-              
-            }
 
             <Route path="/admin_home/open_tabs" exact component={OpenTabs} />
             <Route path="/admin_home/menu" exact component={Menu} />
