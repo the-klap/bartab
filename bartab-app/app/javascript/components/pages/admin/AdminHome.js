@@ -30,6 +30,7 @@ class AdminHome extends React.Component {
       }
   }
   
+
   //adds item to menu
   handleAddItem = (newItem) => {
     const {menu} = this.state
@@ -86,17 +87,30 @@ class AdminHome extends React.Component {
             <div>
               {admin_logged_in &&
                 <Nav>
-                  <NavItem>
-                    <NavLink href="/admin_home/open_tabs">Open Tabs</NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink href="/admin_home/menu">Menu</NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink href="/admin_home/profile">Profile</NavLink>
-                  </NavItem>
+                 <div class="container">
+                   <div class="row">
+                    <div class="col-sm">
+                      <NavItem>
+                        <NavLink href="/admin_home/open_tabs">Open Tabs</NavLink>
+                      </NavItem>
+                    </div>
+                    <div class="col-sm">
+                      <NavItem>
+                        <NavLink href="/admin_home/menu">Menu</NavLink>
+                      </NavItem>
+                    </div>
+                    <div class="col-sm">
+                      <NavItem>
+                        <NavLink href="/admin_home/profile">Profile</NavLink>
+                      </NavItem>
+                    </div>  
+                   </div>
+                 </div>
                 </Nav>
+  
+                
               }
+
 
             <Route path="/admin_home/open_tabs" exact render={(props) => <OpenTabs{...props} 
               customers={customers}
@@ -111,6 +125,7 @@ class AdminHome extends React.Component {
               handleDeleteItem={this.handleDeleteItem}
             />} />
             <Route path="/admin_home/profile" exact render={(props) => <Profile profile={profile}/>} />
+
           </div>
         </Router>
     </React.Fragment>

@@ -9,6 +9,7 @@ export default class Map extends React.Component {
         render(){
             return(
                  <React.Fragment>
+                 <h3> I'm The Map!</h3>
                  </React.Fragment>
                 )
     }
