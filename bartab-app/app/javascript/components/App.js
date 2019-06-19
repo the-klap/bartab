@@ -7,7 +7,6 @@ import HomePage from './pages/HomePage';
 import Login from './pages/Login';
 import AdminHome from './pages/admin/AdminHome'
 import UserHome from './pages/user/UserHome'
-
 import {Container, Button} from "reactstrap"
 
 class App extends React.Component {
@@ -24,7 +23,7 @@ class App extends React.Component {
       admin_sign_out_route,
       user_logged_in,
       user_sign_in_route,
-      user_sign_out_route,
+      user_sign_out_route
     } =this.props
     console.log(`Admin: ${admin_logged_in}`)
     console.log(`User: ${user_logged_in}`)
@@ -69,6 +68,7 @@ class App extends React.Component {
               user_sign_in_route={user_sign_in_route}
               user_sign_out_route={user_sign_out_route}
             />} />
+            
 
             
           </Router>
