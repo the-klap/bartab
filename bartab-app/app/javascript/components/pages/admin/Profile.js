@@ -10,13 +10,13 @@ class BarProfile extends React.Component {
   }
   
   handleChange = (event) => {
-    let {profile} = this.state
+    let {profile} = this.props
     profile[event.target.name] = event.target.value
     this.setState({profile: profile})
   }
   
   render () {
-    const {name, hours, info} = this.state.profile
+    const {name, hours, info} = this.props.profile
     return (
       <React.Fragment>
         <Form>
