@@ -20,8 +20,8 @@ class Menu extends React.Component {
   
   handleClick = () => {
     let {newItem} = this.state
-    const {handleUpdateMenu} = this.props
-    handleUpdateMenu(newItem)
+    const {handleAddItem} = this.props
+    handleAddItem(newItem)
   }
   
   handleDelete = (index) => {

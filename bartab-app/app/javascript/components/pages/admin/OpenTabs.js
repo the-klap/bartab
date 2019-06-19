@@ -14,25 +14,31 @@ class OpenTabs extends React.Component {
     const {handleClose} = this.props
     handleClose(findId)
   }
-  // handleAdd = (findId, price) => {
-  //   const {customers} = this.state
-  //   const getCustomer = customers.find(customer => customer.id===findId)
-  //   getCustomer.total = customer
-  //   this.setState({getCustomer})
-  // }
+  
+  handleAddOrder = (itemId, userId) => {
+    const {handleAddOrder} =this.props
+    handleAddOrder(itemId, userId)
+  }
+  
+  handleDeleteOrderItem = (itemId, userId) => {
+    const {handleDeleteOrderItem} = this.props
+    handleDeleteOrderItem(itemId, userId)
+  }
   
   render () {
     const {customers, menu} = this.props
     
-    console.log(menu)
-    
+  
     var customerTabs = customers.map((value, index) => <CustomerTab 
       key={index}
       id={value.id}
       name={value.name}
       total={value.total}
+      order={value.order}
       status={value.status}
       handleAClose={this.handleAClose}
+      handleAddOrder={this.handleAddOrder}
+      handleDeleteOrderItem={this.handleDeleteOrderItem}
       menu={menu}
       />
       )
@@ -43,9 +49,10 @@ class OpenTabs extends React.Component {
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th>Price</th>
+              <th>Total</th>
               <th>Status</th>
               <th>Order</th>
+              <th>Close</th>
             </tr>
           </thead>
             {customerTabs}

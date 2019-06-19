@@ -13,14 +13,14 @@ class AdminHome extends React.Component {
     super(props)
       this.state = {
         menu: [
-          {name: 'Space Dust', price:7},
-          {name: 'Sculpin', price:5},
-          {name: 'Belching Beaver', price:6},
+          { name: 'Space Dust', price:7},
+          { name: 'Sculpin', price:5},
+          { name: 'Belching Beaver', price:6},
           ],
         customers: [
-          {id: 42, name: 'Joe', total:12, status: 'Open'},
-          {id: 2, name: 'Bob', total:19, status: 'Open'},
-          {id: 9, name: 'Rick', total:302, status: 'Open'},
+          {id: 42, name: 'Joe', total:0, order: [], status: 'Open'},
+          {id: 2, name: 'Bob', total:0, order: [], status: 'Open'},
+          {id: 9, name: 'Rick', total:0, order: [], status: 'Open'},
           ],
         profile: {
           name:"Bub's",
@@ -31,7 +31,7 @@ class AdminHome extends React.Component {
   }
   
   //adds item to menu
-  handleUpdateMenu = (newItem) => {
+  handleAddItem = (newItem) => {
     const {menu} = this.state
     menu.push(newItem)
     this.setState({menu})
@@ -53,12 +53,33 @@ class AdminHome extends React.Component {
     console.log(getCustomer)
   }
   
+  //adds item to customer order
+  handleAddOrder = (itemId, customerId) => {
+    const {customers, menu} = this.state
+    const getCustomer = customers.find(customer => customer.id===customerId)
+    getCustomer.order.push(menu[itemId])
+    getCustomer.total = getCustomer.total + menu[itemId].price
+    this.setState(getCustomer)
+  }
+  
+  handleDeleteOrderItem = (itemId, customerId) => {
+    const {customers, menu} = this.state
+    const getCustomer = customers.find(customer => customer.id===customerId)
+    getCustomer.order.splice(itemId, 1)
+    getCustomer.total = getCustomer.total - menu[itemId].price
+    this.setState(getCustomer)
+    console.log(getCustomer)
+  }
+  
   render () {
      const {admin_logged_in, 
-        admin_sign_in_route, 
-        admin_sign_out_route,
-     }=this.props
+            admin_sign_in_route, 
+            admin_sign_out_route,
+           }=this.props
      const {customers, menu, profile} = this.state
+     
+    // console.log(customers)
+     
     return (
       <React.Fragment>
           <Router>
@@ -80,11 +101,13 @@ class AdminHome extends React.Component {
             <Route path="/admin_home/open_tabs" exact render={(props) => <OpenTabs{...props} 
               customers={customers}
               handleClose={this.handleClose}
+              handleAddOrder={this.handleAddOrder}
+              handleDeleteOrderItem={this.handleDeleteOrderItem}
               menu={menu}
             />}/>
             <Route path="/admin_home/menu" exact render={(props) => <Menu 
               menu={menu} 
-              handleUpdateMenu={this.handleUpdateMenu}
+              handleAddItem={this.handleAddItem}
               handleDeleteItem={this.handleDeleteItem}
             />} />
             <Route path="/admin_home/profile" exact render={(props) => <Profile profile={profile}/>} />
