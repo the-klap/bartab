@@ -23,13 +23,25 @@ class AdminHome extends React.Component {
           {id: 9, name: 'Rick', total:0, order: [], status: 'Open'},
           ],
         profile: {
-          name:"Bub's",
-          hours:"24/7",
-          info:"We sell beer"
+          name: "",
+          hours: "",
+          info: "",
+          address1: "",
+          address2: "",
+          state: "",
+          city: "",
+          zip: "",
+          country: "",
         }
+      
       }
   }
   
+
+  //updates profile with info from profile.js
+  handleUpdateProfile = (newProfile) => {
+    this.setState({profile: newProfile})
+  }
 
   //adds item to menu
   handleAddItem = (newItem) => {
@@ -79,7 +91,7 @@ class AdminHome extends React.Component {
            }=this.props
      const {customers, menu, profile} = this.state
      
-    // console.log(customers)
+    console.log(profile)
      
     return (
       <React.Fragment>
@@ -127,7 +139,11 @@ class AdminHome extends React.Component {
               handleAddItem={this.handleAddItem}
               handleDeleteItem={this.handleDeleteItem}
             />} />
-            <Route path="/admin_home/profile" exact render={(props) => <Profile profile={profile}/>} />
+            <Route path="/admin_home/profile" exact render={(props) => <Profile 
+              profile={profile}
+              handleUpdateProfile={this.handleUpdateProfile}
+              />} 
+            />
 
           </div>
         </Router>
