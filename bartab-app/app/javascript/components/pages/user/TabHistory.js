@@ -22,6 +22,7 @@ export default class TabHistory extends React.Component {
                 <React.Fragment>
                     <h1>Tab History</h1>
                     {closedSessionsList}
+
                 </React.Fragment>
                 )
     }

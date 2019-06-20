@@ -6,8 +6,6 @@ class Login extends React.Component {
     return (
       <React.Fragment>
         <div>
-          <button id="menu">
-              <h4>Please Sign In </h4></button>
         </div>
       </React.Fragment>
     );

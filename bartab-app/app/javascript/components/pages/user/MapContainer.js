@@ -16,6 +16,8 @@ export class MapContainer extends Component {
             selectedPlace: {}, 
           }
     }
+  
+
     
     onClick = (props, marker, e) =>
       this.setState({
@@ -23,7 +25,6 @@ export class MapContainer extends Component {
         activeMarker: marker,
         showingInfoWindow: true
       })
-
 
  
     displayMarkers = () => {

@@ -7,7 +7,18 @@ import {
         } from "react-router-dom";
 import { Nav, NavItem, NavLink } from 'reactstrap'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+// import {Geocode} from "react-geocode";
 
+
+// Geocode.fromAddress().then(
+//   response => {
+//     const { lat, lng } = response.results[0].geometry.location;
+//     console.log(lat, lng);
+//   },
+//   error => {
+//     console.error(error);
+//   }
+// );
 
 
 //components imported to main UserHome
@@ -22,7 +33,7 @@ import StoreList from './StoreList'
 class UserHome extends React.Component {
   constructor(props){
     super(props)
-      this.state = {
+     this.state = {
         // array of bars, .map function to go through all bars, pass state as prop to map
           stores: [ {
                     id: 1,
@@ -65,37 +76,35 @@ class UserHome extends React.Component {
                     lng: -117.134658,
                   },
                 ],
-          id: 1,
-          name: "Joe",
-          sessions:[ {bar_id: 2,
-                      tab_total: 6,
-                      open: false,
-                      order: [
-                              {name:"Kyles Kolsch", price: 6}
-                              ],
-                      },
-                      {bar_id: 3,
-                      tab_total: 10,
-                      open: false,
-                      order: [
-                              {name:"Kyles Kolsch", price: 6},
-                              {name:"Peters Pinacolada", price: 4},
-                              ],
-                      },
-                      {bar_id: 1,
-                        tab_total: 4,
-                        open: true,
-                        order: [
-                                {name:"Peters Pinacolada", price: 4},
-                                ],
-                      }
-                  ],
-                    
+
           showingInfoWindow: false,
           activeMarker: {},
           selectedPlace: {}, 
-          
-        }
+                    id: 1,
+                    name: "Joe",
+                    sessions:[ {bar_id: 2,
+                                tab_total: 300,
+                                open: false,
+                                order: [
+                                        {name:"Kyles Kolsch", price: 6}
+                                        ],
+                                },
+                                {bar_id: 3,
+                                tab_total: 80,
+                                open: true,
+                                order: [
+                                        {name:"Kyles Kolsch", price: 6}
+                                        ],
+                                },
+                                {bar_id: 2,
+                                tab_total: 20,
+                                open: true,
+                                order: [
+                                        {name:"Kyles Kolsch", price: 6}
+                                        ],
+                                }
+                              ]
+                  }
       }
 
     onMapOver = (props) => {
@@ -122,16 +131,25 @@ class UserHome extends React.Component {
         this.setState({sessions})
     }
   
+  
   render () {
      const {user_logged_in, 
         user_sign_in_route, 
         user_sign_out_route,
      }=this.props
-     const {stores, sessions}=this.state
-  console.log(sessions)
+
+     const {stores,name, id, sessions, openTab, order}=this.state
+
     return (
       <React.Fragment>
         <Router>
+        <div>
+        {/* change user to name in profile*/}
+         Hey there hop stuff <br />
+         Do you want to start a tab? <br />
+         <button onClick={this.openTab}>You better beer-lieve it!</button>
+    </div>
+    
             <div>
               {user_logged_in &&
               <Nav>
@@ -176,13 +194,29 @@ class UserHome extends React.Component {
               
               {/* changing /userhome to user_home will create an error*/}
             <Route exact path="/userhome" exact component={UserHome} />
-            <Route exact path="/user_home/tabhistory" exact render={(props) => <TabHistory {...props} 
-                      sessions={sessions}
-                    />} />
+
+            
+            
+            <Route exact path="/user_home/tabhistory" exact render={(props) => <TabHistory {...props}
+              name={name}
+              id={id}
+              sessions={sessions}
+              order={order}
+            />} />
+            
+            
+            
+            
+            <Route path="/user_home/tab" exact render={(props) => <Tab {...props}
+              name={name}
+              id={id}
+              sessions={sessions}
+              order={order}
+            />} />
+            
             <Route path="/user_home/mapcontainer" exact render={(props) => <MapContainer {...props}
                       stores={stores}
                     />} />
-            <Route path="/user_home/tab" exact component={Tab} />
             <Route path="/user_home/profile" exact component={Profile} />
             <Route path="/user_home/happyhour" exact component={HappyHour} />
           </div>
