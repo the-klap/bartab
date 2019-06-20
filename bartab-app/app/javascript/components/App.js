@@ -41,7 +41,7 @@ class App extends React.Component {
           
           <Router>
             {admin_logged_in &&
-            <Button href='/admin_home' className='adminButton'>Admin Login 
+            <Button href='/admin_home' className='adminButton'>Admin Portal 
             </Button>
             }
             {!admin_logged_in &&
@@ -52,7 +52,7 @@ class App extends React.Component {
               <Button className='userButton' href={user_sign_in_route}>User Login</Button>
             }
              {user_logged_in &&
-            <Button className='userButton' href='/user_home'>User Login
+            <Button className='userButton' href='/user_home'>User Portal
             </Button>
             }
             
