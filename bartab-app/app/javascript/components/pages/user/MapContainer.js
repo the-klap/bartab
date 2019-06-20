@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import UserHome from './UserHome.js'
 
 const mapStyles = {
@@ -9,20 +9,48 @@ const mapStyles = {
 
 export class MapContainer extends Component {
     constructor(props) {
-        super(props);
+        super(props)
+          this.state = {
+            showingInfoWindow: false,
+            activeMarker: {},
+            selectedPlace: {}, 
+          }
+    }
+    
+    onClick = (props, marker, e) =>
+      this.setState({
+        selectedPlace: props,
+        activeMarker: marker,
+        showingInfoWindow: true
+      })
+
+
+ 
+    displayMarkers = () => {
+        return this.props.stores.map((store, index) => {
+          return <Marker onClick={this.onClick}
+          key={index}
+          id={store.id}
+          position={{
+          lat: store.latitude,
+          lng: store.longitude
+         }}
+        />
+      })
     }
 
-
-
   render() {
-    const{ stores,
-           displayMarkers
+    const{
+           activeMarker,
+           showingInfoWindow,
+           selectedPlace,
+           onMapOver
     }=this.props
     
-      console.log({displayMarkers})
     return (
       <Map
         google={this.props.google}
+        onMouseover={this.onMapOver}
         zoom={14}
         style={mapStyles}
         initialCenter={{
@@ -30,7 +58,17 @@ export class MapContainer extends Component {
          lng: -117.1580
         }}
       >
-      {displayMarkers()}
+       {this.displayMarkers()}
+      
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}>
+            <div>
+              <h1>{this.state.selectedPlace.id}</h1>
+            </div>
+        </InfoWindow>
+      
+      
     </Map>
     );
   }
