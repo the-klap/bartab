@@ -1,5 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
+import TabListItem from './TabListItem'
+import { Row } from 'reactstrap'
 
 export default class TabHistory extends React.Component {
     constructor(){
@@ -7,24 +9,20 @@ export default class TabHistory extends React.Component {
         }
         
          render(){
-             
-             
-              console.log(this.props.menu)
-             const displayMenu = this.props.menu.map((item) => {
-             return (
-                    <ul>
-                        {item.brewery}<br />
-                        Beers on Menu: {item.beer_name}<br />
-                        Price: {item.price}
-                        <br />
-                        <br/>
-                    </ul>)
-            })
-             
+            const {sessions} = this.props
+            
+            const closedSessions = sessions.filter(tab => tab.open === false)
+            
+            const closedSessionsList = closedSessions.map((tab, index) =>  {
+                        return (<TabListItem bar_id={tab.bar_id} total={tab.tab_total} key={index} />
+                        )
+                    })
+
             return(
                 <React.Fragment>
-                <h3>this is the tab history</h3>
-                <ul>{displayMenu}</ul>
+                    <h1>Tab History</h1>
+                    {closedSessionsList}
+
                 </React.Fragment>
                 )
     }

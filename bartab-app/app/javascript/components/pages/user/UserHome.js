@@ -27,6 +27,7 @@ import MapContainer from './MapContainer.js'
 import Profile from './Profile.js'
 import Tab from './Tab.js'
 import TabHistory from './TabHistory.js'
+import StoreList from './StoreList'
 
 
 class UserHome extends React.Component {
@@ -75,6 +76,7 @@ class UserHome extends React.Component {
                     lng: -117.134658,
                   },
                 ],
+
           showingInfoWindow: false,
           activeMarker: {},
           selectedPlace: {}, 
@@ -114,6 +116,20 @@ class UserHome extends React.Component {
       }
       
     }
+    
+    openTab = (id) => {
+      const {sessions} = this.state
+      sessions.push(
+        {
+          bar_id: id,
+          tab_total: 0,
+          open: true,
+          order: [
+                ],
+        },
+        )
+        this.setState({sessions})
+    }
   
   
   render () {
@@ -121,6 +137,7 @@ class UserHome extends React.Component {
         user_sign_in_route, 
         user_sign_out_route,
      }=this.props
+
      const {stores,name, id, sessions, openTab, order}=this.state
 
     return (
@@ -177,6 +194,7 @@ class UserHome extends React.Component {
               
               {/* changing /userhome to user_home will create an error*/}
             <Route exact path="/userhome" exact component={UserHome} />
+
             
             
             <Route exact path="/user_home/tabhistory" exact render={(props) => <TabHistory {...props}
@@ -203,6 +221,8 @@ class UserHome extends React.Component {
             <Route path="/user_home/happyhour" exact component={HappyHour} />
           </div>
         </Router>
+        
+        <StoreList stores={stores} openTab={this.openTab}/>
     </React.Fragment>
     );
   }
