@@ -32,7 +32,7 @@ import TabHistory from './TabHistory.js'
 class UserHome extends React.Component {
   constructor(props){
     super(props)
-      this.state = {
+     this.state = {
         // array of bars, .map function to go through all bars, pass state as prop to map
           stores: [ {
                     id: 1,
@@ -78,7 +78,31 @@ class UserHome extends React.Component {
           showingInfoWindow: false,
           activeMarker: {},
           selectedPlace: {}, 
-        }
+                    id: 1,
+                    name: "Joe",
+                    sessions:[ {bar_id: 2,
+                                tab_total: 300,
+                                open: false,
+                                order: [
+                                        {name:"Kyles Kolsch", price: 6}
+                                        ],
+                                },
+                                {bar_id: 3,
+                                tab_total: 80,
+                                open: true,
+                                order: [
+                                        {name:"Kyles Kolsch", price: 6}
+                                        ],
+                                },
+                                {bar_id: 2,
+                                tab_total: 20,
+                                open: true,
+                                order: [
+                                        {name:"Kyles Kolsch", price: 6}
+                                        ],
+                                }
+                              ]
+                  }
       }
 
     onMapOver = (props) => {
@@ -91,16 +115,24 @@ class UserHome extends React.Component {
       
     }
   
+  
   render () {
      const {user_logged_in, 
         user_sign_in_route, 
         user_sign_out_route,
      }=this.props
-     const {stores}=this.state
+     const {stores,name, id, sessions, openTab, order}=this.state
 
     return (
       <React.Fragment>
         <Router>
+        <div>
+        {/* change user to name in profile*/}
+         Hey there hop stuff <br />
+         Do you want to start a tab? <br />
+         <button onClick={this.openTab}>You better beer-lieve it!</button>
+    </div>
+    
             <div>
               {user_logged_in &&
               <Nav>
@@ -145,11 +177,28 @@ class UserHome extends React.Component {
               
               {/* changing /userhome to user_home will create an error*/}
             <Route exact path="/userhome" exact component={UserHome} />
-            <Route exact path="/user_home/tabhistory" exact component={TabHistory} />
+            
+            
+            <Route exact path="/user_home/tabhistory" exact render={(props) => <TabHistory {...props}
+              name={name}
+              id={id}
+              sessions={sessions}
+              order={order}
+            />} />
+            
+            
+            
+            
+            <Route path="/user_home/tab" exact render={(props) => <Tab {...props}
+              name={name}
+              id={id}
+              sessions={sessions}
+              order={order}
+            />} />
+            
             <Route path="/user_home/mapcontainer" exact render={(props) => <MapContainer {...props}
                       stores={stores}
                     />} />
-            <Route path="/user_home/tab" exact component={Tab} />
             <Route path="/user_home/profile" exact component={Profile} />
             <Route path="/user_home/happyhour" exact component={HappyHour} />
           </div>
