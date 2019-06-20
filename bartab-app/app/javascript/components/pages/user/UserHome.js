@@ -59,8 +59,9 @@ class UserHome extends React.Component {
         <Router>
         <div>
         {/* change user to name in profile*/}
-         Welcome, User 
-         You are at {this.state.menu(0)}
+         Hey there hop stuff <br />
+         Do you want to start a tab? <br />
+         <button>You better beer-lieve it!</button>
     </div>
     
             <div>
