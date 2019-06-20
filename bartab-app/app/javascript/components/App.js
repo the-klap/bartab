@@ -2,6 +2,7 @@ import React from "react"
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import PropTypes from "prop-types"
+import './app.css';
 
 import HomePage from './pages/HomePage';
 import Login from './pages/Login';
@@ -37,7 +38,6 @@ class App extends React.Component {
         <br />
         <br />
           <div id="menu">
-          <Login /> <button id="User">Beer Drinker</button>
         </div>
           
           <Router>
