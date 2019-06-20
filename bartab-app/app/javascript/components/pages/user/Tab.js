@@ -9,43 +9,28 @@ export default class Tab extends React.Component {
             
         }
     }
-    
-         
-       
-        
-          
-          
-        
-        
-        
+            tabTotal = () =>{
+                let openSessions = this.props.sessions.filter(item => item.open === true )
+                console.log(openSessions)
+                const openSessionsTotal = openSessions.map((tab, index) =>  {
+                        return (<li key={index}>
+                                    Total {tab.tab_total}<br />
+                                    location: {tab.bar_id}
+                                </li>
+                        )
+                    } )
+                return openSessionsTotal
+            }
         render(){
-            console.log(this.props.menu)
-             const displayMenu = this.props.menu.map((item) => {
-             return (
-                
-                 
-                    <ul>
-                        {item.brewery}<br />
-                        Beers on Menu: {item.beer_name}<br />
-                        Price: {item.price}
-                        <br />
-                        <br/>
-                    </ul>)
-            })
-
             return(
                  <React.Fragment>
-                
-           
                     <ul>
-                        {displayMenu}
+                   <br/>
+                   {this.tabTotal()}
                         <br />
                         <br/>
                     </ul>
-                 
-                 
-                 
-                 </React.Fragment>
+                </React.Fragment>
                 )
     }
 }

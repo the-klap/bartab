@@ -22,9 +22,23 @@ class UserHome extends React.Component {
     this.state = {
                     id: 1,
                     name: "Joe",
-                    Sessions:[ {bar_id: 2,
+                    sessions:[ {bar_id: 2,
                                 tab_total: 300,
                                 open: false,
+                                order: [
+                                        {name:"Kyles Kolsch", price: 6}
+                                        ],
+                                },
+                                {bar_id: 3,
+                                tab_total: 80,
+                                open: true,
+                                order: [
+                                        {name:"Kyles Kolsch", price: 6}
+                                        ],
+                                },
+                                {bar_id: 2,
+                                tab_total: 20,
+                                open: true,
                                 order: [
                                         {name:"Kyles Kolsch", price: 6}
                                         ],
@@ -49,7 +63,7 @@ class UserHome extends React.Component {
             user_sign_in_route, 
             user_sign_out_route,
            }=this.props
-    const {menu, openTab} = this.state   
+    const {name, id, sessions, openTab, order} = this.state   
 
     return (
       <React.Fragment>
@@ -105,15 +119,27 @@ class UserHome extends React.Component {
               
               {/* changing /userhome to user_home will create an error*/}
             <Route exact path="/userhome" exact component={UserHome} />
+            
+            
             <Route exact path="/user_home/tabhistory" exact render={(props) => <Tab {...props}
-              menu={menu} 
+              name={name}
+              id={id}
+              sessions={sessions}
+              order={order}
             />} />
+            
+            
             <Route path="/user_home/map" exact component={Map} />
             
-            <Route path="/user_home/tab" exact render={(props) => <Tab {...props}
-              menu={menu} 
-            />} />
             
+            <Route path="/user_home/tab" exact render={(props) => <Tab {...props}
+              name={name}
+              id={id}
+              sessions={sessions}
+              order={order}
+            />} />
+
+
             <Route path="/user_home/profile" exact component={Profile} />
             <Route path="/user_home/happyhour" exact component={HappyHour} />
           </div>
