@@ -32,8 +32,8 @@ export class MapContainer extends Component {
           key={index}
           id={store.id}
           position={{
-          lat: store.latitude,
-          lng: store.longitude
+          lat: store.lat,
+          lng: store.lng
          }}
         />
       })
