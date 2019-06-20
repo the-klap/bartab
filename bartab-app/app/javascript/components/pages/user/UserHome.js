@@ -20,39 +20,36 @@ class UserHome extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-        menu: [
-          { brewery: "Kyle's Kolsch ", beer_name: 'Killer Kali', price:5,},
-          { brewery: "Luke's Lagunitas", beer_name: "Liquid Liquor", price:5},
-          { brewery: "Aaron's American Pale Ale", beer_name: "Angry Archer", price: 8},
-          { brewery: "Pete's Porters", beer_name: 'Perfect Pilsner', price:6},
-          ],
-        bar_id:[
-          { bar_id: 1 },
-          { bar_id: 2 },
-          { bar_id: 3 },
-          { bar_id: 4 },
-          ],
-          total: [
-            { total: 9 },
-            { total: 10 },
-            { total: 11 },
-            { total: 12 },
-          ],
-          tab_open:[
-            { open: true },
-            { open: false },
-            { open: true },
-            { open: false },
-            ]
-      }
-    }
+                    id: 1,
+                    name: "Joe",
+                    Sessions:[ {bar_id: 2,
+                                tab_total: 300,
+                                open: false,
+                                order: [
+                                        {name:"Kyles Kolsch", price: 6}
+                                        ],
+                                }
+                              ]
+                  }
+    
+}
+
+  // create a function that will list all the breweries
+  
+  
+  // create a function that will start a tab
+  openTab = () =>{
+      console.log("I started a tab") 
+  }
+  
+  
   
   render () {
      const {user_logged_in, 
             user_sign_in_route, 
             user_sign_out_route,
            }=this.props
-    const {menu} = this.state       
+    const {menu, openTab} = this.state   
 
     return (
       <React.Fragment>
@@ -61,7 +58,7 @@ class UserHome extends React.Component {
         {/* change user to name in profile*/}
          Hey there hop stuff <br />
          Do you want to start a tab? <br />
-         <button>You better beer-lieve it!</button>
+         <button onClick={this.openTab}>You better beer-lieve it!</button>
     </div>
     
             <div>
