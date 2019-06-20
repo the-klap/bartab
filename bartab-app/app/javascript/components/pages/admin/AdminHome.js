@@ -103,12 +103,15 @@ class AdminHome extends React.Component {
                       <NavItem>
                         <NavLink id="adminProfile" href="/admin_home/profile">Profile</NavLink>
                       </NavItem>
+                    </div>
+                    <div className="col-sm">
+                      <NavItem>
+                        <NavLink id="adminSignOut" href={admin_sign_out_route}>Sign Out</NavLink>
+                      </NavItem>
                     </div>  
                    </div>
                  </div>
                 </Nav>
-  
-                
               }
 
 
