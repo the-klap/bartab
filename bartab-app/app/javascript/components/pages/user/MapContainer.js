@@ -16,6 +16,8 @@ export class MapContainer extends Component {
             selectedPlace: {}, 
           }
     }
+  
+
     
     onClick = (props, marker, e) =>
       this.setState({
@@ -24,7 +26,6 @@ export class MapContainer extends Component {
         showingInfoWindow: true
       })
 
-
  
     displayMarkers = () => {
         return this.props.stores.map((store, index) => {
@@ -32,8 +33,8 @@ export class MapContainer extends Component {
           key={index}
           id={store.id}
           position={{
-          lat: store.latitude,
-          lng: store.longitude
+          lat: store.lat,
+          lng: store.lng
          }}
         />
       })
