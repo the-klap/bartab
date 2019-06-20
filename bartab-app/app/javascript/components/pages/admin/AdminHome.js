@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
-import { Nav, NavItem, NavLink} from 'reactstrap'
+import { Nav, NavItem, NavLink } from 'reactstrap'
 
 import OpenTabs from "./OpenTabs";
 import Profile from "./Profile";
@@ -87,21 +87,21 @@ class AdminHome extends React.Component {
             <div>
               {admin_logged_in &&
                 <Nav>
-                 <div class="container">
-                   <div class="row">
-                    <div class="col-sm">
+                 <div className="container">
+                   <div className="row">
+                    <div className="col-sm">
                       <NavItem>
-                        <NavLink href="/admin_home/open_tabs">Open Tabs</NavLink>
+                        <NavLink id="openTabs" href="/admin_home/open_tabs">Open Tabs</NavLink>
                       </NavItem>
                     </div>
-                    <div class="col-sm">
+                    <div className="col-sm">
                       <NavItem>
-                        <NavLink href="/admin_home/menu">Menu</NavLink>
+                        <NavLink id="adminMenu" href="/admin_home/menu">Menu</NavLink>
                       </NavItem>
                     </div>
-                    <div class="col-sm">
+                    <div className="col-sm">
                       <NavItem>
-                        <NavLink href="/admin_home/profile">Profile</NavLink>
+                        <NavLink id="adminProfile" href="/admin_home/profile">Profile</NavLink>
                       </NavItem>
                     </div>  
                    </div>
