@@ -2,11 +2,14 @@ import React from "react"
 import PropTypes from "prop-types"
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
-import { Nav, NavItem, NavLink} from 'reactstrap'
-
+import { Nav, NavItem, NavLink } from 'reactstrap'
+//import Geocode from "react-geocode";
+// Geocode.setApiKey("AIzaSyBFGcpxYZoZ2X4MPVsql1OIyFxwgKZBBK8");
 import OpenTabs from "./OpenTabs";
 import Profile from "./Profile";
 import Menu from "./Menu";
+
+
 
 class AdminHome extends React.Component {
    constructor(props){
@@ -23,13 +26,44 @@ class AdminHome extends React.Component {
           {id: 9, name: 'Rick', total:0, order: [], status: 'Open'},
           ],
         profile: {
-          name:"Bub's",
-          hours:"24/7",
-          info:"We sell beer"
+          name: "",
+          hours: "",
+          info: "",
+          address1: "",
+          address2: "",
+          state: "",
+          city: "",
+          zip: "",
+          country: "",
+          lat: "",
+          lng: "",
         }
+      
       }
   }
   
+  //turns address into lat, lng
+  // addressToCoords = (addressString, newProfile) => {
+  //   Geocode.fromAddress(addressString).then(
+  //     response => {
+  //       const { lat, lng } = response.results[0].geometry.location;
+  //       newProfile.lat = response.results[0].geometry.location.lat()
+  //       newProfile.lng = response.results[0].geometry.location.lng()
+  //       console.log(lat, lng);
+  //     },
+  //     error => {
+  //       console.error(error);
+  //     }
+  //   );
+  //   }
+  
+
+  //updates profile with info from profile.js
+  handleUpdateProfile = (newProfile) => {
+    //let addressString= `${newProfile.address1} ${newProfile.address2}, ${newProfile.city}, ${newProfile.state} ${newProfile.zip}, ${newProfile.country}`
+   // this.addressToCoords(addressString, newProfile)
+    this.setState({profile: newProfile})
+  }
 
   //adds item to menu
   handleAddItem = (newItem) => {
@@ -79,7 +113,7 @@ class AdminHome extends React.Component {
            }=this.props
      const {customers, menu, profile} = this.state
      
-    // console.log(customers)
+    console.log(profile)
      
     return (
       <React.Fragment>
@@ -87,28 +121,31 @@ class AdminHome extends React.Component {
             <div>
               {admin_logged_in &&
                 <Nav>
-                 <div class="container">
-                   <div class="row">
-                    <div class="col-sm">
+                 <div className="container">
+                   <div className="row">
+                    <div className="col-sm">
                       <NavItem>
-                        <NavLink href="/admin_home/open_tabs">Open Tabs</NavLink>
+                        <NavLink id="openTabs" href="/admin_home/open_tabs">Open Tabs</NavLink>
                       </NavItem>
                     </div>
-                    <div class="col-sm">
+                    <div className="col-sm">
                       <NavItem>
-                        <NavLink href="/admin_home/menu">Menu</NavLink>
+                        <NavLink id="adminMenu" href="/admin_home/menu">Menu</NavLink>
                       </NavItem>
                     </div>
-                    <div class="col-sm">
+                    <div className="col-sm">
                       <NavItem>
-                        <NavLink href="/admin_home/profile">Profile</NavLink>
+                        <NavLink id="adminProfile" href="/admin_home/profile">Profile</NavLink>
+                      </NavItem>
+                    </div>
+                    <div className="col-sm">
+                      <NavItem>
+                        <NavLink id="adminSignOut" href={admin_sign_out_route}>Sign Out</NavLink>
                       </NavItem>
                     </div>  
                    </div>
                  </div>
                 </Nav>
-  
-                
               }
 
 
@@ -124,7 +161,11 @@ class AdminHome extends React.Component {
               handleAddItem={this.handleAddItem}
               handleDeleteItem={this.handleDeleteItem}
             />} />
-            <Route path="/admin_home/profile" exact render={(props) => <Profile profile={profile}/>} />
+            <Route path="/admin_home/profile" exact render={(props) => <Profile 
+              profile={profile}
+              handleUpdateProfile={this.handleUpdateProfile}
+              />} 
+            />
 
           </div>
         </Router>
@@ -133,4 +174,4 @@ class AdminHome extends React.Component {
   }
 }
 
-export default AdminHome
+export default AdminHome;

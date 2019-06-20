@@ -39,6 +39,7 @@ class Menu extends React.Component {
       name={value.name}
       price={value.price}
       handleDelete={this.handleDelete}
+      className='menuItem'
       />
       )
     
@@ -57,7 +58,7 @@ class Menu extends React.Component {
             {menuList}
             
         </Table>
-        <Form>
+        <Form className='newItem'>
           <Row form>
             <Col>
               <FormGroup>
