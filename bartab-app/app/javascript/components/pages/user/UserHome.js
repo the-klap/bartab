@@ -7,7 +7,18 @@ import {
         } from "react-router-dom";
 import { Nav, NavItem, NavLink } from 'reactstrap'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+// import {Geocode} from "react-geocode";
 
+
+// Geocode.fromAddress().then(
+//   response => {
+//     const { lat, lng } = response.results[0].geometry.location;
+//     console.log(lat, lng);
+//   },
+//   error => {
+//     console.error(error);
+//   }
+// );
 
 
 //components imported to main UserHome
@@ -23,12 +34,47 @@ class UserHome extends React.Component {
     super(props)
       this.state = {
         // array of bars, .map function to go through all bars, pass state as prop to map
-          stores: [ { id: 1, latitude: 32.7112, longitude: -117.14184416996333},
-                  { id: 2, latitude: 32.359423, longitude: -117.021071},
-                  { id: 3, latitude: 32.2052192687988, longitude: -117.988426208496},
-                  { id: 4, latitude: 32.6307081, longitude: -117.1434325},
-                  { id: 5,latitude: 32.3084488, longitude: -117.2140121},
-                  { id: 6, latitude: 32.5524695, longitude: -117.0425407} ],
+          stores: [ {
+                    id: 1,
+                    name: "bubs",
+                    hours: "24/7",
+                    info: "drink beer",
+                    address1: "715 J St",
+                    address2: "",
+                    city: "San Diego",
+                    state: "CA",
+                    zip: "92101",
+                    country: "USA",
+                    lat: 32.709568,
+                    lng: -117.124658,
+                  },
+                  { id: 2, 
+                    name: "half door",
+                    hours: "mon-sat 12-9",
+                    info: "we have good beer",
+                    address1: "903 Island Ave",
+                    address2: "",
+                    city: "San Diego",
+                    state: "CA",
+                    zip: "92101",
+                    country: "USA",
+                    lat: 32.710248,
+                    lng: -117.156268,
+                  },
+                  { id: 3, 
+                    name: "social tap",
+                    hours: "all day",
+                    info: "check us out!",
+                    address1: "815 J St",
+                    address2: "",
+                    city: "San Diego",
+                    state: "CA",
+                    zip: "92101",
+                    country: "USA",
+                    lat: 32.710568,
+                    lng: -117.134658,
+                  },
+                ],
           showingInfoWindow: false,
           activeMarker: {},
           selectedPlace: {}, 

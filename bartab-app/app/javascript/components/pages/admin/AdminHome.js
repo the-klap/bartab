@@ -3,10 +3,13 @@ import PropTypes from "prop-types"
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import { Nav, NavItem, NavLink } from 'reactstrap'
-
+//import Geocode from "react-geocode";
+// Geocode.setApiKey("AIzaSyBFGcpxYZoZ2X4MPVsql1OIyFxwgKZBBK8");
 import OpenTabs from "./OpenTabs";
 import Profile from "./Profile";
 import Menu from "./Menu";
+
+
 
 class AdminHome extends React.Component {
    constructor(props){
@@ -32,14 +35,33 @@ class AdminHome extends React.Component {
           city: "",
           zip: "",
           country: "",
+          lat: "",
+          lng: "",
         }
       
       }
   }
   
+  //turns address into lat, lng
+  // addressToCoords = (addressString, newProfile) => {
+  //   Geocode.fromAddress(addressString).then(
+  //     response => {
+  //       const { lat, lng } = response.results[0].geometry.location;
+  //       newProfile.lat = response.results[0].geometry.location.lat()
+  //       newProfile.lng = response.results[0].geometry.location.lng()
+  //       console.log(lat, lng);
+  //     },
+  //     error => {
+  //       console.error(error);
+  //     }
+  //   );
+  //   }
+  
 
   //updates profile with info from profile.js
   handleUpdateProfile = (newProfile) => {
+    //let addressString= `${newProfile.address1} ${newProfile.address2}, ${newProfile.city}, ${newProfile.state} ${newProfile.zip}, ${newProfile.country}`
+   // this.addressToCoords(addressString, newProfile)
     this.setState({profile: newProfile})
   }
 
@@ -152,4 +174,4 @@ class AdminHome extends React.Component {
   }
 }
 
-export default AdminHome
+export default AdminHome;

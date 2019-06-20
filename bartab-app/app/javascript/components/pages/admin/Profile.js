@@ -28,6 +28,8 @@ class BarProfile extends React.Component {
           city: "",
           zip: "",
           country: "",
+          lat: "",
+          lng: "",
         }
       }
   }
@@ -38,10 +40,7 @@ class BarProfile extends React.Component {
     this.setState({profile: profile})
   }
   
-  addressToCoords = (address1, address2, city, state, zip, country ) => {
-    let addressString = `${address1} ${address2}, ${city}, ${state} ${zip}, ${country}`
-    console.log(addressString)
-  }
+
   
   handleSubmit = () => {
     const {profile} = this.state
