@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tab_histories
+  resources :menus
   resources :admin_profiles
   resources :tabs
   resources :user_profiles

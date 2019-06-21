@@ -5,4 +5,5 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :tabs
   has_one :adminprofile
+  has_many :menus
 end
