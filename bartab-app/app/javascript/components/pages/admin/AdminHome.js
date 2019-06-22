@@ -37,8 +37,8 @@ class AdminHome extends React.Component {
           country: "",
           lat: "",
           lng: "",
-        }
-      
+        },
+        current_admin_profile: {},
       }
   }
   
@@ -57,6 +57,17 @@ class AdminHome extends React.Component {
   //   );
   //   }
   
+    //fetch will get all admin profiles
+  componentWillMount() {
+    const {current_admin_id} = this.props
+    fetch(`/admin_profiles/${current_admin_id}`, {
+  		headers: { 
+  			'Content-Type': 'application/json'
+  		},
+  		method: "GET"
+  	  }).then((response) => {return response.json()})
+  	  .then((current_admin_profile) => {this.setState({ current_admin_profile: current_admin_profile }) })
+  }
 
   //updates profile with info from profile.js
   handleUpdateProfile = (newProfile) => {
@@ -113,7 +124,7 @@ class AdminHome extends React.Component {
            }=this.props
      const {customers, menu, profile} = this.state
      
-    console.log(profile)
+    console.log(this.state.current_admin_profile)
      
     return (
       <React.Fragment>

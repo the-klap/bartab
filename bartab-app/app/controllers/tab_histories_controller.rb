@@ -1,0 +1,2 @@
+class TabHistoriesController < ApplicationController
+end

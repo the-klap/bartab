@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_17_201643) do
+ActiveRecord::Schema.define(version: 2019_06_21_161219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admin_profiles", force: :cascade do |t|
+    t.string "establishmentname"
+    t.string "hours"
+    t.string "address1"
+    t.string "address2"
+    t.string "city"
+    t.string "zip"
+    t.string "state"
+    t.string "country"
+    t.string "additionalinfo"
+    t.bigint "admin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_admin_profiles_on_admin_id"
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,6 +41,44 @@ ActiveRecord::Schema.define(version: 2019_06_17_201643) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.bigint "admin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_menus_on_admin_id"
+  end
+
+  create_table "tab_histories", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.bigint "tab_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tab_id"], name: "index_tab_histories_on_tab_id"
+  end
+
+  create_table "tabs", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "admin_id"
+    t.decimal "total"
+    t.boolean "open"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_tabs_on_admin_id"
+    t.index ["user_id"], name: "index_tabs_on_user_id"
+  end
+
+  create_table "user_profiles", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,4 +93,10 @@ ActiveRecord::Schema.define(version: 2019_06_17_201643) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "admin_profiles", "admins"
+  add_foreign_key "menus", "admins"
+  add_foreign_key "tab_histories", "tabs"
+  add_foreign_key "tabs", "admins"
+  add_foreign_key "tabs", "users"
+  add_foreign_key "user_profiles", "users"
 end

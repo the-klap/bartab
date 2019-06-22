@@ -1,0 +1,2 @@
+module TabHistoriesHelper
+end
