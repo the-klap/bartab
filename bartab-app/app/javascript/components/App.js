@@ -14,7 +14,17 @@ class App extends React.Component {
    constructor(props){
     super(props)
       this.state = {
+        admin_profiles: [],
+        user_profiles: [],
       }
+  }
+  
+  
+  //fetch will get all admin profiles
+  componentWillMount() {
+  fetch('/admin_profiles.json')
+    .then((response) => {return response.json()})
+    .then((admin_profiles) => {this.setState({ admin_profiles: admin_profiles }) })
   }
   
   render () {
@@ -24,10 +34,14 @@ class App extends React.Component {
       admin_sign_out_route,
       user_logged_in,
       user_sign_in_route,
-      user_sign_out_route
+      user_sign_out_route,
+      current_admin_id,
+      current_user_id
     } =this.props
-    console.log(`Admin: ${admin_logged_in}`)
-    console.log(`User: ${user_logged_in}`)
+    console.log(`Admin Logged In? ${admin_logged_in}`)
+    console.log(`User Logged In?: ${user_logged_in}`)
+    console.log(this.state.admin_profiles)
+  
   
     return (
       <React.Fragment>
@@ -60,6 +74,7 @@ class App extends React.Component {
               admin_logged_in={admin_logged_in}
               admin_sign_in_route={admin_sign_in_route}
               admin_sign_out_route={admin_sign_out_route}
+              current_admin_id={current_admin_id}
             />} />
             
     

@@ -1,2 +1,3 @@
 class TabsController < ApplicationController
+    
 end
