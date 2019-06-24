@@ -34,6 +34,7 @@ class UserHome extends React.Component {
   constructor(props){
     super(props)
      this.state = {
+          current_user_profile: {},
         // array of bars, .map function to go through all bars, pass state as prop to map
           stores: [ {
                     id: 1,
@@ -107,6 +108,20 @@ class UserHome extends React.Component {
                   }
       }
 
+
+
+  componentWillMount() {
+    const {current_user_id} = this.props
+    fetch(`/user_profiles/${current_user_id}`, {
+  		headers: { 
+  			'Content-Type': 'application/json'
+  		},
+  		method: "GET"
+  	  })
+  	  .then(response => response.json())
+  	  .then(current_user_profile => {this.setState({ current_user_profile }) })
+  }
+
     onMapOver = (props) => {
       if (this.state.showingInfoWindow) {
         this.setState({
@@ -136,10 +151,12 @@ class UserHome extends React.Component {
      const {user_logged_in, 
         user_sign_in_route, 
         user_sign_out_route,
+        current_user_id,
      }=this.props
 
-     const {stores,name, id, sessions, openTab, order}=this.state
-
+     const {stores,name, id, sessions, openTab, order, current_user_profile}=this.state
+    console.log(current_user_profile)
+    console.log(current_user_id)
     return (
       <React.Fragment>
         <Router>
@@ -185,6 +202,11 @@ class UserHome extends React.Component {
                       <NavLink href="/user_home/happyhour">Happy Hour</NavLink>
                     </NavItem>
                   </div>
+                  <div className="col-sm">
+                    <NavItem>
+                      <NavLink id="adminSignOut" href={user_sign_out_route}>Sign Out</NavLink>
+                    </NavItem>
+                  </div> 
                  </div>
                </div>
               </Nav>

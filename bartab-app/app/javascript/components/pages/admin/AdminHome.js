@@ -16,9 +16,6 @@ class AdminHome extends React.Component {
     super(props)
       this.state = {
         menu: [
-          { name: 'Space Dust', price:7},
-          { name: 'Sculpin', price:5},
-          { name: 'Belching Beaver', price:6},
           ],
         customers: [
           {id: 42, name: 'Joe', total:0, order: [], status: 'Open'},
@@ -65,22 +62,43 @@ class AdminHome extends React.Component {
   			'Content-Type': 'application/json'
   		},
   		method: "GET"
-  	  }).then((response) => {return response.json()})
-  	  .then((current_admin_profile) => {this.setState({ current_admin_profile: current_admin_profile }) })
+  	  })
+  	  .then(response => response.json())
+  	  .then((current_admin_profile) => {this.setState({ current_admin_profile }) })
   }
-
+  
+  
   //updates profile with info from profile.js
   handleUpdateProfile = (newProfile) => {
     //let addressString= `${newProfile.address1} ${newProfile.address2}, ${newProfile.city}, ${newProfile.state} ${newProfile.zip}, ${newProfile.country}`
    // this.addressToCoords(addressString, newProfile)
     this.setState({profile: newProfile})
   }
+  
+  //fetch gets
+  getMenu = () => {
+    const {current_admin_id} = this.props
+    fetch(`/menus/${current_admin_id}`, {
+  		headers: { 
+  			'Content-Type': 'application/json'
+  		},
+  		method: "GET"
+  	  })
+  	  .then(response => response.json())
+  	  .then((menu) => {this.setState({ menu }) })
+  }
+
 
   //adds item to menu
   handleAddItem = (newItem) => {
-    const {menu} = this.state
-    menu.push(newItem)
-    this.setState({menu})
+    fetch('/menus.json', {
+  		body: JSON.stringify(newItem),  
+  		headers: {  
+  			'Content-Type': 'application/json'
+  		},
+  		method: "POST"  
+	  })
+	  .then(response => response.json())
   }
   
   //deletes item from menu
@@ -121,6 +139,7 @@ class AdminHome extends React.Component {
      const {admin_logged_in, 
             admin_sign_in_route, 
             admin_sign_out_route,
+            current_admin_id,
            }=this.props
      const {customers, menu, profile} = this.state
      
@@ -171,6 +190,8 @@ class AdminHome extends React.Component {
               menu={menu} 
               handleAddItem={this.handleAddItem}
               handleDeleteItem={this.handleDeleteItem}
+              getMenu={this.getMenu}
+              current_admin_id={current_admin_id}
             />} />
             <Route path="/admin_home/profile" exact render={(props) => <Profile 
               profile={profile}
