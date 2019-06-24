@@ -102,10 +102,11 @@ class AdminHome extends React.Component {
   }
   
   //deletes item from menu
-  handleDeleteItem = (index) => {
-    const {menu} = this.state
-    menu.splice(index, 1)
-    this.setState({menu})
+  handleDeleteItem = (itemID) => {
+    fetch(`/menus/${itemID}`, {
+      	method: "DELETE"  
+    	  })
+    	  .then(response => response.json())
   }
   
   //closes out a customer (state doesnt set for some reason)
@@ -142,8 +143,6 @@ class AdminHome extends React.Component {
             current_admin_id,
            }=this.props
      const {customers, menu, profile} = this.state
-     
-    console.log(this.state.current_admin_profile)
      
     return (
       <React.Fragment>

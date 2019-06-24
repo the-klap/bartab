@@ -13,6 +13,11 @@ class MenusController < ApplicationController
         end
     end
     
+    def destroy
+        menu_item = Menu.destroy(params[:id])
+        render json: menu_item
+    end
+    
     def menu_params
         params.require(:menu).permit(:name, :price)
     end

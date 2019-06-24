@@ -22,15 +22,15 @@ class Menu extends React.Component {
     this.setState({newItem: newItem})
   }
   
-  handleClick = () => {
+  handleAddItem = () => {
     let {newItem} = this.state
     const {handleAddItem} = this.props
     handleAddItem(newItem)
   }
   
-  handleDelete = (index) => {
+  handleDelete = (itemId) => {
     const {handleDeleteItem} = this.props
-    handleDeleteItem(index)
+    handleDeleteItem(itemId)
   }
   
   
@@ -39,6 +39,7 @@ class Menu extends React.Component {
     
     var menuList = menu.map((value, index) => <MenuItem 
       key={index}
+      id={value.id}
       index={index}
       name={value.name}
       price={value.price}
@@ -76,7 +77,7 @@ class Menu extends React.Component {
               </FormGroup>
             </Col>
             <Col>
-              <Button onClick={this.handleClick}>Add</Button>
+              <Button type='submit' onClick={this.handleAddItem}>Add</Button>
             </Col>
           </Row>
         </Form>
