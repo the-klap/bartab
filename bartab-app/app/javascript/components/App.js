@@ -15,16 +15,16 @@ class App extends React.Component {
     super(props)
       this.state = {
         admin_profiles: [],
-        user_profiles: [],
+          
       }
   }
   
   
   //fetch will get all admin profiles
   componentWillMount() {
-  fetch('/admin_profiles.json')
-    .then((response) => {return response.json()})
-    .then((admin_profiles) => {this.setState({ admin_profiles: admin_profiles }) })
+    fetch('/admin_profiles.json')
+      .then(response => response.json())
+      .then((admin_profiles) => {this.setState({ admin_profiles }) })
   }
   
   render () {
@@ -82,6 +82,7 @@ class App extends React.Component {
               user_logged_in={user_logged_in}
               user_sign_in_route={user_sign_in_route}
               user_sign_out_route={user_sign_out_route}
+              current_user_id={current_user_id}
             />} />
             
 
