@@ -12,6 +12,7 @@ class OpenTabs extends React.Component {
   
   componentWillMount() {
     this.props.getMenu()
+    this.props.getTabs()
   }
   
   handleAClose = (findId) => {
@@ -30,9 +31,9 @@ class OpenTabs extends React.Component {
   }
   
   render () {
-    const {customers, menu} = this.props
+    const {customers, menu, tabs} = this.props
     
-    console.log(menu)
+    console.log(tabs)
     var customerTabs = customers.map((value, index) => <CustomerTab 
       key={index}
       id={value.id}
