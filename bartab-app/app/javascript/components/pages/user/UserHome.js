@@ -35,6 +35,8 @@ class UserHome extends React.Component {
     super(props)
      this.state = {
           current_user_profile: {},
+          firstname: '',
+          lastname: '',
         // array of bars, .map function to go through all bars, pass state as prop to map
           stores: [ {
                     id: 1,
@@ -107,9 +109,7 @@ class UserHome extends React.Component {
                               ]
                   }
       }
-
-
-
+  
   componentWillMount() {
     const {current_user_id} = this.props
     fetch(`/user_profiles/${current_user_id}`, {
@@ -120,6 +120,14 @@ class UserHome extends React.Component {
   	  })
   	  .then(response => response.json())
   	  .then(current_user_profile => {this.setState({ current_user_profile }) })
+  	 //fetch(`/user_profiles/${current_user_id}`, {
+  		// headers: { 
+  		// 	'Content-Type': 'application/json'
+  		// },
+  		// method: "PUT"
+  	 // })
+  	 // .then(response => response.json())
+  	 // .then(current_user_profile => {this.setState({ current_user_profile }) })
   }
 
     onMapOver = (props) => {
@@ -148,15 +156,25 @@ class UserHome extends React.Component {
   
   
   render () {
-     const {user_logged_in, 
-        user_sign_in_route, 
-        user_sign_out_route,
-        current_user_id,
-     }=this.props
+    const { user_logged_in, 
+            user_sign_in_route, 
+            user_sign_out_route,
+            current_user_id,
+          } = this.props
 
-     const {stores,name, id, sessions, openTab, order, current_user_profile}=this.state
+    const { stores,name,
+           id,
+           sessions, 
+           openTab, 
+           order, 
+           current_user_profile, 
+           firstname, 
+           lastname
+          } = this.state
+           
     console.log(current_user_profile)
     console.log(current_user_id)
+  
     return (
       <React.Fragment>
         <Router>
