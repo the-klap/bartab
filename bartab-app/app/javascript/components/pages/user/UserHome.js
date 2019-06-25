@@ -1,9 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
-import {
-        BrowserRouter as Router,
-        Route,
-        Link
+import  {
+         BrowserRouter as Router,
+         Route,
+         Link
         } from "react-router-dom";
 import { Nav, NavItem, NavLink } from 'reactstrap'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
@@ -88,7 +88,7 @@ class UserHome extends React.Component {
                                 open: false,
                                 order: [
                                         {name:"Kyles Kolsch", price: 6}
-                                        ],
+                                       ],
                                 },
                                 {bar_id: 3,
                                 tab_total: 80,
@@ -160,95 +160,84 @@ class UserHome extends React.Component {
     return (
       <React.Fragment>
         <Router>
-        <div>
-        {/* change user to name in profile*/}
-         Hey there {current_user_profile.firstname} <br />
-         Do you want to start a tab? <br />
-         <button onClick={this.openTab}>You better beer-lieve it!</button>
-    </div>
-    
-            <div>
-              {user_logged_in &&
+          <div>
+            {/* change user to name in profile*/}
+            Hey there {current_user_profile.firstname} <br />
+            Do you want to start a tab? <br />
+           <button onClick={this.openTab}>You better beer-lieve it!</button>
+          </div>
+      
+          <div>
+            {user_logged_in &&
               <Nav>
-               <div class="container">
-                 <div class="row">
-                  <div class="col-sm">
-                    <NavItem>
-                      <NavLink href="/user_home">User Home</NavLink>
-                    </NavItem>
-                  </div>
-                  <div class="col-sm">
-                    <NavItem>
-                      <NavLink href="/user_home/tabhistory">Tab History</NavLink>
-                    </NavItem>
-                  </div>
-                  <div class="col-sm">
-                    <NavItem>
-                      <NavLink href="/user_home/mapcontainer">Map</NavLink>
-                    </NavItem>
-                  </div>  
-                  <div class="col-sm">
-                    <NavItem>
-                      <NavLink href="/user_home/tab">Tab</NavLink>
-                    </NavItem>
-                  </div>
-                  <div class="col-sm">
-                    <NavItem>
-                      <NavLink href="/user_home/profile">Profile</NavLink>
-                    </NavItem>
-                  </div>
-                  <div class="col-sm">
-                    <NavItem>
-                      <NavLink href="/user_home/happyhour">Happy Hour</NavLink>
-                    </NavItem>
-                  </div>
-                  <div className="col-sm">
-                    <NavItem>
-                      <NavLink id="adminSignOut" href={user_sign_out_route}>Sign Out</NavLink>
-                    </NavItem>
-                  </div> 
-                 </div>
-               </div>
+              <div class="container">
+              <div class="row">
+              <div class="col-sm">
+              <NavItem>
+                <NavLink href="/user_home">User Home</NavLink>
+              </NavItem>
+              </div>
+              <div class="col-sm">
+              <NavItem>
+                <NavLink href="/user_home/tabhistory">Tab History</NavLink>
+              </NavItem>
+              </div>
+              <div class="col-sm">
+              <NavItem>
+                <NavLink href="/user_home/mapcontainer">Map</NavLink>
+              </NavItem>
+              </div>  
+              <div class="col-sm">
+              <NavItem>
+                <NavLink href="/user_home/tab">Tab</NavLink>
+              </NavItem>
+              </div>
+              <div class="col-sm">
+              <NavItem>
+                <NavLink href="/user_home/profile">Profile</NavLink>
+              </NavItem>
+              </div>
+              <div class="col-sm">
+              <NavItem>
+                <NavLink href="/user_home/happyhour">Happy Hour</NavLink>
+              </NavItem>
+              </div>
+              <div className="col-sm">
+              <NavItem>
+                <NavLink id="adminSignOut" href={user_sign_out_route}>Sign Out</NavLink>
+              </NavItem>
+              </div> 
+              </div>
+              </div>
               </Nav>
-                  
-                  
-              }
-              
-              {/* changing /userhome to user_home will create an error*/}
+            }
+                
+            {/* changing /userhome to user_home will create an error*/}
             <Route exact path="/userhome" exact component={UserHome} />
-
-            
-            
             <Route exact path="/user_home/tabhistory" exact render={(props) => <TabHistory {...props}
               name={name}
               id={id}
               sessions={sessions}
               order={order}
             />} />
-            
-            
-            
-            
             <Route path="/user_home/tab" exact render={(props) => <Tab {...props}
               name={name}
               id={id}
               sessions={sessions}
               order={order}
             />} />
-            
             <Route path="/user_home/mapcontainer" exact render={(props) => <MapContainer {...props}
-                      stores={stores}
-                    />} />
+              stores={stores}
+            />} />
             <Route path="/user_home/profile" exact render={(props) => <Profile {...props}
               current_user_profile={current_user_profile}
-             />} />
-            
+            />} />
             <Route path="/user_home/happyhour" exact component={HappyHour} />
           </div>
         </Router>
         
         <StoreList stores={stores} openTab={this.openTab}/>
-    </React.Fragment>
+      </React.Fragment>
     );
   }
 }
