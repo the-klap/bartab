@@ -162,7 +162,7 @@ class UserHome extends React.Component {
         <Router>
         <div>
         {/* change user to name in profile*/}
-         Hey there hop stuff <br />
+         Hey there {current_user_profile.firstname} <br />
          Do you want to start a tab? <br />
          <button onClick={this.openTab}>You better beer-lieve it!</button>
     </div>
@@ -239,7 +239,10 @@ class UserHome extends React.Component {
             <Route path="/user_home/mapcontainer" exact render={(props) => <MapContainer {...props}
                       stores={stores}
                     />} />
-            <Route path="/user_home/profile" exact component={Profile} />
+            <Route path="/user_home/profile" exact render={(props) => <Profile {...props}
+              current_user_profile={current_user_profile}
+             />} />
+            
             <Route path="/user_home/happyhour" exact component={HappyHour} />
           </div>
         </Router>
