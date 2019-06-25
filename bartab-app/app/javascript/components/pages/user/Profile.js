@@ -25,7 +25,6 @@ export default class Profile extends React.Component {
             <label class="custom-file-label" for="inputGroupFile04">Choose Profile Picture</label>
             </div>
             <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Enter</button>  
             </div>
             </div>
                  
@@ -40,8 +39,7 @@ export default class Profile extends React.Component {
             <input type="text" class="form-control" placeholder={this.props.current_user_profile.firstname}></input>
             <input type="text" class="form-control" placeholder={this.props.current_user_profile.lastname}>
             </input>
-            <button>Enter</button>
-  
+
             <br />
   
             {/*Card Number*/}
@@ -49,7 +47,6 @@ export default class Profile extends React.Component {
             <input type="text" class="form-control" placeholder="Card Number" aria-label="Card Number" aria-describedby="basic-addon2">
             </input>
             <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Enter</button>
             </div>
             </div>
 
@@ -58,27 +55,22 @@ export default class Profile extends React.Component {
             <input type="text" class="form-control" placeholder="Date" aria-label="Date" aria-describedby="basic-addon2">
             </input>
             <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Enter</button>
             </div>
             </div>
-  
 
             {/*CVV*/}
             <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="CVV" aria-label="CVV" aria-describedby="basic-addon2">
               </input>
             <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Enter</button>
             </div>
             </div>
-
   
             {/*address line 1*/}
             <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Address Line 1" aria-label="Address Line 1" aria-describedby="basic-addon2">
             </input>
             <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Enter</button>
             </div>
             </div>
 
@@ -87,7 +79,6 @@ export default class Profile extends React.Component {
             <input type="text" class="form-control" placeholder="Address Line 2" aria-label="Address Line 2" aria-describedby="basic-addon2">
             </input>
             <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Enter</button>
             </div>
             </div>
 
@@ -96,10 +87,8 @@ export default class Profile extends React.Component {
             <input type="text" class="form-control" placeholder="City" aria-label="City" aria-describedby="basic-addon2">
             </input>
             <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Enter</button>
             </div>
             </div>
-
 
             <div class="input-group mb-3">
               <select class="custom-select" id="inputGroupSelect02">
@@ -159,23 +148,16 @@ export default class Profile extends React.Component {
               <label class="input-group-text" for="inputGroupSelect02">Choose Your State</label>
             </div>
           </div>
-
-
+          
           {/*Zip*/}
           <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Zipcode" aria-label="Zipcode" aria-describedby="basic-addon2">
           </input>
           <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button">Enter</button>
           </div>
           </div>
           </div>
-
-
-          <button>Save</button>
-            
-                
-                 
+          <button type="button" class="btn btn-primary btn-lg">SAVE</button>
       </React.Fragment>
       )
     }
