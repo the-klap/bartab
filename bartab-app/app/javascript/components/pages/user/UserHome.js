@@ -162,8 +162,6 @@ class UserHome extends React.Component {
         <Router>
         <div>
         {/* change user to name in profile*/}
-         Hey there hop stuff <br />
-         Do you want to start a tab? <br />
          <button onClick={this.openTab}>You better beer-lieve it!</button>
     </div>
     

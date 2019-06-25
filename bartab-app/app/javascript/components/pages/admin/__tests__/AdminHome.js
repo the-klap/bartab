@@ -6,6 +6,17 @@ import { Nav, NavItem, NavLink } from 'reactstrap'
 
 Enzyme.configure({ adapter: new Adapter() });
 
+
+describe('<AdminHome>', () => {
+    it('Should have nav items of open tabs, menu, profile, and logout', () => {
+        const wrapper = shallow(<AdminHome admin_logged_in={ true } />); 
+        expect(wrapper.find('Nav').length).toEqual(1); 
+        expect(wrapper.containsMatchingElement(<NavLink id="openTabs" href="/admin_home/open_tabs">Open Tabs</NavLink>)).toBe(true)
+        expect(wrapper.containsMatchingElement(<NavLink id="adminMenu" href="/admin_home/menu">Menu</NavLink>)).toBe(true)
+        expect(wrapper.containsMatchingElement(<NavLink id="adminProfile" href="/admin_home/profile">Profile</NavLink>)).toBe(true)
+     });
+})
+
 // describe('<AdminHome/>', () => {
 //     const menu= [
 //                   { name: 'Space Dust', price:7},
@@ -24,13 +35,3 @@ Enzyme.configure({ adapter: new Adapter() });
 //                     }
     
 // })
-
-describe('<AdminHome>', () => {
-    it('Should have nav items of open tabs, menu, profile, and logout', () => {
-        const wrapper = shallow(<AdminHome admin_logged_in={ true } />); 
-        expect(wrapper.find('Nav').length).toEqual(1); 
-        expect(wrapper.containsMatchingElement(<NavLink id="openTabs" href="/admin_home/open_tabs">Open Tabs</NavLink>)).toBe(true)
-        expect(wrapper.containsMatchingElement(<NavLink id="adminMenu" href="/admin_home/menu">Menu</NavLink>)).toBe(true)
-        expect(wrapper.containsMatchingElement(<NavLink id="adminProfile" href="/admin_home/profile">Profile</NavLink>)).toBe(true)
-     });
-})
