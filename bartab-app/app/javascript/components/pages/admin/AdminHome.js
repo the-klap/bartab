@@ -22,19 +22,7 @@ class AdminHome extends React.Component {
           {id: 2, name: 'Bob', total:0, order: [], status: 'Open'},
           {id: 9, name: 'Rick', total:0, order: [], status: 'Open'},
           ],
-        profile: {
-          name: "",
-          hours: "",
-          info: "",
-          address1: "",
-          address2: "",
-          state: "",
-          city: "",
-          zip: "",
-          country: "",
-          lat: "",
-          lng: "",
-        },
+
         current_admin_profile: {},
       }
   }
@@ -69,10 +57,15 @@ class AdminHome extends React.Component {
   
   
   //updates profile with info from profile.js
-  handleUpdateProfile = (newProfile) => {
-    //let addressString= `${newProfile.address1} ${newProfile.address2}, ${newProfile.city}, ${newProfile.state} ${newProfile.zip}, ${newProfile.country}`
-   // this.addressToCoords(addressString, newProfile)
-    this.setState({profile: newProfile})
+  handleUpdateProfile = (admin_profile_params) => {
+    const {current_admin_id} = this.props
+    fetch(`/admin_profiles/${current_admin_id}`, {
+   		body: JSON.stringify(admin_profile_params),
+   		headers: {'Content-Type': 'application/json'},
+   		method: "PUT"
+   	})
+      .then(response => response.json())
+    
   }
   
   //fetch gets
@@ -102,10 +95,11 @@ class AdminHome extends React.Component {
   }
   
   //deletes item from menu
-  handleDeleteItem = (index) => {
-    const {menu} = this.state
-    menu.splice(index, 1)
-    this.setState({menu})
+  handleDeleteItem = (itemID) => {
+    fetch(`/menus/${itemID}`, {
+      	method: "DELETE"  
+    	  })
+    	  .then(response => response.json())
   }
   
   //closes out a customer (state doesnt set for some reason)
@@ -141,9 +135,7 @@ class AdminHome extends React.Component {
             admin_sign_out_route,
             current_admin_id,
            }=this.props
-     const {customers, menu, profile} = this.state
-     
-    console.log(this.state.current_admin_profile)
+     const {customers, menu, current_admin_profile} = this.state
      
     return (
       <React.Fragment>
@@ -185,6 +177,7 @@ class AdminHome extends React.Component {
               handleAddOrder={this.handleAddOrder}
               handleDeleteOrderItem={this.handleDeleteOrderItem}
               menu={menu}
+              getMenu={this.getMenu}
             />}/>
             <Route path="/admin_home/menu" exact render={(props) => <Menu 
               menu={menu} 
@@ -194,7 +187,7 @@ class AdminHome extends React.Component {
               current_admin_id={current_admin_id}
             />} />
             <Route path="/admin_home/profile" exact render={(props) => <Profile 
-              profile={profile}
+              current_admin_profile={current_admin_profile}
               handleUpdateProfile={this.handleUpdateProfile}
               />} 
             />
