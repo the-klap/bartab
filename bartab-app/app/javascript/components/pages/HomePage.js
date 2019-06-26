@@ -7,7 +7,7 @@ class HomePage extends React.Component {
       <React.Fragment>
       <div>
             <section>
-                <div id="action">
+                <div id="action"><h1> BarTab</h1> <h4> Order drinks <br />from your phone!</h4>
                     <div id="keg">
                         <div id="pipe-handle"></div>
                         <div id="pipe"></div>
@@ -24,11 +24,6 @@ class HomePage extends React.Component {
                     </div>
                 </div>
             </section>
-            <h1>
-                BarTab
-            </h1>
-            <h3> Order beer from <br/>
-            your phone!</h3>
             </div>
       </React.Fragment>
     );
