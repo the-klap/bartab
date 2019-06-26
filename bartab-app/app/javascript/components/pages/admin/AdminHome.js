@@ -143,7 +143,7 @@ class AdminHome extends React.Component {
   handleAddOrder = (currentTabTotal, tabId) => {
     const {name, price} = this.state.item
     const aitem = {name:name, price:parseFloat(price), tab_id:tabId}
-    console.log(JSON.stringify(aitem))
+    console.log(aitem)
     this.handleAddOrderHistory(aitem)
     this.handleUpdateTotal(currentTabTotal, tabId)
   }
@@ -165,7 +165,6 @@ class AdminHome extends React.Component {
   handleUpdateTotal = ( currentTabTotal, tabId) => {
     const { price } = this.state.item
     const newTotal = parseFloat(currentTabTotal) + parseFloat(price)
-    console.log(newTotal)
     fetch(`/tabs/${tabId}`, {
    		body: JSON.stringify({total:newTotal}),
    		headers: {'Content-Type': 'application/json'},
