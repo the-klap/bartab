@@ -119,12 +119,38 @@ class AdminHome extends React.Component {
   }
   
   //adds item to customer order
-  handleAddOrder = (itemId, customerId) => {
-    const {customers, menu} = this.state
-    const getCustomer = customers.find(customer => customer.id===customerId)
-    getCustomer.order.push(menu[itemId])
-    getCustomer.total = getCustomer.total + menu[itemId].price
-    this.setState(getCustomer)
+  handleAddOrder = (currentTabTotal, tabId) => {
+    const {name, price} = this.state.item
+    const aitem = {name:name, price:parseFloat(price), tab_id:tabId}
+    console.log(JSON.stringify(aitem))
+    this.handleAddOrderHistory(aitem)
+    this.handleUpdateTotal(currentTabTotal, tabId)
+  }
+  
+    
+  //adds item to order (TabHistories)
+  handleAddOrderHistory = (newItem) => {
+    fetch('/tab_histories', {
+  		body: JSON.stringify(newItem),  
+  		headers: {  
+  			'Content-Type': 'application/json'
+  		},
+  		method: "POST"  
+	  })
+	  .then(response => response.json())
+  }
+  
+  // add to tab total
+  handleUpdateTotal = ( currentTabTotal, tabId) => {
+    const { price } = this.state.item
+    const newTotal = parseFloat(currentTabTotal) + parseFloat(price)
+    console.log(newTotal)
+    fetch(`/tabs/${tabId}`, {
+   		body: JSON.stringify({total:newTotal}),
+   		headers: {'Content-Type': 'application/json'},
+     	method: "PATCH"  
+    	  })
+    	  .then(response => response.json())
   }
   
   handleDeleteOrderItem = (itemId, customerId) => {
