@@ -15,8 +15,7 @@ class AdminHome extends React.Component {
    constructor(props){
     super(props)
       this.state = {
-        menu: [
-          ],
+        menu: [],
         openTabs: [],
         current_admin_profile: {},
       }
