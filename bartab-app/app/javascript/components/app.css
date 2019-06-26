@@ -278,80 +278,80 @@ section {
 }
 
 
-/*styling to links */
+/*styling to User links */
 
-.userHome{
+.user_Home{
   background: #96ceb4;/*#3498db*/
   border-radius: 15px 15px 15px 15px;
 }
 
-.tabHistory{
+.user_tabHistory{
   background: #ffeead;/*#3498db*/
   border-radius: 15px 15px 15px 15px;
 }
 
-.mapContainer{
+.user_mapContainer{
   background: #ff6f69;/*#2ecc71*/
   border-radius: 15px 15px 15px 15px;
 }
 
-.tab{
+.user_tab{
   background: #ffcc5c;/*#34495e*/
   border-radius: 15px 15px 15px 15px;
 }
 
-.profile{
+.user_profile{
   background: #651e3e;/*#34495e*/
   border-radius: 15px 15px 15px 15px;
 }
 
-.signout{
+.user_signout{
   background: #851e3e;/*#34495e*/
   border-radius: 15px 15px 15px 15px;
 }
 
-.userHome {
+.user_Home {
   border: solid 3px #FFFFFF;
   transition: border-width 0.3s linear;
 }
 
-.userHome:hover { border-width: 10px; }
+.user_Home:hover { border-width: 10px; }
 
-.tabHistory {
+.user_tabHistory {
   border: solid 3px #FFFFFF;
   transition: border-width 0.3s linear;
 }
 
-.tabHistory:hover { border-width: 10px; }
+.user_tabHistory:hover { border-width: 10px; }
 
-.mapContainer {
+.user_mapContainer {
   border: solid 3px #FFFFFF;
   transition: border-width 0.3s linear;
 }
 
-.mapContainer:hover { border-width: 10px; }
+.user_mapContainer:hover { border-width: 10px; }
 
-.tab {
+.user_tab {
   border: solid 3px #FFFFFF;
   transition: border-width 0.3s linear;
 }
 
-.tab:hover { border-width: 10px; }
+.user_tab:hover { border-width: 10px; }
 
-.profile {
+.user_profile {
   border: solid 3px #FFFFFF;
   transition: border-width 0.3s linear;
 }
 
-.profile:hover { border-width: 10px; }
+.user_profile:hover { border-width: 10px; }
 
 
-.signout {
+.user_signout {
   border: solid 3px #FFFFFF;
   transition: border-width 0.3s linear;
 }
 
-.signout:hover { border-width: 10px; }
+.user_signout:hover { border-width: 10px; }
 
 
 /*admin and user buttons */
@@ -367,4 +367,55 @@ section {
     width: 50%;
     border-radius: 15px 15px 15px 15px;
     height: 30%
+}
+
+
+/*styling to Admin links */
+
+.admin_open_tabs{
+  background: #96ceb4;/*#3498db*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.admin_Menu{
+    background: #ffeead;/*#3498db*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.admin_Profile{
+    background: #ff6f69;/*#2ecc71*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.admin_Signout{
+     background: #ffcc5c;/*#34495e*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.admin_open_tabs:hover { border-width: 10px; }
+
+.admin_open_tabs {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.admin_Menu:hover { border-width: 10px; }
+
+.admin_Menu {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.admin_Profile:hover { border-width: 10px; }
+
+.admin_Profile {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.admin_Signout:hover { border-width: 10px; }
+
+.admin_Signout {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
 }
