@@ -206,13 +206,14 @@ class AdminHome extends React.Component {
 
             <Route path="/admin_home/open_tabs" exact render={(props) => <OpenTabs{...props} 
               customers={customers}
-              handleClose={this.handleClose}
+              handleCloseTab={this.handleCloseTab}
               handleAddOrder={this.handleAddOrder}
               handleDeleteOrderItem={this.handleDeleteOrderItem}
               menu={menu}
               openTabs={openTabs}
               getMenu={this.getMenu}
               getOpenTabs={this.getOpenTabs}
+              getMenuItem={this.getMenuItem}
             />}/>
             <Route path="/admin_home/menu" exact render={(props) => <Menu 
               menu={menu} 
