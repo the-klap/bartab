@@ -35,8 +35,12 @@ class UserHome extends React.Component {
     super(props)
      this.state = {
           current_user_profile: {},
+
           open_tabs: [],
           closed_tabs: [],
+
+          firstname: '',
+          lastname: '',
 
           showingInfoWindow: false,
           activeMarker: {},
@@ -44,9 +48,7 @@ class UserHome extends React.Component {
                     
                   }
       }
-
-
-
+  
   componentWillMount() {
     this.getProfile()
     this.getOpenTabs()
@@ -63,6 +65,14 @@ class UserHome extends React.Component {
   	  })
   	  .then(response => response.json())
   	  .then(current_user_profile => {this.setState({ current_user_profile }) })
+  	 //fetch(`/user_profiles/${current_user_id}`, {
+  		// headers: { 
+  		// 	'Content-Type': 'application/json'
+  		// },
+  		// method: "PUT"
+  	 // })
+  	 // .then(response => response.json())
+  	 // .then(current_user_profile => {this.setState({ current_user_profile }) })
   }
   
   getOpenTabs = () => {
@@ -114,6 +124,7 @@ class UserHome extends React.Component {
   
   
   render () {
+
     const {user_logged_in, 
         user_sign_in_route, 
         user_sign_out_route,
@@ -124,6 +135,7 @@ class UserHome extends React.Component {
     const { current_user_profile, open_tabs, closed_tabs }=this.state
     
     console.log(open_tabs)
+
 
     return (
       <React.Fragment>
