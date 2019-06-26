@@ -19,20 +19,9 @@ class BarProfile extends React.Component {
     super(props)
       this.state = {
         updated_admin_profile: {
-          additionalinfo: "",
-          establishmentname: "",
-          hours: "",
-          address1: "",
-          address2: "",
-          state: "",
-          city: "",
-          zip: "",
-          country: "",
         }
       }
   }
-  
-
   
   //updates state for profile fields
   handleChange = (event) => {
@@ -56,7 +45,7 @@ class BarProfile extends React.Component {
     const {updated_admin_profile} = this.state
     const {current_admin_profile} = this.props
     
-    console.log(current_admin_profile)
+    console.log(updated_admin_profile)
     return (
       <React.Fragment>
         <Form>
@@ -116,7 +105,7 @@ class BarProfile extends React.Component {
           </FormGroup>
           <FormGroup>
             <Label >Additional Info</Label>
-            <Input defaultValue={additionalinfo} 
+            <Input defaultValue={current_admin_profile.additionalinfo} 
                     type="textarea" 
                     name="additionalinfo" 
                     id="additionalinfo"  

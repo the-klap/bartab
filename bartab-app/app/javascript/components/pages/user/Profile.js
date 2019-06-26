@@ -8,8 +8,6 @@ class Profile extends React.Component {
         super(props)
         this.state = {
           user_profile: {
-            firstname: "",
-            lastname: "",
           }
         }
   }
