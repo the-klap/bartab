@@ -16,7 +16,20 @@ h1 {
     border-top: solid 5px white;
     border-bottom: solid 5px white;
     transform: skew(0, -5deg);
+    position: relative;
+    right: 300px;
+    font-size: 60px;
 }
+
+h4{
+    position: relative;
+    left: 300px;
+    color: white;
+    font-family: 'B612 Mono', monospace;
+    top: -55px;
+    transform: skew(-5deg, 5deg)
+}
+
 h3{
     color: white;
     font-family: 'B612 Mono', monospace;
@@ -30,7 +43,7 @@ section {
     margin: 0 auto;
     width: 700px;
     position: relative;
-    height: 300px;
+    height: 230px;
 
 }
 
@@ -267,16 +280,6 @@ section {
 
 /*styling to links */
 
-/*body{*/
-/*  margin: 0;*/
-/*  padding: 0;*/
-/*}*/
-/*section{*/
-/*  height: 25vh;*/
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*  align-items: center;*/
-/*}*/
 .userHome{
   background: #96ceb4;/*#3498db*/
   border-radius: 15px 15px 15px 15px;
@@ -349,3 +352,19 @@ section {
 }
 
 .signout:hover { border-width: 10px; }
+
+
+/*admin and user buttons */
+
+.adminButton{
+    width: 50%;
+    border-radius: 15px 15px 15px 15px;
+    height: 30%;
+    
+}
+
+.userButton{
+    width: 50%;
+    border-radius: 15px 15px 15px 15px;
+    height: 30%
+}

@@ -148,9 +148,7 @@ class UserHome extends React.Component {
     return (
       <React.Fragment>
         <Router>
-          <div>
-            Hey there {current_user_profile.firstname} <br />
-          </div>
+          
       
           <div>
             {user_logged_in &&
@@ -211,6 +209,9 @@ class UserHome extends React.Component {
               stores={stores}
               openTab={this.openTab}
             />} />
+            <div>
+            Hey there {current_user_profile.firstname} <br />
+          </div>
           </div>
         </Router>
         
