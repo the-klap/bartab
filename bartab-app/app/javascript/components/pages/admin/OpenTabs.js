@@ -10,13 +10,14 @@ class OpenTabs extends React.Component {
       }
   }
   
-  componentWillMount() {
+  componentDidMount() {
     this.props.getMenu()
+    this.props.getOpenTabs()
   }
   
-  handleAClose = (findId) => {
+  handleAClose = (tab_id) => {
     const {handleClose} = this.props
-    handleClose(findId)
+    handleClose(tab_id)
   }
   
   handleAddOrder = (itemId, userId) => {
@@ -30,16 +31,16 @@ class OpenTabs extends React.Component {
   }
   
   render () {
-    const {customers, menu} = this.props
+    const {customers, menu, openTabs} = this.props
     
-    console.log(menu)
-    var customerTabs = customers.map((value, index) => <CustomerTab 
+    console.log(openTabs)
+    var customerTabs = openTabs.map((value, index) => <CustomerTab 
       key={index}
-      id={value.id}
+      tab_id={value.id}
       name={value.name}
       total={value.total}
-      order={value.order}
-      status={value.status}
+      order={value.tab_histories}
+      status={value.open}
       handleAClose={this.handleAClose}
       handleAddOrder={this.handleAddOrder}
       handleDeleteOrderItem={this.handleDeleteOrderItem}

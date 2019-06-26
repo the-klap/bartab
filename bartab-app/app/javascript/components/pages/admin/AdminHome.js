@@ -17,12 +17,7 @@ class AdminHome extends React.Component {
       this.state = {
         menu: [
           ],
-        customers: [
-          {id: 42, name: 'Joe', total:0, order: [], status: 'Open'},
-          {id: 2, name: 'Bob', total:0, order: [], status: 'Open'},
-          {id: 9, name: 'Rick', total:0, order: [], status: 'Open'},
-          ],
-
+        openTabs: [],
         current_admin_profile: {},
       }
   }
@@ -68,7 +63,7 @@ class AdminHome extends React.Component {
     
   }
   
-  //fetch gets
+  //fetch gets menu
   getMenu = () => {
     const {current_admin_id} = this.props
     fetch(`/menus/${current_admin_id}`, {
@@ -79,6 +74,18 @@ class AdminHome extends React.Component {
   	  })
   	  .then(response => response.json())
   	  .then((menu) => {this.setState({ menu }) })
+  }
+
+  //gets tab where admin_id=current_admin_id
+  getOpenTabs = () => {
+    fetch('/admin_open_tabs', {
+  		headers: { 
+  			'Content-Type': 'application/json'
+  		},
+  		method: "GET"
+  	  })
+  	  .then(response => response.json())
+  	  .then((openTabs) => {this.setState({ openTabs }) })
   }
 
 
@@ -92,6 +99,7 @@ class AdminHome extends React.Component {
   		method: "POST"  
 	  })
 	  .then(response => response.json())
+	  .then((menu) => {this.setState({ tabs }) })
   }
   
   //deletes item from menu
@@ -103,12 +111,11 @@ class AdminHome extends React.Component {
   }
   
   //closes out a customer (state doesnt set for some reason)
-  handleClose = (findId) => {
-    const {customers} = this.state
-    const getCustomer = customers.find(customer => customer.id===findId)
-    getCustomer.status = "Close"
-    this.setState({getCustomer})
-    console.log(getCustomer)
+  handleClose = (tab_id) => {
+    fetch(`/tabs/${tab_id}`, {
+      	method: "PATCH"  
+    	  })
+    	  .then(response => response.json())
   }
   
   //adds item to customer order
@@ -135,7 +142,7 @@ class AdminHome extends React.Component {
             admin_sign_out_route,
             current_admin_id,
            }=this.props
-     const {customers, menu, current_admin_profile} = this.state
+     const {customers, menu, current_admin_profile, openTabs} = this.state
      
     return (
       <React.Fragment>
@@ -177,7 +184,9 @@ class AdminHome extends React.Component {
               handleAddOrder={this.handleAddOrder}
               handleDeleteOrderItem={this.handleDeleteOrderItem}
               menu={menu}
+              openTabs={openTabs}
               getMenu={this.getMenu}
+              getOpenTabs={this.getOpenTabs}
             />}/>
             <Route path="/admin_home/menu" exact render={(props) => <Menu 
               menu={menu} 
