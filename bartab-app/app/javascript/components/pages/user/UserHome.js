@@ -158,8 +158,8 @@ class UserHome extends React.Component {
               <div class="container">
               <div class="row">
               <div class="col-sm">
-              <NavItem>
-                <NavLink href="/user_home" className="userHome">User Home<br /><FontAwesomeIcon icon={faHome} /></NavLink>
+              <NavItem className="userHome">
+                <NavLink href="/user_home">User Home<br /><FontAwesomeIcon icon={faHome} /></NavLink>
               </NavItem>
               </div>
               <div class="col-sm">
@@ -177,13 +177,13 @@ class UserHome extends React.Component {
                 <NavLink href="/user_home/tab">Tab <br /><FontAwesomeIcon icon={faBeer} /></NavLink>
               </NavItem>
               </div>
-              <div class="col-sm" className="profile">
-              <NavItem>
+              <div class="col-sm">
+              <NavItem className="profile">
                 <NavLink href="/user_home/profile">Profile <br /><FontAwesomeIcon icon={faIdCard} /></NavLink>
               </NavItem>
               </div>
               <div className="col-sm">
-              <NavItem>
+              <NavItem className="signout">
                 <NavLink id="adminSignOut" href={user_sign_out_route}>Sign Out<br /><FontAwesomeIcon icon={faSadCry} /></NavLink>
               </NavItem>
               </div> 
