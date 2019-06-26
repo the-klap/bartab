@@ -6,6 +6,9 @@ class TabsController < ApplicationController
         render json: @tab
     end
     
+    def create
+        render json: Tab.create(tab_params)
+    end
     
     def show
         #if fetch comes from user, show tab by user_id. if fetch comes from admin, show tab by admin_id and open==true
@@ -13,10 +16,6 @@ class TabsController < ApplicationController
         render json: open_tabs
     end
     
-    
-    def user_open_a_tab
-        render json: Tab.create(total:0, open:true, user_id:current_user_id, admin_id:params[:id])
-    end
     
     def admin_open_tabs
         @current_tabs = Tab.where(admin_id:current_admin)
@@ -46,7 +45,7 @@ class TabsController < ApplicationController
         @open_tabs = @current_tabs.where(open:true)
         @tabs = []
         @open_tabs.find_each do |tab|
-            @tabs << tab.as_json(:include => :tab_history)
+            @tabs << tab.as_json(:include => :tab_histories)
         end
         render json: @tabs
     end
@@ -56,9 +55,13 @@ class TabsController < ApplicationController
         @closed_tabs = @current_tabs.where(open:false)
         @tabs = []
         @closed_tabs.find_each do |tab|
-            @tabs << tab.as_json(:include => :tab_history)
+            @tabs << tab.as_json(:include => :tab_histories)
         end
         render json: @tabs
+    end
+    
+    def tab_params
+        params.require(:tab).permit(:total, :open, :user_id, :admin_id)
     end
     
     

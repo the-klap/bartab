@@ -10,7 +10,7 @@ class StoreList extends React.Component {
       return <StoreInfo
         key={index}
         bar_id={store.id}
-        name={store.name} 
+        name={store.establishmentname} 
         info={store.info} 
         address1={store.address1} 
         address2={store.address2}

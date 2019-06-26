@@ -38,6 +38,8 @@ class App extends React.Component {
       current_admin_id,
       current_user_id
     } =this.props
+    
+    const {admin_profiles} = this.state
     console.log(`Admin Logged In? ${admin_logged_in}`)
     console.log(`User Logged In?: ${user_logged_in}`)
     console.log(this.state.admin_profiles)
@@ -83,6 +85,7 @@ class App extends React.Component {
               user_sign_in_route={user_sign_in_route}
               user_sign_out_route={user_sign_out_route}
               current_user_id={current_user_id}
+              stores={admin_profiles}
             />} />
             
 

@@ -8,22 +8,19 @@ export default class TabHistory extends React.Component {
         super()
         }
         
-         render(){
-            const {sessions} = this.props
-            
-            const closedSessions = sessions.filter(tab => tab.open === false)
-            
-            const closedSessionsList = closedSessions.map((tab, index) =>  {
-                        return (<TabListItem bar_id={tab.bar_id} total={tab.tab_total} key={index} />
-                        )
-                    })
+     render(){
+        const {closed_tabs} =this.props
+        
+        const closedSessionsList = closed_tabs.map((tab, index) =>  {
+                    return (<TabListItem bar_id={tab.admin_id} total={tab.total} key={index} />
+                    )
+                })
 
-            return(
-                <React.Fragment>
-                    <h1>Tab History</h1>
-                    {closedSessionsList}
-
-                </React.Fragment>
-                )
+        return(
+            <React.Fragment>
+                <h1>Tab History</h1>
+                {closedSessionsList}
+            </React.Fragment>
+            )
     }
 }

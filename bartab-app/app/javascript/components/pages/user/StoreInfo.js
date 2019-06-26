@@ -9,7 +9,7 @@ class StoreInfo extends React.Component {
   }
   
   render () {
-    const {name, info, address1, address2, city, state, zip, country, openTab} = this.props
+    const {name, info, address1, address2, city, state, zip, country} = this.props
     return (
       <React.Fragment>
         <Row>
