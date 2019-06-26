@@ -156,32 +156,32 @@ class UserHome extends React.Component {
               <div class="container">
               <div class="row">
               <div class="col-sm">
-              <NavItem className="userHome">
+              <NavItem className="user_Home">
                 <NavLink href="/user_home">User Home<br /><FontAwesomeIcon icon={faHome}  size="6x"/></NavLink>
               </NavItem>
               </div>
               <div class="col-sm">
-              <NavItem className="tabHistory">
+              <NavItem className="user_tabHistory">
                 <NavLink href="/user_home/tabhistory">Tab History<br /><FontAwesomeIcon icon={faListUl} size="6x"/></NavLink>
               </NavItem>
               </div>
               <div class="col-sm">
-              <NavItem className="mapContainer">
+              <NavItem className="user_mapContainer">
                 <NavLink href="/user_home/mapcontainer">Map <br/><FontAwesomeIcon icon={faMapMarkedAlt} size="6x"/></NavLink>
               </NavItem>
               </div>
               <div class="col-sm">
-              <NavItem className="tab">
+              <NavItem className="user_tab">
                 <NavLink href="/user_home/tab">Tab <br /><FontAwesomeIcon icon={faBeer} size="6x"/></NavLink>
               </NavItem>
               </div>
               <div class="col-sm">
-              <NavItem className="profile">
+              <NavItem className="user_profile">
                 <NavLink href="/user_home/profile">Profile <br /><FontAwesomeIcon icon={faIdCard} size="6x"/></NavLink>
               </NavItem>
               </div>
               <div className="col-sm">
-              <NavItem className="signout">
+              <NavItem className="user_signout">
                 <NavLink id="adminSignOut" href={user_sign_out_route}>Sign Out<br /><FontAwesomeIcon icon={faSadCry} size="6x"/></NavLink>
               </NavItem>
               </div> 
