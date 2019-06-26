@@ -27,6 +27,8 @@ class OpenTabs extends React.Component {
       name={value.name}
       total={value.total}
       order={value.tab_histories}
+      userfirstname={value.user.user_profile.firstname}
+      userlastname={value.user.user_profile.lastname}
       status={value.open}
       handleAddOrder={handleAddOrder}
       getMenuItem={getMenuItem}

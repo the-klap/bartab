@@ -61,24 +61,53 @@ class BarProfile extends React.Component {
       <React.Fragment>
         <Form>
           <FormGroup >
-            <Label for="establishmentname">Establishment Name</Label>
-            <Input value={establishmentname} onChange={this.handleChange} name='establishmentname' placeholder={current_admin_profile.establishmentname}/>
+            <Label>Establishment Name</Label>
+            <Input defauleValue={current_admin_profile.establishmentname} 
+                    onChange={this.handleChange} 
+                    name='establishmentname' 
+            />
           </FormGroup>
           <FormGroup>
-            <Label for="hours">Hours</Label>
-            <Input value={hours} onChange={this.handleChange} name='hours' placeholder={current_admin_profile.hours}/>
+            <Label>Hours</Label>
+            <Input defauleValue={current_admin_profile.hours} 
+                    onChange={this.handleChange} 
+                    name='hours' 
+            />
           </FormGroup>
           <FormGroup>
             <Label for="address1">Address1</Label>
-            <Input value={address1} onChange={this.handleChange} name='address1' placeholder={current_admin_profile.address1}/>
-            <Label for="address2">Address2</Label>
-            <Input value={address2} onChange={this.handleChange} name='address2' placeholder={current_admin_profile.address2}/>
-            <Label for='city'>City</Label>
-            <Input value={city} onChange={this.handleChange} name='city'placeholder={current_admin_profile.city}/>
-            <Label for='state'>State</Label>
-            <Input value={state} onChange={this.handleChange} name='state'placeholder={current_admin_profile.state}/>
-            <Label for="zip">Zipcode</Label>
-            <Input value={zip} onChange={this.handleChange} name='zip' placeholder={current_admin_profile.zip}/>
+            <Input currentValue={current_admin_profile.address1} 
+                  onChange={this.handleChange} 
+                  name='address1' 
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>Address2</Label>
+            <Input defaultValue={current_admin_profile.address2} 
+                    onChange={this.handleChange} 
+                    name='address2' 
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>City</Label>
+            <Input defaultValue={current_admin_profile.city} 
+                    onChange={this.handleChange} 
+                    name='city'
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>State</Label>
+            <Input defaultValue={current_admin_profile.state} 
+                    onChange={this.handleChange} 
+                    name='state'
+            />
+          </FormGroup>  
+            <Label>Zipcode</Label>
+            <Input defaultValue={current_admin_profile.zip} 
+                    onChange={this.handleChange} 
+                    name='zip' 
+            />
+          <FormGroup>
             <Label for="country">Country</Label>
             <Input value={country} onChange={this.handleChange} name='country'placeholder={current_admin_profile.country}/>
           </FormGroup>

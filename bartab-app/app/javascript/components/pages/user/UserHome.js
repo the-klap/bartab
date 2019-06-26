@@ -39,9 +39,6 @@ class UserHome extends React.Component {
           open_tabs: [],
           closed_tabs: [],
 
-          firstname: '',
-          lastname: '',
-
           showingInfoWindow: false,
           activeMarker: {},
           selectedPlace: {}, 
@@ -55,6 +52,7 @@ class UserHome extends React.Component {
     this.getClosedTabs()
   }
   
+  //gets current user profile
   getProfile = () => {
     const {current_user_id} = this.props
     fetch(`/user_profiles/${current_user_id}`, {
@@ -65,16 +63,23 @@ class UserHome extends React.Component {
   	  })
   	  .then(response => response.json())
   	  .then(current_user_profile => {this.setState({ current_user_profile }) })
-  	 //fetch(`/user_profiles/${current_user_id}`, {
-  		// headers: { 
-  		// 	'Content-Type': 'application/json'
-  		// },
-  		// method: "PUT"
-  	 // })
-  	 // .then(response => response.json())
-  	 // .then(current_user_profile => {this.setState({ current_user_profile }) })
   }
   
+  //Updates user profile with new firstname/lastname
+  updateProfile = (newProfile) => {
+    const {current_user_id} = this.props
+    console.log(newProfile)
+    fetch(`/user_profiles/${current_user_id}`, {
+      body: JSON.stringify(newProfile ),
+  		headers: { 
+  			'Content-Type': 'application/json'
+  		},
+  		method: "PUT"
+  	  })
+  	  .then(response => response.json())
+  }
+  
+  // gets all open tabs with current_user.id (open:true)
   getOpenTabs = () => {
     fetch('/user_open_tabs', {
   		headers: { 
@@ -86,6 +91,7 @@ class UserHome extends React.Component {
   	  .then(open_tabs => {this.setState({ open_tabs }) })
   }
   
+  // gets user's closed tabs (open:false)
   getClosedTabs = () => {
     fetch('/user_closed_tabs', {
   		headers: { 
@@ -98,7 +104,7 @@ class UserHome extends React.Component {
   }
   
   
-
+  // for googlemaps api
   onMapOver = (props) => {
     if (this.state.showingInfoWindow) {
       this.setState({
@@ -109,6 +115,7 @@ class UserHome extends React.Component {
       
   }
     
+  // Opens a new tab with user_id
   openTab = (id) => {
     const {current_user_id} = this.props
     const newTab = {total:0, open:true, user_id:current_user_id, admin_id:id}
@@ -134,7 +141,7 @@ class UserHome extends React.Component {
 
     const { current_user_profile, open_tabs, closed_tabs }=this.state
     
-    console.log(open_tabs)
+    console.log(current_user_profile)
 
 
     return (
@@ -207,6 +214,7 @@ class UserHome extends React.Component {
             />} />
             <Route path="/user_home/profile" exact render={(props) => <Profile {...props}
               current_user_profile={current_user_profile}
+              updateProfile={this.updateProfile}
             />} />
             <Route path="/user_home/happyhour" exact component={HappyHour} />
             <Route path="/user_home/storelist" exact render={(props) => <StoreList {...props}

@@ -41,7 +41,7 @@ class CustomerTab extends React.Component {
   }
   
   render () {
-    const {name, total, tabId, status, menu, order} = this.props
+    const {name, total, tabId, status, menu, order, userfirstname, userlastname} = this.props
     const {item} = this.state
     
     // creates dropdown menu of menu items
@@ -69,7 +69,7 @@ class CustomerTab extends React.Component {
       <React.Fragment>
           <tr>
             <th scope="row">{tabId}</th>
-            <td>{name}</td>
+            <td>{userfirstname} {userlastname}</td>
             <td>${total}</td>
             <td>{status}</td>
             <td>
