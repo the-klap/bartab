@@ -28,6 +28,7 @@ class CustomerTab extends React.Component {
   //sends state id and user id to adminhome
   handleAddOrder = () => {
     const {handleAddOrder, tabId, total} = this.props
+    console.log(total)
     handleAddOrder(total, tabId)
   }
   

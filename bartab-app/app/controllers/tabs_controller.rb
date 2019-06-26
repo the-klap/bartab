@@ -2,7 +2,7 @@ class TabsController < ApplicationController
     
     def update
         @tab = Tab.find(params[:id])
-        @tab.update(open:false)
+        @tab.update(tab_params)
         render json: @tab
     end
     
