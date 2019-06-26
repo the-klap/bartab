@@ -139,14 +139,14 @@ class AdminHome extends React.Component {
     	  .then(response => response.json())
   }
   
-  //adds item to customer order
+  //adds item to customer order and updates total
   handleAddOrder = (currentTabTotal, tabId) => {
     const {name, price} = this.state.item
     const newItem = {name:name, price:parseFloat(price), tab_id:tabId}
-    console.log(newItem)
     this.handleAddOrderHistory(newItem)
-    this.handleUpdateTotal(currentTabTotal, tabId)
+    this.handleUpdateTotalAdd(currentTabTotal, tabId)
   }
+  
   
     
   //adds item to order (TabHistories)
@@ -162,7 +162,7 @@ class AdminHome extends React.Component {
   }
   
   // add to tab total
-  handleUpdateTotal = ( currentTabTotal, tabId) => {
+  handleUpdateTotalAdd = ( currentTabTotal, tabId) => {
     const { price } = this.state.item
     const newTotal = parseFloat(currentTabTotal) + parseFloat(price)
     console.log(newTotal)
@@ -174,14 +174,45 @@ class AdminHome extends React.Component {
     	  .then(response => response.json())
   }
   
+  //deltes item from customer order and updates total
+  handleDeleteOrder = (currentTabTotal, tabId, tabHistoryId) => {
+    this.getTabHistoryItem(tabHistoryId)
+    console.log(this.state.item)
+    this.handleUpdateTotalSub(currentTabTotal, tabId)
+    this.handleDeleteOrderHistory(tabHistoryId)
+  }
   
-  handleDeleteOrderItem = (itemId, customerId) => {
-    const {customers, menu} = this.state
-    const getCustomer = customers.find(customer => customer.id===customerId)
-    getCustomer.order.splice(itemId, 1)
-    getCustomer.total = getCustomer.total - menu[itemId].price
-    this.setState(getCustomer)
-    console.log(getCustomer)
+  //get tabHistoryItem price
+  getTabHistoryItem = (itemId) => {
+    fetch(`/tab_histories/${itemId}`, {
+  		headers: { 
+  			'Content-Type': 'application/json'
+  		},
+  		method: "GET"
+  	  })
+  	  .then(response => response.json())
+  	  .then(item => {this.setState({ item }) })
+  }
+    
+  // subtract from tab total
+  handleUpdateTotalSub = ( currentTabTotal, tabId) => {
+    const {price} = this.state.item
+    const newTotal = parseFloat(currentTabTotal) - parseFloat(price)
+    fetch(`/tabs/${tabId}`, {
+   		body: JSON.stringify({total:newTotal}),
+   		headers: {'Content-Type': 'application/json'},
+     	method: "PATCH"  
+    	  })
+    	  .then(response => response.json())
+  }
+  
+  // deletes item from order
+  handleDeleteOrderHistory = (tabHistoryId) => {
+    fetch(`/tab_histories/${tabHistoryId}`, {
+   		headers: {'Content-Type': 'application/json'},
+     	method: "DELETE"  
+    	  })
+    	  .then(response => response.json())
   }
   
   render () {
@@ -230,7 +261,7 @@ class AdminHome extends React.Component {
               customers={customers}
               handleCloseTab={this.handleCloseTab}
               handleAddOrder={this.handleAddOrder}
-              handleDeleteOrderItem={this.handleDeleteOrderItem}
+              handleDeleteOrder={this.handleDeleteOrder}
               menu={menu}
               openTabs={openTabs}
               getMenu={this.getMenu}

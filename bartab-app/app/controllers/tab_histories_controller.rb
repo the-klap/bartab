@@ -1,5 +1,10 @@
 class TabHistoriesController < ApplicationController
 
+    def show
+        item = TabHistories.find(params[:id])
+        render json: item
+    end
+
     def create
         orderItem = TabHistory.create(menu_params)
         if orderItem.valid?
@@ -7,6 +12,10 @@ class TabHistoriesController < ApplicationController
         else
             render json: orderItem.errors, status: :unprocessable_entity
         end
+    end
+    
+    def destroy
+        render json: TabHistory.find(params[:id]).destroy
     end
     
     def menu_params

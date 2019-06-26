@@ -28,9 +28,9 @@ class Menu extends React.Component {
     handleAddItem(newItem)
   }
   
-  handleDelete = (index) => {
+  handleDelete = (itemId) => {
     const {handleDeleteItem} = this.props
-    handleDeleteItem(index)
+    handleDeleteItem(itemId)
   }
   
   
@@ -40,6 +40,7 @@ class Menu extends React.Component {
     var menuList = menu.map((value, index) => <MenuItem 
       key={index}
       index={index}
+      id={value.id}
       name={value.name}
       price={value.price}
       handleDelete={this.handleDelete}

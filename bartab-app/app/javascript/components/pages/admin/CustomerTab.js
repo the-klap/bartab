@@ -14,6 +14,7 @@ class CustomerTab extends React.Component {
   //passes id to close tab
   handleACloseTab = () => {
     const {handleCloseTab, tabId} = this.props
+    console.log(tabId)
     handleCloseTab(tabId)
   }
   
@@ -33,9 +34,10 @@ class CustomerTab extends React.Component {
   }
   
   //deletes item from customer order
-  handleDelete = (index) => {
-    const {handleDeleteOrderItem, tabId} = this.props
-    handleDeleteOrderItem(index, tabId)
+  handleDelete = (tabHistoryId) => {
+    const {handleDeleteOrder, total, tabId} = this.props
+    console.log(tabHistoryId)
+    handleDeleteOrder(total, tabId, tabHistoryId)
   }
   
   render () {
@@ -56,9 +58,10 @@ class CustomerTab extends React.Component {
     let orderList = order.map((value, index) => <MenuItem 
       key={index}
       index={index}
+      id={value.id}
       name={value.name}
       price={value.price}
-      // handleDelete={this.handleDelete}
+      handleDelete={this.handleDelete}
       />
       )
 
@@ -87,7 +90,7 @@ class CustomerTab extends React.Component {
               </Row>
             </td>
             <td>
-              <Button onClick={this.handleAClose}>
+              <Button onClick={this.handleACloseTab}>
                 Close Out
               </Button>
             </td>
