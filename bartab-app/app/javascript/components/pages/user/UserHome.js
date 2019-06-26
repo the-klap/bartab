@@ -7,6 +7,14 @@ import  {
         } from "react-router-dom";
 import { Nav, NavItem, NavLink } from 'reactstrap'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBeer,
+         faMapMarkedAlt, 
+         faListUl,
+         faIdCard,
+         faHome,
+         faSadCry
+       } from '@fortawesome/free-solid-svg-icons';
 // import {Geocode} from "react-geocode";
 
 
@@ -147,50 +155,40 @@ class UserHome extends React.Component {
           <div>
             {user_logged_in &&
               <Nav>
-                <div className="container">
-                  <div className="row">
-                    <div className="col-sm">
-                      <NavItem>
-                        <NavLink href="/user_home">User Home</NavLink>
-                      </NavItem>
-                    </div>
-                    <div class="col-sm">
-                      <NavItem>
-                        <NavLink href="/user_home/storelist">View Stores</NavLink>
-                      </NavItem>
-                    </div>
-                    <div class="col-sm">
-                      <NavItem>
-                        <NavLink href="/user_home/tabhistory">Tab History</NavLink>
-                      </NavItem>
-                    </div>
-                    <div class="col-sm">
-                      <NavItem>
-                        <NavLink href="/user_home/mapcontainer">Map</NavLink>
-                      </NavItem>
-                    </div>  
-                    <div class="col-sm">
-                      <NavItem>
-                        <NavLink href="/user_home/opentabs">Open Tabs</NavLink>
-                      </NavItem>
-                    </div>
-                    <div class="col-sm">
-                      <NavItem>
-                        <NavLink href="/user_home/profile">Profile</NavLink>
-                      </NavItem>
-                    </div>
-                    {/*<div class="col-sm">
-                      <NavItem>
-                        <NavLink href="/user_home/happyhour">Happy Hour</NavLink>
-                      </NavItem>
-                    </div>*/}
-                    <div className="col-sm">
-                      <NavItem>
-                        <NavLink id="adminSignOut" href={user_sign_out_route}>Sign Out</NavLink>
-                      </NavItem>
-                    </div> 
-                  </div>
-                </div>
+              <div class="container">
+              <div class="row">
+              <div class="col-sm">
+              <NavItem>
+                <NavLink href="/user_home" className="userHome">User Home<br /><FontAwesomeIcon icon={faHome} /></NavLink>
+              </NavItem>
+              </div>
+              <div class="col-sm">
+              <NavItem className="tabHistory">
+                <NavLink href="/user_home/tabhistory">Tab History<br /><FontAwesomeIcon icon={faListUl} /></NavLink>
+              </NavItem>
+              </div>
+              <div class="col-sm">
+              <NavItem className="mapContainer">
+                <NavLink href="/user_home/mapcontainer">Map <br/><FontAwesomeIcon icon={faMapMarkedAlt} /></NavLink>
+              </NavItem>
+              </div>
+              <div class="col-sm">
+              <NavItem className="tab">
+                <NavLink href="/user_home/tab">Tab <br /><FontAwesomeIcon icon={faBeer} /></NavLink>
+              </NavItem>
+              </div>
+              <div class="col-sm" className="profile">
+              <NavItem>
+                <NavLink href="/user_home/profile">Profile <br /><FontAwesomeIcon icon={faIdCard} /></NavLink>
+              </NavItem>
+              </div>
+              <div className="col-sm">
+              <NavItem>
+                <NavLink id="adminSignOut" href={user_sign_out_route}>Sign Out<br /><FontAwesomeIcon icon={faSadCry} /></NavLink>
+              </NavItem>
+              </div> 
+              </div>
+              </div>
               </Nav>
             }
                 
