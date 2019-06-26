@@ -159,32 +159,32 @@ class UserHome extends React.Component {
               <div class="row">
               <div class="col-sm">
               <NavItem className="userHome">
-                <NavLink href="/user_home">User Home<br /><FontAwesomeIcon icon={faHome} /></NavLink>
+                <NavLink href="/user_home">User Home<br /><FontAwesomeIcon icon={faHome}  size="6x"/></NavLink>
               </NavItem>
               </div>
               <div class="col-sm">
               <NavItem className="tabHistory">
-                <NavLink href="/user_home/tabhistory">Tab History<br /><FontAwesomeIcon icon={faListUl} /></NavLink>
+                <NavLink href="/user_home/tabhistory">Tab History<br /><FontAwesomeIcon icon={faListUl} size="6x"/></NavLink>
               </NavItem>
               </div>
               <div class="col-sm">
               <NavItem className="mapContainer">
-                <NavLink href="/user_home/mapcontainer">Map <br/><FontAwesomeIcon icon={faMapMarkedAlt} /></NavLink>
+                <NavLink href="/user_home/mapcontainer">Map <br/><FontAwesomeIcon icon={faMapMarkedAlt} size="6x"/></NavLink>
               </NavItem>
               </div>
               <div class="col-sm">
               <NavItem className="tab">
-                <NavLink href="/user_home/tab">Tab <br /><FontAwesomeIcon icon={faBeer} /></NavLink>
+                <NavLink href="/user_home/tab">Tab <br /><FontAwesomeIcon icon={faBeer} size="6x"/></NavLink>
               </NavItem>
               </div>
               <div class="col-sm">
               <NavItem className="profile">
-                <NavLink href="/user_home/profile">Profile <br /><FontAwesomeIcon icon={faIdCard} /></NavLink>
+                <NavLink href="/user_home/profile">Profile <br /><FontAwesomeIcon icon={faIdCard} size="6x"/></NavLink>
               </NavItem>
               </div>
               <div className="col-sm">
               <NavItem className="signout">
-                <NavLink id="adminSignOut" href={user_sign_out_route}>Sign Out<br /><FontAwesomeIcon icon={faSadCry} /></NavLink>
+                <NavLink id="adminSignOut" href={user_sign_out_route}>Sign Out<br /><FontAwesomeIcon icon={faSadCry} size="6x"/></NavLink>
               </NavItem>
               </div> 
               </div>
