@@ -6,7 +6,7 @@ import { Nav, NavItem, NavLink } from 'reactstrap'
 //import Geocode from "react-geocode";
 // Geocode.setApiKey("AIzaSyBFGcpxYZoZ2X4MPVsql1OIyFxwgKZBBK8");
 import OpenTabs from "./OpenTabs";
-import Profile from "./Profile";
+import BarProfile from "./BarProfile";
 import Menu from "./Menu";
 
 
@@ -27,22 +27,7 @@ class AdminHome extends React.Component {
       }
   }
   
-  //turns address into lat, lng
-  // addressToCoords = (addressString, newProfile) => {
-  //   Geocode.fromAddress(addressString).then(
-  //     response => {
-  //       const { lat, lng } = response.results[0].geometry.location;
-  //       newProfile.lat = response.results[0].geometry.location.lat()
-  //       newProfile.lng = response.results[0].geometry.location.lng()
-  //       console.log(lat, lng);
-  //     },
-  //     error => {
-  //       console.error(error);
-  //     }
-  //   );
-  //   }
-  
-    //fetch will get all admin profiles
+    //fetch will get current admin profiles
   componentWillMount() {
     const {current_admin_id} = this.props
     fetch(`/admin_profiles/${current_admin_id}`, {
@@ -177,7 +162,6 @@ class AdminHome extends React.Component {
   //deltes item from customer order and updates total
   handleDeleteOrder = (currentTabTotal, tabId, tabHistoryId) => {
     this.getTabHistoryItem(tabHistoryId)
-    console.log(this.state.item)
     this.handleUpdateTotalSub(currentTabTotal, tabId)
     this.handleDeleteOrderHistory(tabHistoryId)
   }
@@ -223,6 +207,7 @@ class AdminHome extends React.Component {
            }=this.props
      const {customers, menu, current_admin_profile, openTabs} = this.state
      
+     console.log(current_admin_profile)
     return (
       <React.Fragment>
           <Router>

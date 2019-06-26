@@ -56,27 +56,27 @@ class BarProfile extends React.Component {
     const {updated_admin_profile} = this.state
     const {current_admin_profile} = this.props
     
-    console.log(updated_admin_profile)
+    console.log(current_admin_profile)
     return (
       <React.Fragment>
         <Form>
           <FormGroup >
             <Label>Establishment Name</Label>
-            <Input defauleValue={current_admin_profile.establishmentname} 
+            <Input defaultValue={current_admin_profile.establishmentname} 
                     onChange={this.handleChange} 
                     name='establishmentname' 
             />
           </FormGroup>
           <FormGroup>
             <Label>Hours</Label>
-            <Input defauleValue={current_admin_profile.hours} 
+            <Input defaultValue={current_admin_profile.hours} 
                     onChange={this.handleChange} 
                     name='hours' 
             />
           </FormGroup>
           <FormGroup>
-            <Label for="address1">Address1</Label>
-            <Input currentValue={current_admin_profile.address1} 
+            <Label>Address1</Label>
+            <Input defaultValue={current_admin_profile.address1} 
                   onChange={this.handleChange} 
                   name='address1' 
             />
@@ -108,12 +108,20 @@ class BarProfile extends React.Component {
                     name='zip' 
             />
           <FormGroup>
-            <Label for="country">Country</Label>
-            <Input value={country} onChange={this.handleChange} name='country'placeholder={current_admin_profile.country}/>
+            <Label >Country</Label>
+            <Input defaultValue={current_admin_profile.country} 
+                    onChange={this.handleChange} 
+                    name='country'
+            />
           </FormGroup>
           <FormGroup>
-            <Label for="additionalinfo">Additional Info</Label>
-            <Input type="textarea" name="additionalinfo" id="additionalinfo" value={additionalinfo} onChange={this.handleChange} placeholder={current_admin_profile.additionalinfo}/>
+            <Label >Additional Info</Label>
+            <Input defaultValue={additionalinfo} 
+                    type="textarea" 
+                    name="additionalinfo" 
+                    id="additionalinfo"  
+                    onChange={this.handleChange} 
+            />
           </FormGroup>
         </Form>
         <Button onClick={this.handleSubmit}>Submit</Button>
