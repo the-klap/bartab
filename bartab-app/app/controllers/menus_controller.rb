@@ -1,4 +1,9 @@
 class MenusController < ApplicationController
+    
+    def index
+        render json: current_admin.menus
+    end
+    
     def show
         admin_menu = Menu.where(admin_id:params[:id])
         render json: admin_menu
