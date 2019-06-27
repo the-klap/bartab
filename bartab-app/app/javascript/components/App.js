@@ -18,7 +18,11 @@ class App extends React.Component {
 
       }
   }
-  
+  toggleHidden () {
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
+  }
   
   //fetch will get all admin profiles
   componentWillMount() {
@@ -74,20 +78,11 @@ class App extends React.Component {
               stores={admin_profiles}
             />} />
             
-            {admin_logged_in &&
-            <Button href='/admin_home' className='adminButton'>Admin Portal 
-            </Button>
-            }
-            {!admin_logged_in &&
+            {(!admin_logged_in && !user_logged_in) &&
               <Button className='adminButton' href={admin_sign_in_route}>Admin Login</Button>
             }
-
-             {!user_logged_in &&
+            {(!user_logged_in && !admin_logged_in) &&
               <Button className='userButton' href={user_sign_in_route}>User Login</Button>
-            }
-             {user_logged_in &&
-            <Button className='userButton' href='/user_home'>User Portal
-            </Button>
             }
             
           </Router>

@@ -39,6 +39,9 @@ section {
      background-color: #2AAFF5; /*orange*/
      border-radius: 15px 15px 15px 15px;
 }
+#hiddenButton {
+    display: none;
+}
 #action {
     margin: 0 auto;
     width: 700px;
