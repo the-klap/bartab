@@ -52,14 +52,12 @@ class App extends React.Component {
   
     return (
       <React.Fragment>
-      
        <Container>
        <div className="app_main_page">
         <HomePage />
         
-          <div id="menu">
+          <div id="main_page">
         </div>
-          
           <Router>
             
             <Route path="/admin_home" render={(props) => <AdminHome {...props} 
@@ -77,6 +75,7 @@ class App extends React.Component {
               current_user_id={current_user_id}
               stores={admin_profiles}
             />} />
+
             
             {(!admin_logged_in && !user_logged_in) &&
               <Button className='adminButton' href={admin_sign_in_route}>Admin Login</Button>
@@ -85,6 +84,7 @@ class App extends React.Component {
               <Button className='userButton' href={user_sign_in_route}>User Login</Button>
             }
             
+
           </Router>
           </div>
         </Container>

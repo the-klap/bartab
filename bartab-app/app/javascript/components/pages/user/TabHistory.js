@@ -9,10 +9,22 @@ export default class TabHistory extends React.Component {
         }
         
      render(){
-        const {closed_tabs} =this.props
-        
-        const closedSessionsList = closed_tabs.map((tab, index) =>  {
-                    return (<TabListItem bar_id={tab.admin_id} total={tab.total} key={index} />
+        const {closedTabs} =this.props
+        console.log(closedTabs)
+        const closedSessionsList = closedTabs.map((tab, index) =>  {
+                    return (<TabListItem 
+                        bar_id={tab.admin_id} 
+                        total={tab.total} 
+                        key={index}
+                        orders={tab.tab_histories}
+                        establishmentname={tab.admin.admin_profile.establishmentname}
+                        address1={tab.admin.admin_profile.address1}
+                        address2={tab.admin.admin_profile.address1}
+                        city={tab.admin.admin_profile.city}
+                        state={tab.admin.admin_profile.state}
+                        zip={tab.admin.admin_profile.zip}
+                        country={tab.admin.admin_profile.country}
+                        />
                     )
                 })
 

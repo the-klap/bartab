@@ -10,8 +10,8 @@ class MenuItem extends React.Component {
   }
   
   handleDelete = () => {
-    const {index, handleDelete} = this.props
-    handleDelete(index)
+    const {id, handleDelete} = this.props
+    handleDelete(id)
   }
   
   render () {

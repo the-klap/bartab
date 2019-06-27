@@ -14,7 +14,8 @@ import { faBeer,
 //import Geocode from "react-geocode";
 // Geocode.setApiKey("AIzaSyBFGcpxYZoZ2X4MPVsql1OIyFxwgKZBBK8");
 import OpenTabs from "./OpenTabs";
-import Profile from "./Profile";
+import BarProfile from "./BarProfile";
+import CreateBarProfile from "./CreateBarProfile";
 import Menu from "./Menu";
 
 
@@ -23,29 +24,19 @@ class AdminHome extends React.Component {
    constructor(props){
     super(props)
       this.state = {
-        menu: [
-          ],
+        menu: [],
         openTabs: [],
         current_admin_profile: {},
+        item:{},
+        newTabHistory:{
+          name:"",
+          price:"",
+          tab_id:"",
+        }
       }
   }
   
-  //turns address into lat, lng
-  // addressToCoords = (addressString, newProfile) => {
-  //   Geocode.fromAddress(addressString).then(
-  //     response => {
-  //       const { lat, lng } = response.results[0].geometry.location;
-  //       newProfile.lat = response.results[0].geometry.location.lat()
-  //       newProfile.lng = response.results[0].geometry.location.lng()
-  //       console.log(lat, lng);
-  //     },
-  //     error => {
-  //       console.error(error);
-  //     }
-  //   );
-  //   }
-  
-    //fetch will get all admin profiles
+    //fetch will get current admin profiles
   componentWillMount() {
     const {current_admin_id} = this.props
     fetch(`/admin_profiles/${current_admin_id}`, {
@@ -56,6 +47,17 @@ class AdminHome extends React.Component {
   	  })
   	  .then(response => response.json())
   	  .then((current_admin_profile) => {this.setState({ current_admin_profile }) })
+  }
+  
+  //creates new profile if profile has not been created
+  handleNewProfile = (admin_profile_params) => {
+    console.log(admin_profile_params)
+    fetch('/admin_profiles', {
+   		body: JSON.stringify(admin_profile_params),
+   		headers: {'Content-Type': 'application/json'},
+   		method: "POST"
+   	})
+    .then(response => response.json())
   }
   
   
@@ -73,8 +75,7 @@ class AdminHome extends React.Component {
   
   //fetch gets menu
   getMenu = () => {
-    const {current_admin_id} = this.props
-    fetch(`/menus/${current_admin_id}`, {
+    fetch('/menus', {
   		headers: { 
   			'Content-Type': 'application/json'
   		},
@@ -82,6 +83,19 @@ class AdminHome extends React.Component {
   	  })
   	  .then(response => response.json())
   	  .then((menu) => {this.setState({ menu }) })
+  }
+  
+  //gets specific menu item for CustomerTab.js
+  getMenuItem = (itemId) => {
+    fetch(`/menus/${itemId}`, {
+  		headers: { 
+  			'Content-Type': 'application/json'
+  		},
+  		method: "GET"
+  	  })
+  	  .then(response => response.json())
+  	  .then(item => {this.setState({ item }) })
+  	  
   }
 
   //gets tab where admin_id=current_admin_id
@@ -99,16 +113,18 @@ class AdminHome extends React.Component {
 
   //adds item to menu
   handleAddItem = (newItem) => {
+    const menu_params = {name:newItem.name, price:parseFloat(newItem.price)}
+    console.log(menu_params)
     fetch('/menus.json', {
-  		body: JSON.stringify(newItem),  
+  		body: JSON.stringify(menu_params),  
   		headers: {  
   			'Content-Type': 'application/json'
   		},
   		method: "POST"  
 	  })
 	  .then(response => response.json())
-	  .then((menu) => {this.setState({ tabs }) })
   }
+  
   
   //deletes item from menu
   handleDeleteItem = (itemID) => {
@@ -118,30 +134,89 @@ class AdminHome extends React.Component {
     	  .then(response => response.json())
   }
   
-  //closes out a customer (state doesnt set for some reason)
-  handleClose = (tab_id) => {
-    fetch(`/tabs/${tab_id}`, {
-      	method: "PATCH"  
+  //closes out a customer (turns open:true to open:false)
+  handleCloseTab = (tabId) => {
+    fetch(`/tabs/${tabId}`, {
+   		body: JSON.stringify({open:false}),
+   		headers: {'Content-Type': 'application/json'},
+     	method: "PATCH"  
     	  })
     	  .then(response => response.json())
   }
   
-  //adds item to customer order
-  handleAddOrder = (itemId, customerId) => {
-    const {customers, menu} = this.state
-    const getCustomer = customers.find(customer => customer.id===customerId)
-    getCustomer.order.push(menu[itemId])
-    getCustomer.total = getCustomer.total + menu[itemId].price
-    this.setState(getCustomer)
+  //adds item to customer order and updates total
+  handleAddOrder = (currentTabTotal, tabId) => {
+    const {name, price} = this.state.item
+    const newItem = {name:name, price:parseFloat(price), tab_id:tabId}
+    this.handleAddOrderHistory(newItem)
+    this.handleUpdateTotalAdd(currentTabTotal, tabId)
   }
   
-  handleDeleteOrderItem = (itemId, customerId) => {
-    const {customers, menu} = this.state
-    const getCustomer = customers.find(customer => customer.id===customerId)
-    getCustomer.order.splice(itemId, 1)
-    getCustomer.total = getCustomer.total - menu[itemId].price
-    this.setState(getCustomer)
-    console.log(getCustomer)
+  
+    
+  //adds item to order (TabHistories)
+  handleAddOrderHistory = (newItem) => {
+    fetch('/tab_histories', {
+  		body: JSON.stringify(newItem),  
+  		headers: {  
+  			'Content-Type': 'application/json'
+  		},
+  		method: "POST"  
+	  })
+	  .then(response => response.json())
+  }
+  
+  // add to tab total
+  handleUpdateTotalAdd = ( currentTabTotal, tabId) => {
+    const { price } = this.state.item
+    const newTotal = parseFloat(currentTabTotal) + parseFloat(price)
+    console.log(newTotal)
+    fetch(`/tabs/${tabId}`, {
+   		body: JSON.stringify({total:newTotal}),
+   		headers: {'Content-Type': 'application/json'},
+     	method: "PATCH"  
+    	  })
+    	  .then(response => response.json())
+  }
+  
+  //deltes item from customer order and updates total
+  handleDeleteOrder = (currentTabTotal, tabId, tabHistoryId) => {
+    this.getTabHistoryItem(tabHistoryId)
+    this.handleUpdateTotalSub(currentTabTotal, tabId)
+    this.handleDeleteOrderHistory(tabHistoryId)
+  }
+  
+  //get tabHistoryItem price
+  getTabHistoryItem = (itemId) => {
+    fetch(`/tab_histories/${itemId}`, {
+  		headers: { 
+  			'Content-Type': 'application/json'
+  		},
+  		method: "GET"
+  	  })
+  	  .then(response => response.json())
+  	  .then(item => {this.setState({ item }) })
+  }
+    
+  // subtract from tab total
+  handleUpdateTotalSub = ( currentTabTotal, tabId) => {
+    const {price} = this.state.item
+    const newTotal = parseFloat(currentTabTotal) - parseFloat(price)
+    fetch(`/tabs/${tabId}`, {
+   		body: JSON.stringify({total:newTotal}),
+   		headers: {'Content-Type': 'application/json'},
+     	method: "PATCH"  
+    	  })
+    	  .then(response => response.json())
+  }
+  
+  // deletes item from order
+  handleDeleteOrderHistory = (tabHistoryId) => {
+    fetch(`/tab_histories/${tabHistoryId}`, {
+   		headers: {'Content-Type': 'application/json'},
+     	method: "DELETE"  
+    	  })
+    	  .then(response => response.json())
   }
   
   render () {
@@ -152,6 +227,7 @@ class AdminHome extends React.Component {
            }=this.props
      const {customers, menu, current_admin_profile, openTabs} = this.state
      
+     console.log(current_admin_profile)
     return (
       <React.Fragment>
           <Router>
@@ -188,13 +264,14 @@ class AdminHome extends React.Component {
 
             <Route path="/admin_home/open_tabs" exact render={(props) => <OpenTabs{...props} 
               customers={customers}
-              handleClose={this.handleClose}
+              handleCloseTab={this.handleCloseTab}
               handleAddOrder={this.handleAddOrder}
-              handleDeleteOrderItem={this.handleDeleteOrderItem}
+              handleDeleteOrder={this.handleDeleteOrder}
               menu={menu}
               openTabs={openTabs}
               getMenu={this.getMenu}
               getOpenTabs={this.getOpenTabs}
+              getMenuItem={this.getMenuItem}
             />}/>
             <Route path="/admin_home/menu" exact render={(props) => <Menu 
               menu={menu} 
@@ -203,12 +280,16 @@ class AdminHome extends React.Component {
               getMenu={this.getMenu}
               current_admin_id={current_admin_id}
             />} />
-            <Route path="/admin_home/profile" exact render={(props) => <Profile 
-              current_admin_profile={current_admin_profile}
-              handleUpdateProfile={this.handleUpdateProfile}
-              />} 
-            />
-
+            <Route path="/admin_home/profile" exact render={(props) => ((current_admin_profile===null) ? 
+              <CreateBarProfile 
+                handleNewProfile={this.handleNewProfile}
+              /> :
+              <BarProfile 
+                current_admin_profile={current_admin_profile}
+                handleUpdateProfile={this.handleUpdateProfile}
+              />)
+            }/>
+            
           </div>
         </Router>
     </React.Fragment>
@@ -217,3 +298,4 @@ class AdminHome extends React.Component {
 }
 
 export default AdminHome;
+

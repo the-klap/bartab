@@ -1,93 +1,139 @@
 import React from "react"
 import PropTypes from "prop-types"
+import {Form, FormGroup, Label, Input, Button, Row, Col} from 'reactstrap'
 
-export default class Profile extends React.Component {
+
+class Profile extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-          current_user_profile: {}
+          user_profile: {
+          }
         }
   }
+  
+  componentWillMount() {
+    const {current_user_profile} = this.props
+    console.log(current_user_profile)
+    this.setState({user_profile: current_user_profile})
+  }
+
+  
+  handleChange = (event) => {
+    let {user_profile} = this.state
+    user_profile[event.target.name] = event.target.value
+    this.setState({user_profile})
+  }
+  
+  handleSubmitFullName = () => {
+    const {user_profile} = this.state
+    const {updateProfile} = this.props
+    updateProfile(user_profile)
+  }
+  
   render(){
           
-    const {current_user_profile} = this.state
-
+    const {user_profile} = this.state
+    const {current_user_profile} = this.props
+    
+    console.log(user_profile)
+    
       return(
         <React.Fragment>
           <h3>this is your profile!</h3>
-                 
-          <h3>Choose a Profile Picture </h3>
+                
+            {/* first and last name */}
+            <Form>
+              <Row form>
+                <Col md={4}>
+                  <FormGroup>
+                    <Label >First Name</Label>
+                    <Input onChange={this.handleChange} 
+                          type="text" 
+                          name="firstname" 
+                          id="firstname"
+                          defaultValue={current_user_profile.firstname}
+
+                          />
+                  </FormGroup>
+                </Col>
+                <Col md={4}>
+                <FormGroup>
+                  <Label >Last Name</Label>
+                  <Input onChange={this.handleChange} 
+                          type="text" 
+                          name="lastname" 
+                          id="lastname" 
+                          defaultValue={current_user_profile.lastname}
+                          />
+                </FormGroup>
+                </Col>
+                <Col md={4}>
+                  <Button  onClick={this.handleSubmitFullName}>Submit Name</Button>
+                </Col>
+              </Row>
+            </Form>
+            
+            <h3>Choose a Profile Picture </h3>
                  
             {/* Choose your profile picture*/}
             <div class="input-group">
-            <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputGroupFile04"></input>
-            <label class="custom-file-label" for="inputGroupFile04">Choose Profile Picture</label>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile04"></input>
+                <label class="custom-file-label" for="inputGroupFile04">Choose Profile Picture</label>
+              </div>
+              <div class="input-group-append">
+              </div>
             </div>
-            <div class="input-group-append">
-            </div>
-            </div>
-                 
-                 
-           <h3>Edit your card information</h3>
-                
-            {/* first and last name */}
-            <div class="input-group">
-            <div class="input-group-prepend">
-            <span class="input-group-text" id="">First and last name</span>
-            </div>
-            <input type="text" class="form-control" placeholder={this.props.current_user_profile.firstname}></input>
-            <input type="text" class="form-control" placeholder={this.props.current_user_profile.lastname}>
-            </input>
 
             <br />
   
             {/*Card Number*/}
             <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Card Number" aria-label="Card Number" aria-describedby="basic-addon2">
-            </input>
-            <div class="input-group-append">
-            </div>
+              <input type="text" class="form-control" placeholder="Card Number" aria-label="Card Number" aria-describedby="basic-addon2">
+              </input>
+              <div class="input-group-append">
+              </div>
             </div>
 
             {/*Date*/}
             <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Date" aria-label="Date" aria-describedby="basic-addon2">
-            </input>
-            <div class="input-group-append">
-            </div>
+              <input type="text" class="form-control" placeholder="Date" aria-label="Date" aria-describedby="basic-addon2">
+              </input>
+              <div class="input-group-append">
+              </div>
             </div>
 
             {/*CVV*/}
             <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="CVV" aria-label="CVV" aria-describedby="basic-addon2">
+              <input type="text" class="form-control" placeholder="CVV" aria-label="CVV" aria-describedby="basic-addon2">
               </input>
-            <div class="input-group-append">
-            </div>
+              <div class="input-group-append">
+              </div>
             </div>
   
             {/*address line 1*/}
             <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Address Line 1" aria-label="Address Line 1" aria-describedby="basic-addon2">
-            </input>
-            <div class="input-group-append">
-            </div>
+              <input type="text" class="form-control" placeholder="Address Line 1" aria-label="Address Line 1" aria-describedby="basic-addon2">
+              </input>
+              <div class="input-group-append">
+              </div>
             </div>
 
             {/*address line 2*/}
             <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Address Line 2" aria-label="Address Line 2" aria-describedby="basic-addon2">
-            </input>
-            <div class="input-group-append">
-            </div>
+              <input type="text" class="form-control" placeholder="Address Line 2" aria-label="Address Line 2" aria-describedby="basic-addon2">
+              </input>
+              <div class="input-group-append">
+              </div>
             </div>
 
             {/*City*/}
             <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="City" aria-label="City" aria-describedby="basic-addon2">
-            </input>
-            <div class="input-group-append">
-            </div>
+              <input type="text" class="form-control" placeholder="City" aria-label="City" aria-describedby="basic-addon2">
+              </input>
+              <div class="input-group-append">
+              </div>
             </div>
 
             <div class="input-group mb-3">
@@ -151,14 +197,16 @@ export default class Profile extends React.Component {
           
           {/*Zip*/}
           <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Zipcode" aria-label="Zipcode" aria-describedby="basic-addon2">
-          </input>
-          <div class="input-group-append">
+            <input type="text" class="form-control" placeholder="Zipcode" aria-label="Zipcode" aria-describedby="basic-addon2">
+            </input>
+            <div class="input-group-append">
+            </div>
           </div>
-          </div>
-          </div>
+
           <button type="button" class="btn btn-primary btn-lg">SAVE</button>
+
       </React.Fragment>
       )
     }
 }
+export default Profile
