@@ -11,8 +11,7 @@ import { faBeer,
          faHome,
          faSadCry
        } from '@fortawesome/free-solid-svg-icons';
-//import Geocode from "react-geocode";
-// Geocode.setApiKey("AIzaSyBFGcpxYZoZ2X4MPVsql1OIyFxwgKZBBK8");
+
 import OpenTabs from "./OpenTabs";
 import BarProfile from "./BarProfile";
 import CreateBarProfile from "./CreateBarProfile";

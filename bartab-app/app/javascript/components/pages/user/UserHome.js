@@ -51,6 +51,8 @@ class UserHome extends React.Component {
           showingInfoWindow: false,
           activeMarker: {},
           selectedPlace: {}, 
+          
+          success: false
                     
                   }
       }
@@ -159,7 +161,7 @@ class UserHome extends React.Component {
         stores,
      }=this.props
 
-    const { current_user_profile, openTabs, closedTabs }=this.state
+    const { current_user_profile, openTabs, closedTabs, success }=this.state
     
     const name = ((current_user_profile===null) ? 'new user' : current_user_profile.firstname)
 
@@ -224,6 +226,7 @@ class UserHome extends React.Component {
             <Route path="/user_home/mapcontainer" exact render={(props) => <MapContainer {...props}
               stores={stores}
               openTab={this.openTab}
+              success={success}
             />} />
             <Route path="/user_home/profile" exact render={(props) => ((current_user_profile===null) ? 
               <CreateUserProfile 

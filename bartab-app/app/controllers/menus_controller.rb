@@ -1,4 +1,5 @@
 class MenusController < ApplicationController
+    before_action :authenticate_admin!, only: [:create]
     
     def index
         render json: current_admin.menus

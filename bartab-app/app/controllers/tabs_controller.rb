@@ -1,4 +1,6 @@
 class TabsController < ApplicationController
+    before_action :authenticate_user!, only: [:create]
+
     
     def update
         @tab = Tab.find(params[:id])

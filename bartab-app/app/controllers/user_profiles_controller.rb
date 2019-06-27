@@ -1,4 +1,6 @@
 class UserProfilesController < ApplicationController
+    before_action :authenticate_user!, only: [:create]
+
     def show
         user_profile = UserProfile.find_by_user_id(params[:id])
         render json: user_profile
