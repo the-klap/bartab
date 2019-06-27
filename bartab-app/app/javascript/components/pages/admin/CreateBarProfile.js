@@ -27,7 +27,6 @@ class CreateBarProfile extends React.Component {
     handleNewProfile(new_admin_profile)
   }
   
-
   
   render () {
     const {new_admin_profile} = this.state

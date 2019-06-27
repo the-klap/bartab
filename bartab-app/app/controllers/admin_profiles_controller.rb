@@ -1,15 +1,16 @@
 class AdminProfilesController < ApplicationController
+    print "in the controller"
     def index
        admin_profiles = AdminProfile.all
        render json: admin_profiles
     end
     
     def create
-        profile = current_admin.create_admin_profile(admin_profile_params)
-        if profile.valid?
-            render json: profile
+        adminprofile = current_admin.create_admin_profile(admin_profile_params)
+        if adminprofile.valid?
+            render json: adminprofile
         else
-            render json: profile.errors, status: :unprocessable_entity
+            render json: adminprofile.errors, status: :unprocessable_entity
         end
     end
     
