@@ -49,7 +49,7 @@ class AdminHome extends React.Component {
    		headers: {'Content-Type': 'application/json'},
    		method: "POST"
    	})
-      .then(response => response.json())
+    .then(response => response.json())
   }
   
   
@@ -275,7 +275,7 @@ class AdminHome extends React.Component {
             <Route path="/admin_home/profile" exact render={(props) => ((current_admin_profile===null) ? 
               <CreateBarProfile 
                 handleNewProfile={this.handleNewProfile}
-                /> :
+              /> :
               <BarProfile 
                 current_admin_profile={current_admin_profile}
                 handleUpdateProfile={this.handleUpdateProfile}
