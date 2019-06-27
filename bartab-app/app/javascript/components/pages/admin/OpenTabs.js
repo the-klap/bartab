@@ -15,35 +15,25 @@ class OpenTabs extends React.Component {
     this.props.getOpenTabs()
   }
   
-  handleAClose = (tab_id) => {
-    const {handleClose} = this.props
-    handleClose(tab_id)
-  }
-  
-  handleAddOrder = (itemId, userId) => {
-    const {handleAddOrder} =this.props
-    handleAddOrder(itemId, userId)
-  }
-  
-  handleDeleteOrderItem = (itemId, userId) => {
-    const {handleDeleteOrderItem} = this.props
-    handleDeleteOrderItem(itemId, userId)
-  }
   
   render () {
-    const {customers, menu, openTabs} = this.props
+    const {customers, menu, openTabs, handleAddOrder, getMenuItem, handleCloseTab, handleDeleteOrder} = this.props
     
     console.log(openTabs)
+    
     var customerTabs = openTabs.map((value, index) => <CustomerTab 
       key={index}
-      tab_id={value.id}
+      tabId={value.id}
       name={value.name}
       total={value.total}
       order={value.tab_histories}
+      userfirstname={value.user.user_profile.firstname}
+      userlastname={value.user.user_profile.lastname}
       status={value.open}
-      handleAClose={this.handleAClose}
-      handleAddOrder={this.handleAddOrder}
-      handleDeleteOrderItem={this.handleDeleteOrderItem}
+      handleAddOrder={handleAddOrder}
+      getMenuItem={getMenuItem}
+      handleCloseTab={handleCloseTab}
+      handleDeleteOrder={handleDeleteOrder}
       menu={menu}
       />
       )

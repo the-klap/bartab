@@ -12,43 +12,53 @@ class CustomerTab extends React.Component {
   }
   
   //passes id to close tab
-  handleAClose = () => {
-    const {handleAClose, tab_id} = this.props
-    handleAClose(tab_id)
+  handleACloseTab = () => {
+    const {handleCloseTab, tabId} = this.props
+    console.log(tabId)
+    handleCloseTab(tabId)
   }
   
   //takes index of selected item and sets state
   handleChange = (event) => {
-    
+    const {getMenuItem} = this.props
+    const itemId = event.target.value
+    getMenuItem(itemId)
   }
   
   
   //sends state id and user id to adminhome
   handleAddOrder = () => {
-    const {handleAddOrder, tab_id} = this.props
-    const {itemID} = this.state
-    handleAddOrder(itemID, tab_id)
+    const {handleAddOrder, tabId, total} = this.props
+    console.log(total)
+    handleAddOrder(total, tabId)
   }
   
   //deletes item from customer order
-  handleDelete = (index) => {
-    const {handleDeleteOrderItem, tab_id} = this.props
-    handleDeleteOrderItem(index, tab_id)
+  handleDelete = (tabHistoryId) => {
+    const {handleDeleteOrder, total, tabId} = this.props
+    console.log(tabHistoryId)
+    handleDeleteOrder(total, tabId, tabHistoryId)
   }
   
   render () {
-    const {name, total, tab_id, status, menu, order} = this.props
+    const {name, total, tabId, status, menu, order, userfirstname, userlastname} = this.props
+    const {item} = this.state
+    
+    // creates dropdown menu of menu items
     let dropMenu = menu.map((item, index) => <option 
                                                 key={index} 
                                                 value={item.id}
-                                                
+                                                name={item.name}
+                                                price={item.price}
                                               >
-                                                {item.name} - ${item.price}0
+                                                {item.name} - ${parseFloat(item.price)}
                                               </option>)
-    
+                                              
+    // creates list of items on tab (tab_histories)
     let orderList = order.map((value, index) => <MenuItem 
       key={index}
       index={index}
+      id={value.id}
       name={value.name}
       price={value.price}
       handleDelete={this.handleDelete}
@@ -58,8 +68,8 @@ class CustomerTab extends React.Component {
     return (
       <React.Fragment>
           <tr>
-            <th scope="row">{tab_id}</th>
-            <td>{name}</td>
+            <th scope="row">{tabId}</th>
+            <td>{userfirstname} {userlastname}</td>
             <td>${total}</td>
             <td>{status}</td>
             <td>
@@ -80,7 +90,7 @@ class CustomerTab extends React.Component {
               </Row>
             </td>
             <td>
-              <Button onClick={this.handleAClose}>
+              <Button onClick={this.handleACloseTab}>
                 Close Out
               </Button>
             </td>
@@ -104,6 +114,3 @@ class CustomerTab extends React.Component {
 }
 
 export default CustomerTab
-
-
-   
