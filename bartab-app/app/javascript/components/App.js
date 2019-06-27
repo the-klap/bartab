@@ -18,7 +18,11 @@ class App extends React.Component {
 
       }
   }
-  
+  toggleHidden () {
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
+  }
   
   //fetch will get all admin profiles
   componentWillMount() {
@@ -71,24 +75,16 @@ class App extends React.Component {
               current_user_id={current_user_id}
               stores={admin_profiles}
             />} />
-            <footer className="footer">
-            {admin_logged_in &&
-            <button type="button" class="btn btn-primary btn-lg btn-block" href='/admin_home'>Admin Portal 
-            </button>
+
+            
+            {(!admin_logged_in && !user_logged_in) &&
+              <Button className='adminButton' href={admin_sign_in_route}>Admin Login</Button>
             }
-            {!admin_logged_in &&
-              <button type="button" class="btn btn-primary btn-lg btn-block" href={admin_sign_in_route}>Admin Login
-              </button>
+            {(!user_logged_in && !admin_logged_in) &&
+              <Button className='userButton' href={user_sign_in_route}>User Login</Button>
             }
-             {!user_logged_in &&
-              <button type="button" class="btn btn-secondary btn-lg btn-block" href={user_sign_in_route}>User Login
-              </button>
-            }
-             {user_logged_in &&
-            <button type="button" class="btn btn-secondary btn-lg btn-block" href='/user_home'>User Portal
-            </button>
-            }
-            </footer>
+            
+
           </Router>
           </div>
         </Container>
