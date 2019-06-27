@@ -17,7 +17,6 @@ export class MapContainer extends Component {
             address: [], 
             location: {},
             displayMarkers: []
-
           }
     }
    
@@ -27,6 +26,16 @@ export class MapContainer extends Component {
         activeMarker: marker,
         showingInfoWindow: true
       })
+      console.log(this.state.selectedPlace)
+    }
+    
+    onClose = props => {
+      if (this.state.showingInfoWindow) {
+        this.setState({
+          showingInfoWindow: false,
+          activeMarker: null
+        });
+      }
     }
       
     componentDidMount = () => {
@@ -46,7 +55,7 @@ export class MapContainer extends Component {
         const location = `${store.id} ${store.address1}, ${store.city}, ${store.state}, ${store.zip}`
         this.geocodeAddress(location)
         .then((geoco)=>{
-           newMarkers.push({lat: geoco.lat, lng: geoco.lng, storeId: store.id})
+           newMarkers.push({lat: geoco.lat, lng: geoco.lng, storeId: store.id, name: store.establishmentname})
            console.log(newMarkers)
            this.setState({ displayMarkers:newMarkers})
        })
@@ -82,12 +91,10 @@ export class MapContainer extends Component {
            onMapOver,
     }=this.props
     
-  
-      
-      
-      //create a function that pushes new address (from database) into geocodeAddress
-      // the function that takes geocodeAddress and pushes to newMarker ?
-    
+  const markerText = {
+                    color: 'black',
+                    };
+
     return (
       <Map
         google={this.props.google}
@@ -99,24 +106,28 @@ export class MapContainer extends Component {
          lng: -117.1580
         }}
       >    
-    {this.state.displayMarkers.map((coordinates, index) => {
-      const{storeId, lat, lng} = coordinates
-      return (<Marker onClick={this.onClick}
-          key={index}
-          id={storeId}
-          position = {{lat, lng}}
-          />)
-    })}
-  
+        {this.state.displayMarkers.map((coordinates, index) => {
+          const{storeId, lat, lng, name} = coordinates
+          return (
+                  <Marker onClick={this.onClick}
+                      key={index}
+                      id={storeId}
+                      name={name}
+                      position = {{lat, lng}}
+                  >
+                  </Marker>
+                )
+        })}
         <InfoWindow
           marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}>
-            <div>
-              <h1>{this.state.selectedPlace.id}</h1>
-            </div>
+          visible={this.state.showingInfoWindow}
+          onClose={this.onClose}
+            >
+          <div>
+            <h3 style={markerText}> {this.state.selectedPlace.name} </h3>
+          </div>
         </InfoWindow>
-        
-    </Map>
+      </Map>
     );
   }
 }
