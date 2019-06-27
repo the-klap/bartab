@@ -15,7 +15,6 @@ class App extends React.Component {
     super(props)
       this.state = {
         admin_profiles: [],
-        user_profiles: [],
       }
   }
   
@@ -26,7 +25,7 @@ class App extends React.Component {
     .then((response) => {return response.json()})
     .then((admin_profiles) => {this.setState({ admin_profiles: admin_profiles }) })
   }
-  
+ 
   render () {
     const {
       admin_logged_in, 
@@ -41,6 +40,7 @@ class App extends React.Component {
     console.log(`Admin Logged In? ${admin_logged_in}`)
     console.log(`User Logged In?: ${user_logged_in}`)
     console.log(this.state.admin_profiles)
+  
   
   
     return (
