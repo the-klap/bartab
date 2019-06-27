@@ -3,6 +3,14 @@ import PropTypes from "prop-types"
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import { Nav, NavItem, NavLink } from 'reactstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBeer,
+         faMapMarkedAlt, 
+         faListUl,
+         faIdCard,
+         faHome,
+         faSadCry
+       } from '@fortawesome/free-solid-svg-icons';
 //import Geocode from "react-geocode";
 // Geocode.setApiKey("AIzaSyBFGcpxYZoZ2X4MPVsql1OIyFxwgKZBBK8");
 import OpenTabs from "./OpenTabs";
@@ -16,28 +24,8 @@ class AdminHome extends React.Component {
     super(props)
       this.state = {
         menu: [
-          { name: 'Space Dust', price:7},
-          { name: 'Sculpin', price:5},
-          { name: 'Belching Beaver', price:6},
           ],
-        customers: [
-          {id: 42, name: 'Joe', total:0, order: [], status: 'Open'},
-          {id: 2, name: 'Bob', total:0, order: [], status: 'Open'},
-          {id: 9, name: 'Rick', total:0, order: [], status: 'Open'},
-          ],
-        profile: {
-          name: "",
-          hours: "",
-          info: "",
-          address1: "",
-          address2: "",
-          state: "",
-          city: "",
-          zip: "",
-          country: "",
-          lat: "",
-          lng: "",
-        },
+        openTabs: [],
         current_admin_profile: {},
       }
   }
@@ -65,38 +53,77 @@ class AdminHome extends React.Component {
   			'Content-Type': 'application/json'
   		},
   		method: "GET"
-  	  }).then((response) => {return response.json()})
-  	  .then((current_admin_profile) => {this.setState({ current_admin_profile: current_admin_profile }) })
+  	  })
+  	  .then(response => response.json())
+  	  .then((current_admin_profile) => {this.setState({ current_admin_profile }) })
+  }
+  
+  
+  //updates profile with info from profile.js
+  handleUpdateProfile = (admin_profile_params) => {
+    const {current_admin_id} = this.props
+    fetch(`/admin_profiles/${current_admin_id}`, {
+   		body: JSON.stringify(admin_profile_params),
+   		headers: {'Content-Type': 'application/json'},
+   		method: "PUT"
+   	})
+      .then(response => response.json())
+    
+  }
+  
+  //fetch gets menu
+  getMenu = () => {
+    const {current_admin_id} = this.props
+    fetch(`/menus/${current_admin_id}`, {
+  		headers: { 
+  			'Content-Type': 'application/json'
+  		},
+  		method: "GET"
+  	  })
+  	  .then(response => response.json())
+  	  .then((menu) => {this.setState({ menu }) })
   }
 
-  //updates profile with info from profile.js
-  handleUpdateProfile = (newProfile) => {
-    //let addressString= `${newProfile.address1} ${newProfile.address2}, ${newProfile.city}, ${newProfile.state} ${newProfile.zip}, ${newProfile.country}`
-   // this.addressToCoords(addressString, newProfile)
-    this.setState({profile: newProfile})
+  //gets tab where admin_id=current_admin_id
+  getOpenTabs = () => {
+    fetch('/admin_open_tabs', {
+  		headers: { 
+  			'Content-Type': 'application/json'
+  		},
+  		method: "GET"
+  	  })
+  	  .then(response => response.json())
+  	  .then((openTabs) => {this.setState({ openTabs }) })
   }
+
 
   //adds item to menu
   handleAddItem = (newItem) => {
-    const {menu} = this.state
-    menu.push(newItem)
-    this.setState({menu})
+    fetch('/menus.json', {
+  		body: JSON.stringify(newItem),  
+  		headers: {  
+  			'Content-Type': 'application/json'
+  		},
+  		method: "POST"  
+	  })
+	  .then(response => response.json())
+	  .then((menu) => {this.setState({ tabs }) })
   }
   
   //deletes item from menu
-  handleDeleteItem = (index) => {
-    const {menu} = this.state
-    menu.splice(index, 1)
-    this.setState({menu})
+  handleDeleteItem = (itemID) => {
+    fetch(`/menus/${itemID}`, {
+      	method: "DELETE"  
+    	  })
+    	  .then(response => response.json())
   }
   
   //closes out a customer (state doesnt set for some reason)
-  handleClose = (findId) => {
-    const {customers} = this.state
-    const getCustomer = customers.find(customer => customer.id===findId)
-    getCustomer.status = "Close"
-    this.setState({getCustomer})
-    console.log(getCustomer)
+  handleClose = (tab_id) => {
+    fetch(`/tabs/${tab_id}`, {
+      	method: "PATCH"  
+    	  })
+    	  .then(response => response.json())
   }
   
   //adds item to customer order
@@ -121,10 +148,9 @@ class AdminHome extends React.Component {
      const {admin_logged_in, 
             admin_sign_in_route, 
             admin_sign_out_route,
+            current_admin_id,
            }=this.props
-     const {customers, menu, profile} = this.state
-     
-    console.log(this.state.current_admin_profile)
+     const {customers, menu, current_admin_profile, openTabs} = this.state
      
     return (
       <React.Fragment>
@@ -135,23 +161,23 @@ class AdminHome extends React.Component {
                  <div className="container">
                    <div className="row">
                     <div className="col-sm">
-                      <NavItem>
-                        <NavLink id="openTabs" href="/admin_home/open_tabs">Open Tabs</NavLink>
+                      <NavItem className="admin_open_tabs">
+                        <NavLink id="openTabs" href="/admin_home/open_tabs">Open Tabs<br /><FontAwesomeIcon icon={faBeer} size="6x"/></NavLink>
                       </NavItem>
                     </div>
                     <div className="col-sm">
-                      <NavItem>
-                        <NavLink id="adminMenu" href="/admin_home/menu">Menu</NavLink>
+                      <NavItem className="admin_Menu">
+                        <NavLink id="adminMenu" href="/admin_home/menu">Menu<br /><FontAwesomeIcon icon={faListUl} size="6x"/></NavLink>
                       </NavItem>
                     </div>
                     <div className="col-sm">
-                      <NavItem>
-                        <NavLink id="adminProfile" href="/admin_home/profile">Profile</NavLink>
+                      <NavItem className="admin_Profile">
+                        <NavLink id="adminProfile" href="/admin_home/profile">Profile<br /><FontAwesomeIcon icon={faIdCard} size="6x"/></NavLink>
                       </NavItem>
                     </div>
                     <div className="col-sm">
-                      <NavItem>
-                        <NavLink id="adminSignOut" href={admin_sign_out_route}>Sign Out</NavLink>
+                      <NavItem className="admin_Signout">
+                        <NavLink id="adminSignOut" href={admin_sign_out_route}>Sign Out<br /><FontAwesomeIcon icon={faSadCry} size="6x"/></NavLink>
                       </NavItem>
                     </div>  
                    </div>
@@ -166,14 +192,19 @@ class AdminHome extends React.Component {
               handleAddOrder={this.handleAddOrder}
               handleDeleteOrderItem={this.handleDeleteOrderItem}
               menu={menu}
+              openTabs={openTabs}
+              getMenu={this.getMenu}
+              getOpenTabs={this.getOpenTabs}
             />}/>
             <Route path="/admin_home/menu" exact render={(props) => <Menu 
               menu={menu} 
               handleAddItem={this.handleAddItem}
               handleDeleteItem={this.handleDeleteItem}
+              getMenu={this.getMenu}
+              current_admin_id={current_admin_id}
             />} />
             <Route path="/admin_home/profile" exact render={(props) => <Profile 
-              profile={profile}
+              current_admin_profile={current_admin_profile}
               handleUpdateProfile={this.handleUpdateProfile}
               />} 
             />

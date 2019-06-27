@@ -18,69 +18,73 @@ class BarProfile extends React.Component {
   constructor(props){
     super(props)
       this.state = {
-        profile: {
-          name: "",
+        updated_admin_profile: {
+          additionalinfo: "",
+          establishmentname: "",
           hours: "",
-          info: "",
           address1: "",
           address2: "",
           state: "",
           city: "",
           zip: "",
           country: "",
-          lat: "",
-          lng: "",
         }
       }
   }
   
+
+  
+  //updates state for profile fields
   handleChange = (event) => {
-    let {profile} = this.state
-    profile[event.target.name] = event.target.value
-    this.setState({profile: profile})
+    let {updated_admin_profile} = this.state
+    updated_admin_profile[event.target.name] = event.target.value
+    this.setState({updated_admin_profile})
   }
   
 
-  
+  //sends updated profile to fetch in adminhome
   handleSubmit = () => {
-    const {profile} = this.state
+    const {updated_admin_profile} = this.state
     const {handleUpdateProfile} = this.props
-    handleUpdateProfile(profile)
+    handleUpdateProfile(updated_admin_profile)
   }
   
 
   
   render () {
-    const {name, hours, info, address1, address2, zip, state, city, country} = this.state.profile
-    const {profile} = this.state
+    const {establishmentname, hours, additionalinfo, address1, address2, zip, state, city, country} = this.state.updated_admin_profile
+    const {updated_admin_profile} = this.state
+    const {current_admin_profile} = this.props
+    
+    console.log(updated_admin_profile)
     return (
       <React.Fragment>
         <Form>
           <FormGroup >
-            <Label for="name">Establishment Name</Label>
-            <Input value={name} onChange={this.handleChange} name='name' />
+            <Label for="establishmentname">Establishment Name</Label>
+            <Input value={establishmentname} onChange={this.handleChange} name='establishmentname' placeholder={current_admin_profile.establishmentname}/>
           </FormGroup>
           <FormGroup>
             <Label for="hours">Hours</Label>
-            <Input value={hours} onChange={this.handleChange} name='hours'/>
+            <Input value={hours} onChange={this.handleChange} name='hours' placeholder={current_admin_profile.hours}/>
           </FormGroup>
           <FormGroup>
             <Label for="address1">Address1</Label>
-            <Input value={address1} onChange={this.handleChange} name='address1' />
+            <Input value={address1} onChange={this.handleChange} name='address1' placeholder={current_admin_profile.address1}/>
             <Label for="address2">Address2</Label>
-            <Input value={address2} onChange={this.handleChange} name='address2' />
+            <Input value={address2} onChange={this.handleChange} name='address2' placeholder={current_admin_profile.address2}/>
             <Label for='city'>City</Label>
-            <Input value={city} onChange={this.handleChange} name='city'/>
+            <Input value={city} onChange={this.handleChange} name='city'placeholder={current_admin_profile.city}/>
             <Label for='state'>State</Label>
-            <Input value={state} onChange={this.handleChange} name='state'/>
+            <Input value={state} onChange={this.handleChange} name='state'placeholder={current_admin_profile.state}/>
             <Label for="zip">Zipcode</Label>
-            <Input value={zip} onChange={this.handleChange} name='zip'/>
+            <Input value={zip} onChange={this.handleChange} name='zip' placeholder={current_admin_profile.zip}/>
             <Label for="country">Country</Label>
-            <Input value={country} onChange={this.handleChange} name='country'/>
+            <Input value={country} onChange={this.handleChange} name='country'placeholder={current_admin_profile.country}/>
           </FormGroup>
           <FormGroup>
-            <Label for="info">Additional Info</Label>
-            <Input type="textarea" name="info" id="info" value={info} onChange={this.handleChange}/>
+            <Label for="additionalinfo">Additional Info</Label>
+            <Input type="textarea" name="additionalinfo" id="additionalinfo" value={additionalinfo} onChange={this.handleChange} placeholder={current_admin_profile.additionalinfo}/>
           </FormGroup>
         </Form>
         <Button onClick={this.handleSubmit}>Submit</Button>

@@ -12,6 +12,10 @@ class Menu extends React.Component {
       }
   }
   
+  componentWillMount() {
+    this.props.getMenu()
+  }
+  
   handleChange = (event) => {
     let {newItem} = this.state
     newItem[event.target.name] = event.target.value
@@ -42,8 +46,7 @@ class Menu extends React.Component {
       className='menuItem'
       />
       )
-    
-    console.log(menu.length)
+
     return (
       <React.Fragment>
         <Table>

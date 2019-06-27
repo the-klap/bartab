@@ -9,6 +9,22 @@ class AdminProfilesController < ApplicationController
         render json: admin_profile
     end
     
+    def update
+        admin_profile = AdminProfile.find_by_admin_id(params[:id])
+        admin_profile.update(admin_profile_params)
+    end
+    
+    def admin_profile_params
+        params.require(:admin_profile).permit(  
+                                            :establishmentname, 
+                                            :hours, 
+                                            :address1, 
+                                            :city, 
+                                            :zip, 
+                                            :state,
+                                            :country,)
+    end
+    
 end
 
     

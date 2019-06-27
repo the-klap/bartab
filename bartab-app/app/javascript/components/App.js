@@ -15,15 +15,16 @@ class App extends React.Component {
     super(props)
       this.state = {
         admin_profiles: [],
+
       }
   }
   
   
   //fetch will get all admin profiles
   componentWillMount() {
-  fetch('/admin_profiles.json')
-    .then((response) => {return response.json()})
-    .then((admin_profiles) => {this.setState({ admin_profiles: admin_profiles }) })
+    fetch('/admin_profiles.json')
+      .then(response => response.json())
+      .then((admin_profiles) => {this.setState({ admin_profiles }) })
   }
  
   render () {
@@ -37,6 +38,8 @@ class App extends React.Component {
       current_admin_id,
       current_user_id
     } =this.props
+    
+    const {admin_profiles} = this.state
     console.log(`Admin Logged In? ${admin_logged_in}`)
     console.log(`User Logged In?: ${user_logged_in}`)
     console.log(this.state.admin_profiles)
@@ -45,15 +48,32 @@ class App extends React.Component {
   
     return (
       <React.Fragment>
+      
        <Container>
+       <div className="app_main_page">
         <HomePage />
-        <br />
-        <br />
-        <br />
+        
           <div id="menu">
         </div>
           
           <Router>
+            
+            <Route path="/admin_home" render={(props) => <AdminHome {...props} 
+              admin_logged_in={admin_logged_in}
+              admin_sign_in_route={admin_sign_in_route}
+              admin_sign_out_route={admin_sign_out_route}
+              current_admin_id={current_admin_id}
+            />} />
+            
+    
+            <Route path="/user_home" render={(props) => <UserHome {...props} 
+              user_logged_in={user_logged_in}
+              user_sign_in_route={user_sign_in_route}
+              user_sign_out_route={user_sign_out_route}
+              current_user_id={current_user_id}
+              stores={admin_profiles}
+            />} />
+            
             {admin_logged_in &&
             <Button href='/admin_home' className='adminButton'>Admin Portal 
             </Button>
@@ -70,23 +90,8 @@ class App extends React.Component {
             </Button>
             }
             
-            <Route path="/admin_home" render={(props) => <AdminHome {...props} 
-              admin_logged_in={admin_logged_in}
-              admin_sign_in_route={admin_sign_in_route}
-              admin_sign_out_route={admin_sign_out_route}
-              current_admin_id={current_admin_id}
-            />} />
-            
-    
-            <Route path="/user_home" render={(props) => <UserHome {...props} 
-              user_logged_in={user_logged_in}
-              user_sign_in_route={user_sign_in_route}
-              user_sign_out_route={user_sign_out_route}
-            />} />
-            
-
-            
           </Router>
+          </div>
         </Container>
       </React.Fragment>
     );
