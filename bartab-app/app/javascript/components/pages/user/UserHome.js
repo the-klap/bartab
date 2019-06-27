@@ -7,6 +7,14 @@ import  {
         } from "react-router-dom";
 import { Nav, NavItem, NavLink } from 'reactstrap'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBeer,
+         faMapMarkedAlt, 
+         faListUl,
+         faIdCard,
+         faHome,
+         faSadCry
+       } from '@fortawesome/free-solid-svg-icons';
 // import {Geocode} from "react-geocode";
 
 
@@ -35,8 +43,49 @@ class UserHome extends React.Component {
   constructor(props){
     super(props)
      this.state = {
+        // array of bars, .map function to go through all bars, pass state as prop to map
+          stores: [ {
+                    id: 1,
+                    name: "bubs",
+                    hours: "24/7",
+                    info: "drink beer",
+                    address1: "715 J St",
+                    address2: "",
+                    city: "San Diego",
+                    state: "CA",
+                    zip: "92101",
+                    country: "USA",
+                    location: {lat: "32.709568",
+                    lng: "-117.124658",}
+                  },
+                  { id: 2, 
+                    name: "half door",
+                    hours: "mon-sat 12-9",
+                    info: "we have good beer",
+                    address1: "903 Island Ave",
+                    address2: "",
+                    city: "San Diego",
+                    state: "CA",
+                    zip: "92101",
+                    country: "USA",
+                    location: {lat: "32.710248",
+                    lng: "-117.156268",}
+                  },
+                  { id: 3, 
+                    name: "social tap",
+                    hours: "all day",
+                    info: "check us out!",
+                    address1: "815 J St",
+                    address2: "",
+                    city: "San Diego",
+                    state: "CA",
+                    zip: "92101",
+                    country: "USA",
+                    location: {lat: 32.710568,
+                    lng: -117.134658,}
+                  },
+                ],
           current_user_profile: {},
-
           open_tabs: [],
           closed_tabs: [],
 
@@ -159,57 +208,50 @@ class UserHome extends React.Component {
     return (
       <React.Fragment>
         <Router>
+
           <div>
             Hey there {name} <br />
           </div>
+
       
           <div>
             {user_logged_in &&
               <Nav>
-                <div className="container">
-                  <div className="row">
-                    <div className="col-sm">
-                      <NavItem>
-                        <NavLink href="/user_home">User Home</NavLink>
-                      </NavItem>
-                    </div>
-                    <div class="col-sm">
-                      <NavItem>
-                        <NavLink href="/user_home/storelist">View Stores</NavLink>
-                      </NavItem>
-                    </div>
-                    <div class="col-sm">
-                      <NavItem>
-                        <NavLink href="/user_home/tabhistory">Tab History</NavLink>
-                      </NavItem>
-                    </div>
-                    <div class="col-sm">
-                      <NavItem>
-                        <NavLink href="/user_home/mapcontainer">Map</NavLink>
-                      </NavItem>
-                    </div>  
-                    <div class="col-sm">
-                      <NavItem>
-                        <NavLink href="/user_home/opentabs">Open Tabs</NavLink>
-                      </NavItem>
-                    </div>
-                    <div class="col-sm">
-                      <NavItem>
-                        <NavLink href="/user_home/profile">Profile</NavLink>
-                      </NavItem>
-                    </div>
-                    {/*<div class="col-sm">
-                      <NavItem>
-                        <NavLink href="/user_home/happyhour">Happy Hour</NavLink>
-                      </NavItem>
-                    </div>*/}
-                    <div className="col-sm">
-                      <NavItem>
-                        <NavLink id="adminSignOut" href={user_sign_out_route}>Sign Out</NavLink>
-                      </NavItem>
-                    </div> 
-                  </div>
-                </div>
+
+              <div class="container">
+              <div class="row">
+              <div class="col-sm">
+              <NavItem className="user_Home">
+                <NavLink href="/user_home">User Home<br /><FontAwesomeIcon icon={faHome}  size="6x"/></NavLink>
+              </NavItem>
+              </div>
+              <div class="col-sm">
+              <NavItem className="user_tabHistory">
+                <NavLink href="/user_home/tabhistory">Tab History<br /><FontAwesomeIcon icon={faListUl} size="6x"/></NavLink>
+              </NavItem>
+              </div>
+              <div class="col-sm">
+              <NavItem className="user_mapContainer">
+                <NavLink href="/user_home/mapcontainer">Map <br/><FontAwesomeIcon icon={faMapMarkedAlt} size="6x"/></NavLink>
+              </NavItem>
+              </div>
+              <div class="col-sm">
+              <NavItem className="user_tab">
+                <NavLink href="/user_home/tab">Tab <br /><FontAwesomeIcon icon={faBeer} size="6x"/></NavLink>
+              </NavItem>
+              </div>
+              <div class="col-sm">
+              <NavItem className="user_profile">
+                <NavLink href="/user_home/profile">Profile <br /><FontAwesomeIcon icon={faIdCard} size="6x"/></NavLink>
+              </NavItem>
+              </div>
+              <div className="col-sm">
+              <NavItem className="user_signout">
+                <NavLink id="adminSignOut" href={user_sign_out_route}>Sign Out<br /><FontAwesomeIcon icon={faSadCry} size="6x"/></NavLink>
+              </NavItem>
+              </div> 
+              </div>
+              </div>
               </Nav>
             }
                 
@@ -239,6 +281,9 @@ class UserHome extends React.Component {
               stores={stores}
               openTab={this.openTab}
             />} />
+            <div>
+            Hey there {current_user_profile.firstname} <br />
+          </div>
           </div>
         </Router>
         

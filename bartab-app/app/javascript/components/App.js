@@ -15,7 +15,7 @@ class App extends React.Component {
     super(props)
       this.state = {
         admin_profiles: [],
-          
+
       }
   }
   
@@ -26,7 +26,7 @@ class App extends React.Component {
       .then(response => response.json())
       .then((admin_profiles) => {this.setState({ admin_profiles }) })
   }
-  
+ 
   render () {
     const {
       admin_logged_in, 
@@ -45,32 +45,18 @@ class App extends React.Component {
     console.log(this.state.admin_profiles)
   
   
+  
     return (
       <React.Fragment>
+      
        <Container>
+       <div className="app_main_page">
         <HomePage />
-        <br />
-        <br />
-        <br />
+        
           <div id="menu">
         </div>
           
           <Router>
-            {admin_logged_in &&
-            <Button href='/admin_home' className='adminButton'>Admin Portal 
-            </Button>
-            }
-            {!admin_logged_in &&
-              <Button className='adminButton' href={admin_sign_in_route}>Admin Login</Button>
-            }
-
-             {!user_logged_in &&
-              <Button className='userButton' href={user_sign_in_route}>User Login</Button>
-            }
-             {user_logged_in &&
-            <Button className='userButton' href='/user_home'>User Portal
-            </Button>
-            }
             
             <Route path="/admin_home" render={(props) => <AdminHome {...props} 
               admin_logged_in={admin_logged_in}
@@ -88,9 +74,24 @@ class App extends React.Component {
               stores={admin_profiles}
             />} />
             
+            {admin_logged_in &&
+            <Button href='/admin_home' className='adminButton'>Admin Portal 
+            </Button>
+            }
+            {!admin_logged_in &&
+              <Button className='adminButton' href={admin_sign_in_route}>Admin Login</Button>
+            }
 
+             {!user_logged_in &&
+              <Button className='userButton' href={user_sign_in_route}>User Login</Button>
+            }
+             {user_logged_in &&
+            <Button className='userButton' href='/user_home'>User Portal
+            </Button>
+            }
             
           </Router>
+          </div>
         </Container>
       </React.Fragment>
     );

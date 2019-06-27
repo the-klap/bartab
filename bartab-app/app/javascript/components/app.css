@@ -4,8 +4,9 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background-color:  #036635;
+    background-color:  #FDC12A; /*blue#FDC12A*/
     text-align: center;
+    border-radius: 15px 15px 15px 15px;
 }
 h1 {
     font-family: 'B612 Mono', monospace;
@@ -15,20 +16,34 @@ h1 {
     border-top: solid 5px white;
     border-bottom: solid 5px white;
     transform: skew(0, -5deg);
+    position: relative;
+    right: 300px;
+    font-size: 60px;
 }
+
+h4{
+    position: relative;
+    left: 300px;
+    color: white;
+    font-family: 'B612 Mono', monospace;
+    top: -55px;
+    transform: skew(-5deg, 5deg)
+}
+
 h3{
     color: white;
     font-family: 'B612 Mono', monospace;
 }
 
 section {
-     background-color: #048042;
+     background-color: #2AAFF5; /*orange*/
+     border-radius: 15px 15px 15px 15px;
 }
 #action {
     margin: 0 auto;
     width: 700px;
     position: relative;
-    height: 300px;
+    height: 230px;
 
 }
 
@@ -260,4 +275,147 @@ section {
     to {
         transform: skew(0, 3deg);
     }
+}
+
+
+/*styling to User links */
+
+.user_Home{
+  background: #96ceb4;/*#3498db*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.user_tabHistory{
+  background: #ffeead;/*#3498db*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.user_mapContainer{
+  background: #ff6f69;/*#2ecc71*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.user_tab{
+  background: #ffcc5c;/*#34495e*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.user_profile{
+  background: #651e3e;/*#34495e*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.user_signout{
+  background: #851e3e;/*#34495e*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.user_Home {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.user_Home:hover { border-width: 10px; }
+
+.user_tabHistory {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.user_tabHistory:hover { border-width: 10px; }
+
+.user_mapContainer {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.user_mapContainer:hover { border-width: 10px; }
+
+.user_tab {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.user_tab:hover { border-width: 10px; }
+
+.user_profile {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.user_profile:hover { border-width: 10px; }
+
+
+.user_signout {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.user_signout:hover { border-width: 10px; }
+
+
+/*admin and user buttons */
+
+.adminButton{
+    width: 50%;
+    border-radius: 15px 15px 15px 15px;
+    height: 30%;
+    
+}
+
+.userButton{
+    width: 50%;
+    border-radius: 15px 15px 15px 15px;
+    height: 30%
+}
+
+
+/*styling to Admin links */
+
+.admin_open_tabs{
+  background: #96ceb4;/*#3498db*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.admin_Menu{
+    background: #ffeead;/*#3498db*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.admin_Profile{
+    background: #ff6f69;/*#2ecc71*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.admin_Signout{
+     background: #ffcc5c;/*#34495e*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.admin_open_tabs:hover { border-width: 10px; }
+
+.admin_open_tabs {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.admin_Menu:hover { border-width: 10px; }
+
+.admin_Menu {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.admin_Profile:hover { border-width: 10px; }
+
+.admin_Profile {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.admin_Signout:hover { border-width: 10px; }
+
+.admin_Signout {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
 }

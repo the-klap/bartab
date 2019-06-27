@@ -3,6 +3,14 @@ import PropTypes from "prop-types"
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import { Nav, NavItem, NavLink } from 'reactstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBeer,
+         faMapMarkedAlt, 
+         faListUl,
+         faIdCard,
+         faHome,
+         faSadCry
+       } from '@fortawesome/free-solid-svg-icons';
 //import Geocode from "react-geocode";
 // Geocode.setApiKey("AIzaSyBFGcpxYZoZ2X4MPVsql1OIyFxwgKZBBK8");
 import OpenTabs from "./OpenTabs";
@@ -229,23 +237,23 @@ class AdminHome extends React.Component {
                  <div className="container">
                    <div className="row">
                     <div className="col-sm">
-                      <NavItem>
-                        <NavLink id="openTabs" href="/admin_home/open_tabs">Open Tabs</NavLink>
+                      <NavItem className="admin_open_tabs">
+                        <NavLink id="openTabs" href="/admin_home/open_tabs">Open Tabs<br /><FontAwesomeIcon icon={faBeer} size="6x"/></NavLink>
                       </NavItem>
                     </div>
                     <div className="col-sm">
-                      <NavItem>
-                        <NavLink id="adminMenu" href="/admin_home/menu">Menu</NavLink>
+                      <NavItem className="admin_Menu">
+                        <NavLink id="adminMenu" href="/admin_home/menu">Menu<br /><FontAwesomeIcon icon={faListUl} size="6x"/></NavLink>
                       </NavItem>
                     </div>
                     <div className="col-sm">
-                      <NavItem>
-                        <NavLink id="adminProfile" href="/admin_home/profile">Profile</NavLink>
+                      <NavItem className="admin_Profile">
+                        <NavLink id="adminProfile" href="/admin_home/profile">Profile<br /><FontAwesomeIcon icon={faIdCard} size="6x"/></NavLink>
                       </NavItem>
                     </div>
                     <div className="col-sm">
-                      <NavItem>
-                        <NavLink id="adminSignOut" href={admin_sign_out_route}>Sign Out</NavLink>
+                      <NavItem className="admin_Signout">
+                        <NavLink id="adminSignOut" href={admin_sign_out_route}>Sign Out<br /><FontAwesomeIcon icon={faSadCry} size="6x"/></NavLink>
                       </NavItem>
                     </div>  
                    </div>
