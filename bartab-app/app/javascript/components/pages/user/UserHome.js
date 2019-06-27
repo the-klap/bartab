@@ -223,6 +223,7 @@ class UserHome extends React.Component {
             />} />
             <Route path="/user_home/mapcontainer" exact render={(props) => <MapContainer {...props}
               stores={stores}
+              openTab={this.openTab}
             />} />
             <Route path="/user_home/profile" exact render={(props) => ((current_user_profile===null) ? 
               <CreateUserProfile 

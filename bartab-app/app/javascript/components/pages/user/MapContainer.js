@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import UserHome from './UserHome.js'
+import StoreMarkerWindow from './StoreMarkerWindow.js'
 
 const mapStyles = {
   width: '50%',
@@ -55,7 +56,14 @@ export class MapContainer extends Component {
         const location = `${store.id} ${store.address1}, ${store.city}, ${store.state}, ${store.zip}`
         this.geocodeAddress(location)
         .then((geoco)=>{
-           newMarkers.push({lat: geoco.lat, lng: geoco.lng, storeId: store.id, name: store.establishmentname})
+           newMarkers.push({lat: geoco.lat, 
+                            lng: geoco.lng, 
+                            storeId: store.id, 
+                            name: store.establishmentname,
+                            location: location,
+                            info: store.additionalinfo,
+             
+           })
            console.log(newMarkers)
            this.setState({ displayMarkers:newMarkers})
        })
@@ -91,9 +99,6 @@ export class MapContainer extends Component {
            onMapOver,
     }=this.props
     
-  const markerText = {
-                    color: 'black',
-                    };
 
     return (
       <Map
@@ -107,13 +112,15 @@ export class MapContainer extends Component {
         }}
       >    
         {this.state.displayMarkers.map((coordinates, index) => {
-          const{storeId, lat, lng, name} = coordinates
+          const{storeId, lat, lng, name, location, info} = coordinates
           return (
                   <Marker onClick={this.onClick}
                       key={index}
                       id={storeId}
                       name={name}
                       position = {{lat, lng}}
+                      location={location}
+                      info= {info}
                   >
                   </Marker>
                 )
@@ -123,9 +130,15 @@ export class MapContainer extends Component {
           visible={this.state.showingInfoWindow}
           onClose={this.onClose}
             >
-          <div>
-            <h3 style={markerText}> {this.state.selectedPlace.name} </h3>
-          </div>
+            <div>
+              <StoreMarkerWindow 
+                name={this.state.selectedPlace.name}
+                location={this.state.selectedPlace.location}
+                info={this.state.selectedPlace.info}
+                openTab= {this.props.openTabs}
+                storeId={this.state.selectedPlace.id}
+                />
+            </div>
         </InfoWindow>
       </Map>
     );
