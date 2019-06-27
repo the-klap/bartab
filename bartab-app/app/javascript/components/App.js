@@ -48,14 +48,12 @@ class App extends React.Component {
   
     return (
       <React.Fragment>
-      
        <Container>
        <div className="app_main_page">
         <HomePage />
         
-          <div id="menu">
+          <div id="main_page">
         </div>
-          
           <Router>
             
             <Route path="/admin_home" render={(props) => <AdminHome {...props} 
@@ -73,23 +71,24 @@ class App extends React.Component {
               current_user_id={current_user_id}
               stores={admin_profiles}
             />} />
-            
+            <footer className="footer">
             {admin_logged_in &&
-            <Button href='/admin_home' className='adminButton'>Admin Portal 
-            </Button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" href='/admin_home'>Admin Portal 
+            </button>
             }
             {!admin_logged_in &&
-              <Button className='adminButton' href={admin_sign_in_route}>Admin Login</Button>
+              <button type="button" class="btn btn-primary btn-lg btn-block" href={admin_sign_in_route}>Admin Login
+              </button>
             }
-
              {!user_logged_in &&
-              <Button className='userButton' href={user_sign_in_route}>User Login</Button>
+              <button type="button" class="btn btn-secondary btn-lg btn-block" href={user_sign_in_route}>User Login
+              </button>
             }
              {user_logged_in &&
-            <Button className='userButton' href='/user_home'>User Portal
-            </Button>
+            <button type="button" class="btn btn-secondary btn-lg btn-block" href='/user_home'>User Portal
+            </button>
             }
-            
+            </footer>
           </Router>
           </div>
         </Container>

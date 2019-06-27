@@ -218,7 +218,7 @@ class UserHome extends React.Component {
             {user_logged_in &&
               <Nav>
 
-              <div class="container">
+              <div class="container" className="navbar">
               <div class="row">
               <div class="col-sm">
               <NavItem className="user_Home">
@@ -254,7 +254,6 @@ class UserHome extends React.Component {
               </div>
               </Nav>
             }
-                
             {/* changing /userhome to user_home will create an error*/}
             <Route exact path="/userhome" exact component={UserHome} />
             <Route exact path="/user_home/tabhistory" exact render={(props) => <TabHistory {...props}

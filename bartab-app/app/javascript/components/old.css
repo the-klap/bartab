@@ -1,23 +1,10 @@
-
-/* Tablet Landscape */
-@media screen and (max-width: 1060px) {
-    #primary { width:67%; }
-    #secondary { width:30%; margin-left:3%;}  
-}
-/* Tabled Portrait */
-@media screen and (max-width: 768px) {
-    #primary { width:100%; }
-    #secondary { width:100%; margin:0; border:none; }
-}
-
-
-img { max-width: 100%; }
+@import url('https://fonts.googleapis.com/css?family=B612+Mono&display=swap');
 
 body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background-color:  #FDC12A; /*blue#FDC12A */
+    background-color:  #FDC12A; /*blue#FDC12A*/
     text-align: center;
     border-radius: 15px 15px 15px 15px;
 }
@@ -30,40 +17,44 @@ h1 {
     border-bottom: solid 5px white;
     transform: skew(0, -5deg);
     position: relative;
+    right: 300px;
     font-size: 60px;
 }
+
 h4{
     position: relative;
+    left: 300px;
     color: white;
     font-family: 'B612 Mono', monospace;
+    top: -55px;
     transform: skew(-5deg, 5deg)
 }
+
 h3{
     color: white;
     font-family: 'B612 Mono', monospace;
 }
 
 section {
-     background-color: #2AAFF5; /*orange */
+     background-color: #2AAFF5; /*orange*/
      border-radius: 15px 15px 15px 15px;
 }
-
 #action {
     margin: 0 auto;
-    width: 90%;
+    width: 700px;
     position: relative;
-    height: 20%;
+    height: 230px;
 
 }
 
 #keg {
     position: absolute;
-    height: 70%;
+    height: 200px;
     width: 70px;
     background-color: #656D78;
     border-right: solid 20px #434A54;
     bottom: 0;
-    left: 50%;
+    left: 310px;
 }
 #pipe {
     position: absolute;
@@ -191,13 +182,13 @@ section {
         opacity: 0;
         left: 0;
     }
-    20%, 50% {
+    20%, 80% {
         opacity: 1;
-        left: -15px;
+        left: 300px;
     }
     100% {
          opacity: 0;
-        left: 100px;
+        left: 600px;
     }
 }
 
@@ -213,9 +204,9 @@ section {
     position: absolute;
     bottom: 15px;
     margin: 0 5px;
-    height: 80%;
+    /*height: 80%;*/
     width: 60px;
-    background-color: rgba(204, 114, 12, 0.8); /* #FFCE54 */
+    background-color: rgba(204, 114, 12, 0.8); /* #FFCE54*/
     border-radius: 0 0 5px 5px;
     border-top: solid 0px rgba(255, 206, 84, 0.8);
 
@@ -225,10 +216,10 @@ section {
     position: absolute;
     display: block;
     content: " ";
-    height: 20px;
+    /*height: 20px;*/
     width: 100%;
     background-color: white;
-    top: -20px;
+    /*top: -20px;*/
     border-radius: 5px 5px 0 0;
 
     animation: fillupfoam 5s linear infinite, wave 0.5s alternate infinite;
@@ -287,67 +278,36 @@ section {
 }
 
 
-
-
-/*admin and user buttons */
-
-.admin_Button{
-    width: 50%;
-    border-radius: 15px 15px 15px 15px;
-    height: 50px;
-    
-}
-
-.user_Button{
-    width: 50%;
-    border-radius: 15px 15px 15px 15px;
-    height: 50px;
-}
-
-
-
-
 /*styling to User links */
-.row{
-    margin-left: 0px;
-    margin-right: 0px;
-}
-
 
 .user_Home{
   background: #96ceb4;/*#3498db*/
   border-radius: 15px 15px 15px 15px;
-  padding: 0px;
 }
 
 .user_tabHistory{
   background: #ffeead;/*#3498db*/
   border-radius: 15px 15px 15px 15px;
-  padding: 0px;
 }
 
 .user_mapContainer{
   background: #ff6f69;/*#2ecc71*/
   border-radius: 15px 15px 15px 15px;
-  padding: 0px;
 }
 
 .user_tab{
   background: #ffcc5c;/*#34495e*/
   border-radius: 15px 15px 15px 15px;
-  padding: 0px;
 }
 
 .user_profile{
   background: #651e3e;/*#34495e*/
   border-radius: 15px 15px 15px 15px;
-  padding: 0px;
 }
 
 .user_signout{
   background: #851e3e;/*#34495e*/
   border-radius: 15px 15px 15px 15px;
-  padding: 0px;
 }
 
 .user_Home {
@@ -394,10 +354,68 @@ section {
 .user_signout:hover { border-width: 10px; }
 
 
-.footer{
-  bottom: 80px;
+/*admin and user buttons */
+
+.adminButton{
+    width: 50%;
+    border-radius: 15px 15px 15px 15px;
+    height: 30%;
+    
 }
 
-.navbar{
-    padding: 0px;
+.userButton{
+    width: 50%;
+    border-radius: 15px 15px 15px 15px;
+    height: 30%
+}
+
+
+/*styling to Admin links */
+
+.admin_open_tabs{
+  background: #96ceb4;/*#3498db*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.admin_Menu{
+    background: #ffeead;/*#3498db*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.admin_Profile{
+    background: #ff6f69;/*#2ecc71*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.admin_Signout{
+     background: #ffcc5c;/*#34495e*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.admin_open_tabs:hover { border-width: 10px; }
+
+.admin_open_tabs {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.admin_Menu:hover { border-width: 10px; }
+
+.admin_Menu {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.admin_Profile:hover { border-width: 10px; }
+
+.admin_Profile {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.admin_Signout:hover { border-width: 10px; }
+
+.admin_Signout {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
 }
