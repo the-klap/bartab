@@ -42,14 +42,53 @@ class UserHome extends React.Component {
   constructor(props){
     super(props)
      this.state = {
+        // array of bars, .map function to go through all bars, pass state as prop to map
+          stores: [ {
+                    id: 1,
+                    name: "bubs",
+                    hours: "24/7",
+                    info: "drink beer",
+                    address1: "715 J St",
+                    address2: "",
+                    city: "San Diego",
+                    state: "CA",
+                    zip: "92101",
+                    country: "USA",
+                    location: {lat: "32.709568",
+                    lng: "-117.124658",}
+                  },
+                  { id: 2, 
+                    name: "half door",
+                    hours: "mon-sat 12-9",
+                    info: "we have good beer",
+                    address1: "903 Island Ave",
+                    address2: "",
+                    city: "San Diego",
+                    state: "CA",
+                    zip: "92101",
+                    country: "USA",
+                    location: {lat: "32.710248",
+                    lng: "-117.156268",}
+                  },
+                  { id: 3, 
+                    name: "social tap",
+                    hours: "all day",
+                    info: "check us out!",
+                    address1: "815 J St",
+                    address2: "",
+                    city: "San Diego",
+                    state: "CA",
+                    zip: "92101",
+                    country: "USA",
+                    location: {lat: 32.710568,
+                    lng: -117.134658,}
+                  },
+                ],
           current_user_profile: {},
-
           open_tabs: [],
           closed_tabs: [],
-
           firstname: '',
           lastname: '',
-
           showingInfoWindow: false,
           activeMarker: {},
           selectedPlace: {}, 
@@ -153,6 +192,7 @@ class UserHome extends React.Component {
           <div>
             {user_logged_in &&
               <Nav>
+
               <div class="container">
               <div class="row">
               <div class="col-sm">
