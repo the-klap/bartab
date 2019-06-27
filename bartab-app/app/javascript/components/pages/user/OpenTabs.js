@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import TabListItem from './TabListItem'
 
 
-export default class OpenTabs extends React.Component {
+class OpenTabs extends React.Component {
     constructor(props){
         super(props)
         this.state = {
@@ -11,8 +11,8 @@ export default class OpenTabs extends React.Component {
     }
 
     render(){
-        const {open_tabs} = this.props
-        const openSessionsTotal = open_tabs.map((tab, index) =>  {
+        const {openTabs} = this.props
+        const openSessionsTotal = openTabs.map((tab, index) =>  {
                 return (<TabListItem 
                             bar_id={tab.admin_id} 
                             total={tab.total} 
@@ -27,7 +27,8 @@ export default class OpenTabs extends React.Component {
                             country={tab.admin.admin_profile.country}
                         />
                     )
-            } )
+            })
+            console.log(openTabs)
         return(
              <React.Fragment>
                {openSessionsTotal}
@@ -35,3 +36,4 @@ export default class OpenTabs extends React.Component {
             )
     }
 }
+export default OpenTabs

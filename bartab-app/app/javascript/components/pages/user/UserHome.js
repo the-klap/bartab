@@ -43,51 +43,10 @@ class UserHome extends React.Component {
   constructor(props){
     super(props)
      this.state = {
-        // array of bars, .map function to go through all bars, pass state as prop to map
-          stores: [ {
-                    id: 1,
-                    name: "bubs",
-                    hours: "24/7",
-                    info: "drink beer",
-                    address1: "715 J St",
-                    address2: "",
-                    city: "San Diego",
-                    state: "CA",
-                    zip: "92101",
-                    country: "USA",
-                    location: {lat: "32.709568",
-                    lng: "-117.124658",}
-                  },
-                  { id: 2, 
-                    name: "half door",
-                    hours: "mon-sat 12-9",
-                    info: "we have good beer",
-                    address1: "903 Island Ave",
-                    address2: "",
-                    city: "San Diego",
-                    state: "CA",
-                    zip: "92101",
-                    country: "USA",
-                    location: {lat: "32.710248",
-                    lng: "-117.156268",}
-                  },
-                  { id: 3, 
-                    name: "social tap",
-                    hours: "all day",
-                    info: "check us out!",
-                    address1: "815 J St",
-                    address2: "",
-                    city: "San Diego",
-                    state: "CA",
-                    zip: "92101",
-                    country: "USA",
-                    location: {lat: 32.710568,
-                    lng: -117.134658,}
-                  },
-                ],
+        
           current_user_profile: {},
-          open_tabs: [],
-          closed_tabs: [],
+          openTabs: [],
+          closedTabs: [],
 
           showingInfoWindow: false,
           activeMarker: {},
@@ -149,7 +108,7 @@ class UserHome extends React.Component {
   		method: "GET"
   	  })
   	  .then(response => response.json())
-  	  .then(open_tabs => {this.setState({ open_tabs }) })
+  	  .then(openTabs => {this.setState({ openTabs }) })
   }
   
   // gets user's closed tabs (open:false)
@@ -161,7 +120,7 @@ class UserHome extends React.Component {
   		method: "GET"
   	  })
   	  .then(response => response.json())
-  	  .then(closed_tabs => {this.setState({ closed_tabs }) })
+  	  .then(closedTabs => {this.setState({ closedTabs }) })
   }
   
   
@@ -200,9 +159,8 @@ class UserHome extends React.Component {
         stores,
      }=this.props
 
-    const { current_user_profile, open_tabs, closed_tabs }=this.state
+    const { current_user_profile, openTabs, closedTabs }=this.state
     
-    console.log(current_user_profile)
     const name = ((current_user_profile===null) ? 'new user' : current_user_profile.firstname)
 
     return (
@@ -237,7 +195,7 @@ class UserHome extends React.Component {
               </div>
               <div class="col-sm">
               <NavItem className="user_tab">
-                <NavLink href="/user_home/tab">Tab <br /><FontAwesomeIcon icon={faBeer} size="6x"/></NavLink>
+                <NavLink href="/user_home/opentabs">Open Tabs <br /><FontAwesomeIcon icon={faBeer} size="6x"/></NavLink>
               </NavItem>
               </div>
               <div class="col-sm">
@@ -257,13 +215,14 @@ class UserHome extends React.Component {
             {/* changing /userhome to user_home will create an error*/}
             <Route exact path="/userhome" exact component={UserHome} />
             <Route exact path="/user_home/tabhistory" exact render={(props) => <TabHistory {...props}
-              closed_tabs={closed_tabs}
+              closedTabs={closedTabs}
             />} />
             <Route path="/user_home/opentabs" exact render={(props) => <OpenTabs {...props}
-                open_tabs={open_tabs}
+                openTabs={openTabs}
             />} />
             <Route path="/user_home/mapcontainer" exact render={(props) => <MapContainer {...props}
               stores={stores}
+              openTab={this.openTab}
             />} />
             <Route path="/user_home/profile" exact render={(props) => ((current_user_profile===null) ? 
               <CreateUserProfile 
@@ -280,9 +239,6 @@ class UserHome extends React.Component {
               stores={stores}
               openTab={this.openTab}
             />} />
-            <div>
-            Hey there {current_user_profile.firstname} <br />
-          </div>
           </div>
         </Router>
         
