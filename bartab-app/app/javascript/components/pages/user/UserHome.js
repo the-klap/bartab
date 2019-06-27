@@ -28,6 +28,7 @@ import Profile from './Profile.js'
 import OpenTabs from './OpenTabs.js'
 import TabHistory from './TabHistory.js'
 import StoreList from './StoreList'
+import CreateUserProfile from './CreateUserProfile'
 
 
 class UserHome extends React.Component {
@@ -77,6 +78,17 @@ class UserHome extends React.Component {
   		method: "PUT"
   	  })
   	  .then(response => response.json())
+  }
+  
+  //creates new profile if profile has not been created
+  handleNewProfile = (user_profile_params) => {
+    console.log(user_profile_params)
+    fetch('/user_profiles', {
+   		body: JSON.stringify(user_profile_params),
+   		headers: {'Content-Type': 'application/json'},
+   		method: "POST"
+   	})
+    .then(response => response.json())
   }
   
   // gets all open tabs with current_user.id (open:true)
@@ -142,13 +154,13 @@ class UserHome extends React.Component {
     const { current_user_profile, open_tabs, closed_tabs }=this.state
     
     console.log(current_user_profile)
-
+    const name = ((current_user_profile===null) ? 'new user' : current_user_profile.firstname)
 
     return (
       <React.Fragment>
         <Router>
           <div>
-            Hey there {current_user_profile.firstname} <br />
+            Hey there {name} <br />
           </div>
       
           <div>
@@ -212,10 +224,16 @@ class UserHome extends React.Component {
             <Route path="/user_home/mapcontainer" exact render={(props) => <MapContainer {...props}
               stores={stores}
             />} />
-            <Route path="/user_home/profile" exact render={(props) => <Profile {...props}
-              current_user_profile={current_user_profile}
-              updateProfile={this.updateProfile}
-            />} />
+            <Route path="/user_home/profile" exact render={(props) => ((current_user_profile===null) ? 
+              <CreateUserProfile 
+                current_user_profile={current_user_profile}
+                handleNewProfile={this.handleNewProfile}
+              /> : 
+              <Profile {...props}
+                current_user_profile={current_user_profile}
+                updateProfile={this.updateProfile}
+              />)
+            }/>
             <Route path="/user_home/happyhour" exact component={HappyHour} />
             <Route path="/user_home/storelist" exact render={(props) => <StoreList {...props}
               stores={stores}

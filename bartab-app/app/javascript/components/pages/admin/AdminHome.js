@@ -7,6 +7,7 @@ import { Nav, NavItem, NavLink } from 'reactstrap'
 // Geocode.setApiKey("AIzaSyBFGcpxYZoZ2X4MPVsql1OIyFxwgKZBBK8");
 import OpenTabs from "./OpenTabs";
 import BarProfile from "./BarProfile";
+import CreateBarProfile from "./CreateBarProfile";
 import Menu from "./Menu";
 
 
@@ -38,6 +39,17 @@ class AdminHome extends React.Component {
   	  })
   	  .then(response => response.json())
   	  .then((current_admin_profile) => {this.setState({ current_admin_profile }) })
+  }
+  
+  //creates new profile if profile has not been created
+  handleNewProfile = (admin_profile_params) => {
+    console.log(admin_profile_params)
+    fetch('/admin_profiles', {
+   		body: JSON.stringify(admin_profile_params),
+   		headers: {'Content-Type': 'application/json'},
+   		method: "POST"
+   	})
+      .then(response => response.json())
   }
   
   
@@ -260,12 +272,16 @@ class AdminHome extends React.Component {
               getMenu={this.getMenu}
               current_admin_id={current_admin_id}
             />} />
-            <Route path="/admin_home/profile" exact render={(props) => <BarProfile 
-              current_admin_profile={current_admin_profile}
-              handleUpdateProfile={this.handleUpdateProfile}
-              />} 
-            />
-
+            <Route path="/admin_home/profile" exact render={(props) => ((current_admin_profile===null) ? 
+              <CreateBarProfile 
+                handleNewProfile={this.handleNewProfile}
+                /> :
+              <BarProfile 
+                current_admin_profile={current_admin_profile}
+                handleUpdateProfile={this.handleUpdateProfile}
+              />)
+            }/>
+            
           </div>
         </Router>
     </React.Fragment>
