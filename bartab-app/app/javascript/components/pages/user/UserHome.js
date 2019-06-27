@@ -7,22 +7,9 @@ import {
         } from "react-router-dom";
 import { Nav, NavItem, NavLink } from 'reactstrap'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
-// import {Geocode} from "react-geocode";
-
-
-// Geocode.fromAddress().then(
-//   response => {
-//     const { lat, lng } = response.results[0].geometry.location;
-//     console.log(lat, lng);
-//   },
-//   error => {
-//     console.error(error);
-//   }
-// );
 
 
 //components imported to main UserHome
-import HappyHour from './HappyHour.js'
 import MapContainer from './MapContainer.js'
 import Profile from './Profile.js'
 import Tab from './Tab.js'
@@ -168,37 +155,34 @@ class UserHome extends React.Component {
             <div>
               {user_logged_in &&
               <Nav>
-               <div class="container">
-                 <div class="row">
-                  <div class="col-sm">
+               <div className="container">
+                 <div className="row">
+                  <div className="col-sm">
                     <NavItem>
                       <NavLink href="/user_home">User Home</NavLink>
                     </NavItem>
                   </div>
-                  <div class="col-sm">
+                  <div className="col-sm">
                     <NavItem>
                       <NavLink href="/user_home/tabhistory">Tab History</NavLink>
                     </NavItem>
                   </div>
-                  <div class="col-sm">
+                  <div className="col-sm">
                     <NavItem>
                       <NavLink href="/user_home/mapcontainer">Map</NavLink>
                     </NavItem>
                   </div>  
-                  <div class="col-sm">
+                  <div className="col-sm">
                     <NavItem>
                       <NavLink href="/user_home/tab">Tab</NavLink>
                     </NavItem>
                   </div>
-                  <div class="col-sm">
+                  <div className="col-sm">
                     <NavItem>
                       <NavLink href="/user_home/profile">Profile</NavLink>
                     </NavItem>
                   </div>
-                  <div class="col-sm">
-                    <NavItem>
-                      <NavLink href="/user_home/happyhour">Happy Hour</NavLink>
-                    </NavItem>
+                  <div className="col-sm">
                   </div>
                   <div className="col-sm">
                     <NavItem>
@@ -238,7 +222,6 @@ class UserHome extends React.Component {
                       stores={stores}
                     />} />
             <Route path="/user_home/profile" exact component={Profile} />
-            <Route path="/user_home/happyhour" exact component={HappyHour} />
           </div>
         </Router>
         
