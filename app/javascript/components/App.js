@@ -58,6 +58,7 @@ class App extends React.Component {
             
             <div id="main_page">
             </div>
+            
           <Router>
             
             <Route path="/admin_home" render={(props) => <AdminHome {...props} 
