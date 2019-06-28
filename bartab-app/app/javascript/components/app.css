@@ -1,13 +1,93 @@
 
-/* Tablet Landscape */
-@media screen and (max-width: 1060px) {
-    #primary { width:67%; }
-    #secondary { width:30%; margin-left:3%;}  
+@media screen and (min-width: 1100px) {
+  body {
+    background-color:  #FDC12A; /*blue#FDC12A */
+    text-align: center;
+  }
+  .user_Home{
+  background: #96ceb4;/*#3498db*/
+  border-radius: 15px 15px 15px 15px;
+  padding: 0px;
+  
+  }
+  .user_tabHistory{
+  background: #ffeead;/*#3498db*/
+  border-radius: 15px 15px 15px 15px;
+  padding: 0px;
+  }
+
+  .user_mapContainer{
+  background: #ff6f69;/*#2ecc71*/
+  border-radius: 15px 15px 15px 15px;
+  padding: 0px;
+  }
+
+  .user_tab{
+  background: #ffcc5c;/*#34495e*/
+  border-radius: 15px 15px 15px 15px;
+  padding: 0px;
+  }
+
+  .user_profile{
+  background: #651e3e;/*#34495e*/
+  border-radius: 15px 15px 15px 15px;
+  padding: 0px;
+  }
+
+  .user_signout{
+  background: #851e3e;/*#34495e*/
+  border-radius: 15px 15px 15px 15px;
+  padding: 0px;
 }
-/* Tabled Portrait */
-@media screen and (max-width: 768px) {
-    #primary { width:100%; }
-    #secondary { width:100%; margin:0; border:none; }
+
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 1100px) {
+  body {
+        background-color: blue;
+  }
+  .user_Home{
+              background: #96ceb4;/*#3498db*/
+              border-radius: 15px 15px 15px 15px;
+              padding: 0px;
+              width: 450px;
+  }
+  .user_tabHistory{
+  background: #ffeead;/*#3498db*/
+  border-radius: 15px 15px 15px 15px;
+  padding: 0px;
+  width: 450px;
+}
+
+.user_mapContainer{
+  background: #ff6f69;/*#2ecc71*/
+  border-radius: 15px 15px 15px 15px;
+  padding: 0px;
+  width: 450px;
+}
+
+.user_tab{
+  background: #ffcc5c;/*#34495e*/
+  border-radius: 15px 15px 15px 15px;
+  padding: 0px;
+  width: 450px;
+}
+
+.user_profile{
+  background: #651e3e;/*#34495e*/
+  border-radius: 15px 15px 15px 15px;
+  padding: 0px;
+  width: 450px;
+}
+
+.user_signout{
+  background: #851e3e;/*#34495e*/
+  border-radius: 15px 15px 15px 15px;
+  padding: 0px;
+  width: 450px;
+  }
+
 }
 
 
@@ -17,7 +97,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background-color:  #FDC12A; /*blue#FDC12A */
     text-align: center;
     border-radius: 15px 15px 15px 15px;
 }
@@ -175,6 +254,15 @@ section {
     }
 }
 
+.col-sm{
+   text-align: center;
+    display: inline-block;
+}
+
+/*.text-left{*/
+/*    background-color: rgba(255, 255, 255, 0.0)*/
+/*}*/
+
 .glass {
     position: absolute;
     height: 100px;
@@ -313,43 +401,6 @@ section {
     margin-right: 0px;
 }
 
-
-.user_Home{
-  background: #96ceb4;/*#3498db*/
-  border-radius: 15px 15px 15px 15px;
-  padding: 0px;
-}
-
-.user_tabHistory{
-  background: #ffeead;/*#3498db*/
-  border-radius: 15px 15px 15px 15px;
-  padding: 0px;
-}
-
-.user_mapContainer{
-  background: #ff6f69;/*#2ecc71*/
-  border-radius: 15px 15px 15px 15px;
-  padding: 0px;
-}
-
-.user_tab{
-  background: #ffcc5c;/*#34495e*/
-  border-radius: 15px 15px 15px 15px;
-  padding: 0px;
-}
-
-.user_profile{
-  background: #651e3e;/*#34495e*/
-  border-radius: 15px 15px 15px 15px;
-  padding: 0px;
-}
-
-.user_signout{
-  background: #851e3e;/*#34495e*/
-  border-radius: 15px 15px 15px 15px;
-  padding: 0px;
-}
-
 .user_Home {
   border: solid 3px #FFFFFF;
   transition: border-width 0.3s linear;
@@ -393,6 +444,11 @@ section {
 
 .user_signout:hover { border-width: 10px; }
 
+
+.app_main_page{
+    text-align: center;
+    display: inline-block;
+}
 
 .footer{
   bottom: 80px;
