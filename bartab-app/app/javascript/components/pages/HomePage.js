@@ -7,7 +7,7 @@ class HomePage extends React.Component {
       <React.Fragment>
       <div>
             <section>
-                <div id="action"><h1> BarTab</h1> <h4> Order drinks <br />from your phone!</h4>
+                <div id="action"><h1> BarTab</h1> <h4><br />  <br /> </h4>
                     <div id="keg">
                         <div id="pipe-handle"></div>
                         <div id="pipe"></div>
