@@ -1,18 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap'
-// import {Geocode} from "react-geocode";
 
-
-// Geocode.fromAddress().then(
-//   response => {
-//     const { lat, lng } = response.results[0].geometry.location;
-//     console.log(lat, lng);
-//   },
-//   error => {
-//     console.error(error);
-//   }
-// );
 
 class BarProfile extends React.Component {
   constructor(props){
