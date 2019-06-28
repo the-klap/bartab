@@ -47,7 +47,7 @@ class UserHome extends React.Component {
           current_user_profile: {},
           openTabs: [],
           closedTabs: [],
-
+          stores: [],
           showingInfoWindow: false,
           activeMarker: {},
           selectedPlace: {}, 
@@ -59,6 +59,7 @@ class UserHome extends React.Component {
   
   componentWillMount() {
     this.getProfile()
+    this.getAdminProfiles()
     this.getOpenTabs()
     this.getClosedTabs()
   }
@@ -74,6 +75,13 @@ class UserHome extends React.Component {
   	  })
   	  .then(response => response.json())
   	  .then(current_user_profile => {this.setState({ current_user_profile }) })
+  }
+  
+  //fetch will get all admin profiles
+  getAdminProfiles() {
+    fetch('/admin_profiles.json')
+      .then(response => response.json())
+      .then((stores) => {this.setState({ stores }) })
   }
   
   //Updates user profile with new firstname/lastname
@@ -158,10 +166,10 @@ class UserHome extends React.Component {
         user_sign_in_route, 
         user_sign_out_route,
         current_user_id,
-        stores,
+
      }=this.props
 
-    const { current_user_profile, openTabs, closedTabs, success }=this.state
+    const { current_user_profile, openTabs, closedTabs, success, stores }=this.state
     
     const name = ((current_user_profile===null) ? 'new user' : current_user_profile.firstname)
     

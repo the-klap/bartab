@@ -14,7 +14,6 @@ class App extends React.Component {
    constructor(props){
     super(props)
       this.state = {
-        admin_profiles: [],
 
       }
   }
@@ -24,12 +23,6 @@ class App extends React.Component {
     })
   }
   
-  //fetch will get all admin profiles
-  componentWillMount() {
-    fetch('/admin_profiles.json')
-      .then(response => response.json())
-      .then((admin_profiles) => {this.setState({ admin_profiles }) })
-  }
  
   render () {
     const {
@@ -43,7 +36,6 @@ class App extends React.Component {
       current_user_id
     } =this.props
     
-    const {admin_profiles} = this.state
     console.log(`Admin Logged In? ${admin_logged_in}`)
     console.log(`User Logged In?: ${user_logged_in}`)
     console.log(this.state.admin_profiles)
@@ -58,7 +50,6 @@ class App extends React.Component {
             
             <div id="main_page">
             </div>
-            
           <Router>
             
             <Route path="/admin_home" render={(props) => <AdminHome {...props} 
@@ -74,7 +65,6 @@ class App extends React.Component {
               user_sign_in_route={user_sign_in_route}
               user_sign_out_route={user_sign_out_route}
               current_user_id={current_user_id}
-              stores={admin_profiles}
             />} />
 
             
