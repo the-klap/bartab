@@ -517,3 +517,12 @@ section {
   border: solid 3px #FFFFFF;
   transition: border-width 0.3s linear;
 }
+
+.map_div{
+}
+
+.open_tab{
+    border: solid 3px #FFFFFF ;
+    border-radius: 15px 15px 15px 15px;
+    padding: 5px;   
+}
