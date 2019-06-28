@@ -39,23 +39,23 @@ class OpenTabs extends React.Component {
       )
     return (
       <React.Fragment>
-        <Table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Total</th>
-              <th>Status</th>
-              <th>Order</th>
-              <th>Close</th>
-            </tr>
-          </thead>
-            {customerTabs}
-          </Table>
-          
+        {customerTabs}
       </React.Fragment>
     )
   }
 }
 
 export default OpenTabs
+        // <Table>
+        //   <thead>
+        //     <tr>
+        //       <th>#</th>
+        //       <th>Name</th>
+        //       <th>Total</th>
+        //       <th>Status</th>
+        //       <th>Order</th>
+        //       <th>Close</th>
+        //     </tr>
+        //   </thead>
+        //     {customerTabs}
+        //   </Table>
