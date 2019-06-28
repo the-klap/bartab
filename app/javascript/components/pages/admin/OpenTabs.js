@@ -44,12 +44,11 @@ class OpenTabs extends React.Component {
               <th>#</th>
               <th>Name</th>
               <th>Total</th>
-              <th>Status</th>
               <th>Order</th>
               <th>Close</th>
             </tr>
-            {customerTabs}
           </Table>
+          {customerTabs}
 
       </React.Fragment>
     )

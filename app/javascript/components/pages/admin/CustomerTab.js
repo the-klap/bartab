@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import {Button, Form, FormGroup, Label, Input, Row, Col, 
+import {Table, Button, Form, FormGroup, Label, Input, Row, Col, 
 UncontrolledCollapse, Collapse, Card, CardBody, CardTitle, CardSubtitle} from 'reactstrap'
 import MenuItem from './MenuItem'
 
@@ -74,39 +74,55 @@ class CustomerTab extends React.Component {
 
     return (
       <React.Fragment>
-        <div>
+      <Card body className="text-left">
+        <Table>
           <tr>
-            <th scope="row">{tabId}</th>
+            <td>{tabId}</td>
             <td>{userfirstname} {userlastname}</td>
-            <td>${total}</td>
-            <td>{status}</td>
-          </tr>
-                  <FormGroup>
-                    <Input type="select" onChange={this.handleChange}>
-                      <option>-------</option>
-                      {dropMenu}
-                    </Input>
-                  </FormGroup>
+            <td>${total}0</td>
+            <td>
+              <Row>
+              <Col md={6}>
+                <Form>
+                <FormGroup>
+                  <Input type="select" onChange={this.handleChange}>
+                    <option>-------</option>
+                    {dropMenu}
+                  </Input>
+                </FormGroup>
+                </Form>
+              </Col>
+              <Col md={4}>
                   <Button onClick={this.handleAddOrder}>
                     Order
                   </Button>
-            
-            
+              </Col>
+              </Row>
+            </td>
+            <td>              
               <Button onClick={this.handleACloseTab}>
-                Close Out
+                 Close Out
               </Button>
-            
-          
-          <Row>
-
-         <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Full Order</Button>
+          </td>
+          </tr>
+        </Table>
+          <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Full Order</Button>
           <Collapse isOpen={this.state.collapse}>
-            
-            {orderList}
-             
-           </Collapse>
-          </Row>
-        </div>
+            <CardBody>
+              <Table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+              {orderList}
+              </Table>
+            </CardBody>
+          </Collapse>
+        </Card>
+        
       </React.Fragment>
     );
   }
@@ -115,33 +131,37 @@ class CustomerTab extends React.Component {
 export default CustomerTab
 
 
-// <Card body className="text-left">
-//           <CardTitle>{tabId} - {userfirstname} {userlastname}</CardTitle>
-//           <CardSubtitle>{status}</CardSubtitle>
-//           <CardSubtitle>Total: ${total}0</CardSubtitle>
-//           <CardBody>
-//             <Row>
-//               <Col md={6}>
-//                 <Form>
-//                 <FormGroup>
-//                   <Input type="select" onChange={this.handleChange}>
-//                     <option>-------</option>
-//                     {dropMenu}
-//                   </Input>
-//                 </FormGroup>
-//                 </Form>
-//               </Col>
-//               <Col md={4}>
+
+// <div>
+//           <tr>
+//             <th scope="row">{tabId}</th>
+//             <td>{userfirstname} {userlastname}</td>
+//             <td>${total}</td>
+//             <td>{status}</td>
+//           </tr>
+//                   <FormGroup>
+//                     <Input type="select" onChange={this.handleChange}>
+//                       <option>-------</option>
+//                       {dropMenu}
+//                     </Input>
+//                   </FormGroup>
 //                   <Button onClick={this.handleAddOrder}>
 //                     Order
 //                   </Button>
-//               </Col>
-//               </Row>
-//           </CardBody>
-//           <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Full Order</Button>
+            
+            
+//               <Button onClick={this.handleACloseTab}>
+//                 Close Out
+//               </Button>
+            
+          
+//           <Row>
+
+//         <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Full Order</Button>
 //           <Collapse isOpen={this.state.collapse}>
-//             <CardBody>
+            
 //             {orderList}
-//             </CardBody>
+             
 //           </Collapse>
-//         </Card>
+//           </Row>
+//         </div>

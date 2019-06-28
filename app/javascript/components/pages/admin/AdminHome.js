@@ -148,7 +148,7 @@ class AdminHome extends React.Component {
     const {name, price} = this.state.item
     const newItem = {name:name, price:parseFloat(price), tab_id:tabId}
     this.handleAddOrderHistory(newItem)
-    // this.handleUpdateTotalAdd(currentTabTotal, tabId)
+    this.handleUpdateTotalAdd(currentTabTotal, tabId)
   }
   
   
@@ -181,7 +181,7 @@ class AdminHome extends React.Component {
   //deltes item from customer order and updates total
   handleDeleteOrder = (currentTabTotal, priceToSub, tabId, tabHistoryId) => {
     this.handleUpdateTotalSub(currentTabTotal, priceToSub, tabId)
-    // this.handleDeleteOrderHistory(tabHistoryId)
+    this.handleDeleteOrderHistory(tabHistoryId)
   }
   
   //get tabHistoryItem price
