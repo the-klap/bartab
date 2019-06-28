@@ -170,13 +170,16 @@ class UserHome extends React.Component {
         <Router>
 
           <div>
-            Hey there {name} <br />
+          <h6><br />
+            Hey there {name}!<br />
+            <br />
+            </h6>
           </div>
 
       
           <div>
             {user_logged_in &&
-              <Nav>
+              <Nav position="center">
 
               <div class="container" className="navbar">
               <div class="row">

@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=B612+Mono&display=swap');
 
 @media screen and (min-width: 1100px) {
   body {
-    background-color:  #FDC12A; /*blue#FDC12A */
+    background-color:  #FDC12A; /*#FDC12A */
     text-align: center;
   }
   .user_Home{
@@ -42,50 +43,49 @@
 
 }
 
-/* On screens that are 992px or less, set the background color to blue */
+/* On screens that are 1100px or less, set the background color to blue */
 @media screen and (max-width: 1100px) {
   body {
-        background-color: blue;
-  }
+        background-color:  #FDC12A; /*#FDC12A */  }
   .user_Home{
               background: #96ceb4;/*#3498db*/
               border-radius: 15px 15px 15px 15px;
               padding: 0px;
-              width: 450px;
+              width: 670px;
   }
   .user_tabHistory{
   background: #ffeead;/*#3498db*/
   border-radius: 15px 15px 15px 15px;
   padding: 0px;
-  width: 450px;
+  width: 670px;
 }
 
 .user_mapContainer{
   background: #ff6f69;/*#2ecc71*/
   border-radius: 15px 15px 15px 15px;
   padding: 0px;
-  width: 450px;
+  width: 670px;
 }
 
 .user_tab{
   background: #ffcc5c;/*#34495e*/
   border-radius: 15px 15px 15px 15px;
   padding: 0px;
-  width: 450px;
+  width: 670px;
 }
 
 .user_profile{
   background: #651e3e;/*#34495e*/
   border-radius: 15px 15px 15px 15px;
   padding: 0px;
-  width: 450px;
+  width: 670px;
 }
 
 .user_signout{
   background: #851e3e;/*#34495e*/
   border-radius: 15px 15px 15px 15px;
   padding: 0px;
-  width: 450px;
+  width: 670px;
   }
 
 }
@@ -110,6 +110,7 @@ h1 {
     transform: skew(0, -5deg);
     position: relative;
     font-size: 60px;
+    left: -30%;
 }
 h4{
     position: relative;
@@ -122,9 +123,16 @@ h3{
     font-family: 'B612 Mono', monospace;
 }
 
+h6{
+    color:white;
+    font-family: 'B612 Mono', monospace;
+    font-size: 30px;
+}
+
 section {
      background-color: #2AAFF5; /*orange */
      border-radius: 15px 15px 15px 15px;
+     width: 100%;
 }
 
 #action {
@@ -181,15 +189,15 @@ section {
         height: 0px;
     }
     20% {
-         height: 125px;
+         height: 60px;
     }
     40% {
         top: 30px;
-        height: 85px;
+        height: 55px;
     }
     55% {
         top: 30px;
-        height: 60px;
+        height: 45px;
     }
     60%, 100% {
         top: 70px;
@@ -259,14 +267,14 @@ section {
     display: inline-block;
 }
 
-/*.text-left{*/
-/*    background-color: rgba(255, 255, 255, 0.0)*/
-/*}*/
+.text-left{
+    background-color: rgba(255, 255, 255, 0.2)
+}
 
 .glass {
     position: absolute;
-    height: 100px;
-    width: 70px;
+    height: 80px;
+    width: 60px;
     bottom: 0;
     background-color: rgba(255, 255, 255, 0.0);
     border-radius: 5px;
@@ -279,9 +287,9 @@ section {
         opacity: 0;
         left: 0;
     }
-    20%, 50% {
+    20%, 47% {
         opacity: 1;
-        left: -15px;
+        left: 47%;
     }
     100% {
          opacity: 0;
@@ -301,8 +309,8 @@ section {
     position: absolute;
     bottom: 15px;
     margin: 0 5px;
-    height: 80%;
-    width: 60px;
+    height: 50%;
+    width: 50px;
     background-color: rgba(204, 114, 12, 0.8); /* #FFCE54 */
     border-radius: 0 0 5px 5px;
     border-top: solid 0px rgba(255, 206, 84, 0.8);
@@ -448,6 +456,7 @@ section {
 .app_main_page{
     text-align: center;
     display: inline-block;
+    width: 100%;
 }
 
 .footer{
