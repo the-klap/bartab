@@ -1,6 +1,8 @@
 class TabsController < ApplicationController
-    before_action :authenticate_user!, only: [:create]
-
+    
+    def total
+        self.tab_histories.joins(:activity).sum(:price)
+    end
     
     def update
         @tab = Tab.find(params[:id])

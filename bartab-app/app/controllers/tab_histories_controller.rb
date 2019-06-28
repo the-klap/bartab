@@ -1,6 +1,4 @@
 class TabHistoriesController < ApplicationController
-    before_action :authenticate_admin!, only: [:create]
-
 
     def show
         item = TabHistories.find(params[:id])

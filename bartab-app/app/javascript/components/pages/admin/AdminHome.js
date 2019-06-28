@@ -148,7 +148,7 @@ class AdminHome extends React.Component {
     const {name, price} = this.state.item
     const newItem = {name:name, price:parseFloat(price), tab_id:tabId}
     this.handleAddOrderHistory(newItem)
-    this.handleUpdateTotalAdd(currentTabTotal, tabId)
+    // this.handleUpdateTotalAdd(currentTabTotal, tabId)
   }
   
   
@@ -179,10 +179,9 @@ class AdminHome extends React.Component {
   }
   
   //deltes item from customer order and updates total
-  handleDeleteOrder = (currentTabTotal, tabId, tabHistoryId) => {
-    this.getTabHistoryItem(tabHistoryId)
-    this.handleUpdateTotalSub(currentTabTotal, tabId)
-    this.handleDeleteOrderHistory(tabHistoryId)
+  handleDeleteOrder = (currentTabTotal, priceToSub, tabId, tabHistoryId) => {
+    this.handleUpdateTotalSub(currentTabTotal, priceToSub, tabId)
+    // this.handleDeleteOrderHistory(tabHistoryId)
   }
   
   //get tabHistoryItem price
@@ -198,9 +197,9 @@ class AdminHome extends React.Component {
   }
     
   // subtract from tab total
-  handleUpdateTotalSub = ( currentTabTotal, tabId) => {
-    const {price} = this.state.item
-    const newTotal = parseFloat(currentTabTotal) - parseFloat(price)
+  handleUpdateTotalSub = ( currentTabTotal, priceToSub, tabId) => {
+    const newTotal = parseFloat(currentTabTotal) - parseFloat(priceToSub)
+    console.log(newTotal)
     fetch(`/tabs/${tabId}`, {
    		body: JSON.stringify({total:newTotal}),
    		headers: {'Content-Type': 'application/json'},

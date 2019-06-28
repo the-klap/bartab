@@ -37,11 +37,12 @@ class CustomerTab extends React.Component {
   }
   
   //deletes item from customer order
-  handleDelete = (tabHistoryId) => {
+  handleDelete = (tabHistoryId, price) => {
     const {handleDeleteOrder, total, tabId} = this.props
     console.log(tabHistoryId)
-    handleDeleteOrder(total, tabId, tabHistoryId)
+    handleDeleteOrder(total, price, tabId, tabHistoryId)
   }
+  
   toggle() {
     this.setState(state => ({ collapse: !state.collapse }));
   }
@@ -73,36 +74,39 @@ class CustomerTab extends React.Component {
 
     return (
       <React.Fragment>
-        <Card body className="text-left">
-          <CardTitle>{tabId} - {userfirstname} {userlastname}</CardTitle>
-          <CardSubtitle>{status}</CardSubtitle>
-          <CardSubtitle>Total: ${total}0</CardSubtitle>
-          <CardBody>
-            <Row>
-              <Col md={6}>
-                <Form>
-                <FormGroup>
-                  <Input type="select" onChange={this.handleChange}>
-                    <option>-------</option>
-                    {dropMenu}
-                  </Input>
-                </FormGroup>
-                </Form>
-              </Col>
-              <Col md={4}>
+        <div>
+          <tr>
+            <th scope="row">{tabId}</th>
+            <td>{userfirstname} {userlastname}</td>
+            <td>${total}</td>
+            <td>{status}</td>
+          </tr>
+                  <FormGroup>
+                    <Input type="select" onChange={this.handleChange}>
+                      <option>-------</option>
+                      {dropMenu}
+                    </Input>
+                  </FormGroup>
                   <Button onClick={this.handleAddOrder}>
-                     Order
+                    Order
                   </Button>
-               </Col>
-              </Row>
-          </CardBody>
-          <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Full Order</Button>
+            
+            
+              <Button onClick={this.handleACloseTab}>
+                Close Out
+              </Button>
+            
+          
+          <Row>
+
+         <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Full Order</Button>
           <Collapse isOpen={this.state.collapse}>
-            <CardBody>
-             {orderList}
-            </CardBody>
-          </Collapse>
-        </Card>
+            
+            {orderList}
+             
+           </Collapse>
+          </Row>
+        </div>
       </React.Fragment>
     );
   }
@@ -111,43 +115,33 @@ class CustomerTab extends React.Component {
 export default CustomerTab
 
 
-// <tr>
-//             <th scope="row">{tabId}</th>
-//             <td>{userfirstname} {userlastname}</td>
-//             <td>${total}</td>
-//             <td>{status}</td>
-//             <td>
-//               <Row>
-//                 <Col>
-//                   <FormGroup>
-//                     <Input type="select" onChange={this.handleChange}>
-//                       <option>-------</option>
-//                       {dropMenu}
-//                     </Input>
-//                   </FormGroup>
-//                 </Col>
-//                 <Col>
+// <Card body className="text-left">
+//           <CardTitle>{tabId} - {userfirstname} {userlastname}</CardTitle>
+//           <CardSubtitle>{status}</CardSubtitle>
+//           <CardSubtitle>Total: ${total}0</CardSubtitle>
+//           <CardBody>
+//             <Row>
+//               <Col md={6}>
+//                 <Form>
+//                 <FormGroup>
+//                   <Input type="select" onChange={this.handleChange}>
+//                     <option>-------</option>
+//                     {dropMenu}
+//                   </Input>
+//                 </FormGroup>
+//                 </Form>
+//               </Col>
+//               <Col md={4}>
 //                   <Button onClick={this.handleAddOrder}>
 //                     Order
 //                   </Button>
-//                 </Col>
+//               </Col>
 //               </Row>
-//             </td>
-//             <td>
-//               <Button onClick={this.handleACloseTab}>
-//                 Close Out
-//               </Button>
-//             </td>
-//           </tr>
-//           <Row>
-//             <Button color="primary" id="toggler" style={{ marginBottom: '1rem' }}>
-//               Show Order
-//             </Button>
-//             <UncontrolledCollapse toggler="#toggler">
-//               <Card>
-//                 <CardBody>
-//                   {orderList}
-//                 </CardBody>
-//               </Card>
-//             </UncontrolledCollapse>
-//           </Row>
+//           </CardBody>
+//           <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Full Order</Button>
+//           <Collapse isOpen={this.state.collapse}>
+//             <CardBody>
+//             {orderList}
+//             </CardBody>
+//           </Collapse>
+//         </Card>

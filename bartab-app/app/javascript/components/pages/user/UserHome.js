@@ -164,6 +164,10 @@ class UserHome extends React.Component {
     const { current_user_profile, openTabs, closedTabs, success }=this.state
     
     const name = ((current_user_profile===null) ? 'new user' : current_user_profile.firstname)
+    
+    
+    console.log(openTabs)
+    console.log(closedTabs)
 
     return (
       <React.Fragment>
