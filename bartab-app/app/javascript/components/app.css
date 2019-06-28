@@ -457,3 +457,54 @@ section {
 .navbar{
     padding: 0px;
 }
+
+
+/*styling to Admin links */
+
+.admin_open_tabs{
+  background: #96ceb4;/*#3498db*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.admin_Menu{
+    background: #ffeead;/*#3498db*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.admin_Profile{
+    background: #ff6f69;/*#2ecc71*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.admin_Signout{
+     background: #ffcc5c;/*#34495e*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.admin_open_tabs:hover { border-width: 10px; }
+
+.admin_open_tabs {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.admin_Menu:hover { border-width: 10px; }
+
+.admin_Menu {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.admin_Profile:hover { border-width: 10px; }
+
+.admin_Profile {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
+
+.admin_Signout:hover { border-width: 10px; }
+
+.admin_Signout {
+  border: solid 3px #FFFFFF;
+  transition: border-width 0.3s linear;
+}
