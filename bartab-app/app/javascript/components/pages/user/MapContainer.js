@@ -108,7 +108,9 @@ export class MapContainer extends Component {
     
     return (
       <React.Fragment>
-        <div>
+        <br /> <br />
+        <div className="map_div">
+        
           <Map
             google={this.props.google}
             onMouseover={this.onMapOver}
@@ -150,6 +152,9 @@ export class MapContainer extends Component {
             </InfoWindowEx>
           </Map>
         </div>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <br /><br /><br /><br /><br /><br /><br /><br />
+        <div className="open_tab">
         <StoreList 
               stores={this.props.stores}
               openTab={this.props.openTab}
@@ -157,6 +162,7 @@ export class MapContainer extends Component {
         {this.props.success &&
         		<Redirect to="/user_home/opentabs" />
         }
+        </div>
       </React.Fragment>
     );
   }
