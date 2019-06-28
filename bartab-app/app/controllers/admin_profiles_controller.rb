@@ -1,5 +1,6 @@
 class AdminProfilesController < ApplicationController
-    print "in the controller"
+    before_action :authenticate_admin!, only: [:create]
+
     def index
        admin_profiles = AdminProfile.all
        render json: admin_profiles

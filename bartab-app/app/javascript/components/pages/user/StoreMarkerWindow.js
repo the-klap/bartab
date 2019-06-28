@@ -1,15 +1,16 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Card, Button, CardHeader, CardFooter, CardBody,
-  CardTitle, CardText } from 'reactstrap';
+import { Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText } from 'reactstrap';
 class StoreMarkerWindow extends React.Component {
-  
-  
-  onClick = () => {
-    this.props.openTab(this.props.storeId)
+  constructor(props){
+    super(props)
+     this.state = {
+      }
   }
   
-  
+  openTab = () => {
+    this.props.openTab(this.props.id)
+  }
   
   render () {
     const {name, location, info} = this.props
@@ -20,7 +21,7 @@ class StoreMarkerWindow extends React.Component {
           <CardBody>
             <CardTitle>{location}</CardTitle>
             <CardText>{info}</CardText>
-            <Button onClick={this.onClick}>Open Tab</Button>
+            <Button onClick={this.openTab}>Open Tab</Button>
           </CardBody>
         </Card>
       </React.Fragment>

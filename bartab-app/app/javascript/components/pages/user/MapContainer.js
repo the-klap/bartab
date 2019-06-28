@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+import { Button } from 'reactstrap';
+
 import UserHome from './UserHome.js'
 import StoreMarkerWindow from './StoreMarkerWindow.js'
+import InfoWindowEx from './InfoWindowEx.js'
+import StoreList from './StoreList.js'
 
 const mapStyles = {
   width: '50%',
@@ -17,8 +21,14 @@ export class MapContainer extends Component {
             selectedPlace: {},
             address: [], 
             location: {},
-            displayMarkers: []
+            displayMarkers: [],
+            success: false,
           }
+    }
+    
+    openTab = () => {
+      console.log(this.state.selectedPlace.storeId)
+      // this.props.openTab(this.state.selectedPlace.storeId)
     }
    
     onClick = (props, marker, e) => {
@@ -27,7 +37,6 @@ export class MapContainer extends Component {
         activeMarker: marker,
         showingInfoWindow: true
       })
-      console.log(this.state.selectedPlace)
     }
     
     onClose = props => {
@@ -38,6 +47,8 @@ export class MapContainer extends Component {
         });
       }
     }
+    
+   
       
     componentDidMount = () => {
      this.fetchMarkers()  
@@ -50,10 +61,9 @@ export class MapContainer extends Component {
       this.fetchMarkers()
     }
     fetchMarkers = () => {
-      console.log('stopped here')
       const newMarkers = []
       this.props.stores.map((store, index) => {
-        const location = `${store.id} ${store.address1}, ${store.city}, ${store.state}, ${store.zip}`
+        const location = `${store.address1}, ${store.city}, ${store.state}, ${store.zip}`
         this.geocodeAddress(location)
         .then((geoco)=>{
            newMarkers.push({lat: geoco.lat, 
@@ -64,7 +74,6 @@ export class MapContainer extends Component {
                             info: store.additionalinfo,
              
            })
-           console.log(newMarkers)
            this.setState({ displayMarkers:newMarkers})
        })
       })
@@ -79,8 +88,6 @@ export class MapContainer extends Component {
       return new Promise((resolve, reject) => {
         geocoder.geocode({'address': address}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
-          console.log('Geocoded address: ',
-          results[0].geometry.location.toJSON())
           resolve(results[0].geometry.location.toJSON())
          } else {
           reject()
@@ -99,48 +106,58 @@ export class MapContainer extends Component {
            onMapOver,
     }=this.props
     
-
     return (
-      <Map
-        google={this.props.google}
-        onMouseover={this.onMapOver}
-        zoom={14}
-        style={mapStyles}
-        initialCenter={{
-         lat: 32.7091,
-         lng: -117.1580
-        }}
-      >    
-        {this.state.displayMarkers.map((coordinates, index) => {
-          const{storeId, lat, lng, name, location, info} = coordinates
-          return (
-                  <Marker onClick={this.onClick}
-                      key={index}
-                      id={storeId}
-                      name={name}
-                      position = {{lat, lng}}
-                      location={location}
-                      info= {info}
-                  >
-                  </Marker>
-                )
-        })}
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
-            >
-            <div>
-              <StoreMarkerWindow 
-                name={this.state.selectedPlace.name}
-                location={this.state.selectedPlace.location}
-                info={this.state.selectedPlace.info}
-                openTab= {this.props.openTabs}
-                storeId={this.state.selectedPlace.id}
-                />
-            </div>
-        </InfoWindow>
-      </Map>
+      <React.Fragment>
+        <div>
+          <Map
+            google={this.props.google}
+            onMouseover={this.onMapOver}
+            zoom={14}
+            style={mapStyles}
+            initialCenter={{
+             lat: 32.7091,
+             lng: -117.1580
+            }}
+          >    
+            {this.state.displayMarkers.map((coordinates, index) => {
+              const{storeId, lat, lng, name, location, info} = coordinates
+              return (
+                      <Marker onClick={this.onClick}
+                          key={index}
+                          id={storeId}
+                          name={name}
+                          position = {{lat, lng}}
+                          location={location}
+                          info= {info}
+                      >
+                      </Marker>
+                    )
+            })}
+            <InfoWindowEx
+              marker={this.state.activeMarker}
+              visible={this.state.showingInfoWindow}
+              onClose={this.onClose}
+              >
+              <div>
+                  <StoreMarkerWindow 
+                    name={this.state.selectedPlace.name}
+                    location={this.state.selectedPlace.location}
+                    info={this.state.selectedPlace.info}
+                    id={this.state.selectedPlace.id}
+                    openTab={this.props.openTab}
+                    />
+                </div>
+            </InfoWindowEx>
+          </Map>
+        </div>
+        <StoreList 
+              stores={this.props.stores}
+              openTab={this.props.openTab}
+        />
+        {this.props.success &&
+        		<Redirect to="/user_home/opentabs" />
+        }
+      </React.Fragment>
     );
   }
 }
