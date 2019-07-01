@@ -10,16 +10,24 @@ class OpenTabs extends React.Component {
       }
   }
   
-  componentDidMount() {
-    this.props.getMenu()
-    this.props.getOpenTabs()
-  }
+  // componentWillMount() {
+    
+  // }
+  
+  // componentDidUpdate = (prevProps) => {
+  //   if (this.props.openTabs !== prevProps.openTabs){
+  //     this.props.getOpenTabs()
+  //   } else if (this.props.menu !== prevProps.menu){
+  //     this.props.getMenu()
+  //   } else {
+  //     return true
+  //   }
+  // }
   
   
   render () {
     const {customers, menu, openTabs, handleAddOrder, getMenuItem, handleCloseTab, handleDeleteOrder} = this.props
     
-    console.log(openTabs)
     
     var customerTabs = openTabs.map((value, index) => <CustomerTab 
       key={index}
@@ -37,6 +45,7 @@ class OpenTabs extends React.Component {
       menu={menu}
       />
       )
+      
     return (
       <React.Fragment>
         <Table>

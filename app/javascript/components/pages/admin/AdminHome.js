@@ -37,6 +37,22 @@ class AdminHome extends React.Component {
   
     //fetch will get current admin profiles
   componentWillMount() {
+    this.getData()
+  }
+  
+  // componentDidUpdate = (prevProps, prevState) => {
+  //   if (prevProps !== prevState){
+  //     this.props.getOpenTabs()
+  // }
+  
+  // functions to run on mount and update
+  getData = () => {
+    this.getAdminProfile()
+    this.getMenu()
+    this.getOpenTabs()
+  }
+  
+  getAdminProfile = () => {
     const {current_admin_id} = this.props
     fetch(`/admin_profiles/${current_admin_id}`, {
   		headers: { 
@@ -148,7 +164,8 @@ class AdminHome extends React.Component {
     const {name, price} = this.state.item
     const newItem = {name:name, price:parseFloat(price), tab_id:tabId}
     this.handleAddOrderHistory(newItem)
-    this.handleUpdateTotalAdd(currentTabTotal, tabId)
+    // this.handleUpdateTotalAdd(currentTabTotal, tabId)
+    this.getOpenTabs()
   }
   
   
@@ -180,7 +197,7 @@ class AdminHome extends React.Component {
   
   //deltes item from customer order and updates total
   handleDeleteOrder = (currentTabTotal, priceToSub, tabId, tabHistoryId) => {
-    this.handleUpdateTotalSub(currentTabTotal, priceToSub, tabId)
+    // this.handleUpdateTotalSub(currentTabTotal, priceToSub, tabId)
     this.handleDeleteOrderHistory(tabHistoryId)
   }
   
@@ -223,9 +240,8 @@ class AdminHome extends React.Component {
             admin_sign_out_route,
             current_admin_id,
            }=this.props
-     const {customers, menu, current_admin_profile, openTabs} = this.state
-     
-     console.log(current_admin_profile)
+     const {customers, menu, current_admin_profile, openTabs, item} = this.state
+     console.log(openTabs)
     return (
       <React.Fragment>
           <Router>

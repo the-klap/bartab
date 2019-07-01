@@ -14,6 +14,9 @@ class CustomerTab extends React.Component {
       
   }
   
+  componentWillUpdate = (prevProps) => {
+  }
+  
   //passes id to close tab
   handleACloseTab = () => {
     const {handleCloseTab, tabId} = this.props
