@@ -1,10 +1,39 @@
-<%= react_component('App', {
-    admin_logged_in: admin_signed_in?,
-    admin_sign_in_route: new_admin_session_path,
-    admin_sign_out_route: destroy_admin_session_path,
-   user_logged_in: user_signed_in?,
-   user_sign_in_route: new_user_session_path,
-   user_sign_out_route: destroy_user_session_path,
-   current_admin_id: current_admin&.id, 
-   current_user_id: current_user&.id,
-}) %>
+<%= 
+        
+        
+        if (admin_signed_in? && !user_signed_in?) 
+            (react_component('pages/admin/AdminHome', {
+                admin_logged_in: admin_signed_in?,
+                admin_sign_in_route: new_admin_session_path,
+                admin_sign_out_route: destroy_admin_session_path,
+                user_logged_in: user_signed_in?,
+                user_sign_in_route: new_user_session_path,
+                user_sign_out_route: destroy_user_session_path,
+                current_admin_id: current_admin&.id, 
+                current_user_id: current_user&.id,
+            }))
+        elsif (!admin_signed_in? && user_signed_in?)
+            (react_component('pages/user/UserHome', {
+                admin_logged_in: admin_signed_in?,
+                admin_sign_in_route: new_admin_session_path,
+                admin_sign_out_route: destroy_admin_session_path,
+                user_logged_in: user_signed_in?,
+                user_sign_in_route: new_user_session_path,
+                user_sign_out_route: destroy_user_session_path,
+                current_admin_id: current_admin&.id, 
+                current_user_id: current_user&.id,
+            }))
+        else
+            (react_component('App', {
+                admin_logged_in: admin_signed_in?,
+                admin_sign_in_route: new_admin_session_path,
+                admin_sign_out_route: destroy_admin_session_path,
+                user_logged_in: user_signed_in?,
+                user_sign_in_route: new_user_session_path,
+                user_sign_out_route: destroy_user_session_path,
+                current_admin_id: current_admin&.id, 
+                current_user_id: current_user&.id,
+        }) )
+        end
+
+%>

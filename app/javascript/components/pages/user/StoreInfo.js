@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Row, Col, Button } from 'reactstrap'
+import { Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText } from 'reactstrap';
 
 class StoreInfo extends React.Component {
   
@@ -10,14 +10,17 @@ class StoreInfo extends React.Component {
   
   render () {
     const {name, info, address1, address2, city, state, zip, country} = this.props
+    const location = `${address1}, ${city}, ${state}, ${zip}`
     return (
       <React.Fragment>
-        <Row>
-          <Col> Name: {name} </Col>
-          <Col> 
+        <Card>
+          <CardHeader style={{color:'black'}} tag="h3">{name}</CardHeader>
+          <CardBody>
+            <CardTitle>{location}</CardTitle>
+            <CardText>{info}</CardText>
             <Button onClick={this.openTab}>Open Tab</Button>
-          </Col>
-        </Row>
+          </CardBody>
+        </Card>
       </React.Fragment>
     );
   }
