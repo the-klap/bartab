@@ -11,10 +11,6 @@ class CustomerTab extends React.Component {
       }
       this.toggle = this.toggle.bind(this);
       this.state = { collapse: false };
-      
-  }
-  
-  componentWillUpdate = (prevProps) => {
   }
   
   //passes id to close tab
@@ -35,15 +31,13 @@ class CustomerTab extends React.Component {
   //sends state id and user id to adminhome
   handleAddOrder = () => {
     const {handleAddOrder, tabId, total} = this.props
-    console.log(total)
     handleAddOrder(total, tabId)
   }
   
   //deletes item from customer order
-  handleDelete = (tabHistoryId, price) => {
-    const {handleDeleteOrder, total, tabId} = this.props
-    console.log(tabHistoryId)
-    handleDeleteOrder(total, price, tabId, tabHistoryId)
+  handleDelete = (tabHistoryId) => {
+    const {handleDeleteOrder} = this.props
+    handleDeleteOrder(tabHistoryId)
   }
   
   toggle() {
@@ -73,7 +67,7 @@ class CustomerTab extends React.Component {
       price={value.price}
       handleDelete={this.handleDelete}
       />
-      )
+      );
 
     return (
       <React.Fragment>

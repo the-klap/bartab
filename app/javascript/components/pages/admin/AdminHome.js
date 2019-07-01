@@ -35,17 +35,13 @@ class AdminHome extends React.Component {
       }
   }
   
-    //fetch will get current admin profiles
-  componentWillMount() {
+  //fetch will get current admin profiles
+  componentDidMount() {
     this.getData()
   }
   
-  // componentDidUpdate = (prevProps, prevState) => {
-  //   if (prevProps !== prevState){
-  //     this.props.getOpenTabs()
-  // }
-  
-  // functions to run on mount and update
+
+  // gets current admin profile, the menu for current admin and any open tabs at the admin
   getData = () => {
     this.getAdminProfile()
     this.getMenu()
@@ -138,6 +134,7 @@ class AdminHome extends React.Component {
   		method: "POST"  
 	  })
 	  .then(response => response.json())
+
   }
   
   
@@ -147,6 +144,7 @@ class AdminHome extends React.Component {
       	method: "DELETE"  
     	  })
     	  .then(response => response.json())
+
   }
   
   //closes out a customer (turns open:true to open:false)
@@ -159,19 +157,10 @@ class AdminHome extends React.Component {
     	  .then(response => response.json())
   }
   
-  //adds item to customer order and updates total
+  //adds item to order (TabHistories)
   handleAddOrder = (currentTabTotal, tabId) => {
     const {name, price} = this.state.item
     const newItem = {name:name, price:parseFloat(price), tab_id:tabId}
-    this.handleAddOrderHistory(newItem)
-    // this.handleUpdateTotalAdd(currentTabTotal, tabId)
-    this.getOpenTabs()
-  }
-  
-  
-    
-  //adds item to order (TabHistories)
-  handleAddOrderHistory = (newItem) => {
     fetch('/tab_histories', {
   		body: JSON.stringify(newItem),  
   		headers: {  
@@ -180,58 +169,17 @@ class AdminHome extends React.Component {
   		method: "POST"  
 	  })
 	  .then(response => response.json())
+
   }
-  
-  // add to tab total
-  handleUpdateTotalAdd = ( currentTabTotal, tabId) => {
-    const { price } = this.state.item
-    const newTotal = parseFloat(currentTabTotal) + parseFloat(price)
-    console.log(newTotal)
-    fetch(`/tabs/${tabId}`, {
-   		body: JSON.stringify({total:newTotal}),
-   		headers: {'Content-Type': 'application/json'},
-     	method: "PATCH"  
-    	  })
-    	  .then(response => response.json())
-  }
-  
-  //deltes item from customer order and updates total
-  handleDeleteOrder = (currentTabTotal, priceToSub, tabId, tabHistoryId) => {
-    // this.handleUpdateTotalSub(currentTabTotal, priceToSub, tabId)
-    this.handleDeleteOrderHistory(tabHistoryId)
-  }
-  
-  //get tabHistoryItem price
-  getTabHistoryItem = (itemId) => {
-    fetch(`/tab_histories/${itemId}`, {
-  		headers: { 
-  			'Content-Type': 'application/json'
-  		},
-  		method: "GET"
-  	  })
-  	  .then(response => response.json())
-  	  .then(item => {this.setState({ item }) })
-  }
-    
-  // subtract from tab total
-  handleUpdateTotalSub = ( currentTabTotal, priceToSub, tabId) => {
-    const newTotal = parseFloat(currentTabTotal) - parseFloat(priceToSub)
-    console.log(newTotal)
-    fetch(`/tabs/${tabId}`, {
-   		body: JSON.stringify({total:newTotal}),
-   		headers: {'Content-Type': 'application/json'},
-     	method: "PATCH"  
-    	  })
-    	  .then(response => response.json())
-  }
-  
+
   // deletes item from order
-  handleDeleteOrderHistory = (tabHistoryId) => {
+  handleDeleteOrder = (tabHistoryId) => {
     fetch(`/tab_histories/${tabHistoryId}`, {
    		headers: {'Content-Type': 'application/json'},
      	method: "DELETE"  
     	  })
     	  .then(response => response.json())
+
   }
   
   render () {
@@ -241,7 +189,7 @@ class AdminHome extends React.Component {
             current_admin_id,
            }=this.props
      const {customers, menu, current_admin_profile, openTabs, item} = this.state
-     console.log(openTabs)
+
     return (
       <React.Fragment>
           <Router>

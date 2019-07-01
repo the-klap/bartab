@@ -26,7 +26,14 @@ class OpenTabs extends React.Component {
   
   
   render () {
-    const {customers, menu, openTabs, handleAddOrder, getMenuItem, handleCloseTab, handleDeleteOrder} = this.props
+    const {customers,
+            menu, 
+            openTabs, 
+            handleAddOrder, 
+            getMenuItem, 
+            handleCloseTab, 
+            handleDeleteOrder, 
+            getOpenTabs} = this.props
     
     
     var customerTabs = openTabs.map((value, index) => <CustomerTab 
@@ -43,6 +50,7 @@ class OpenTabs extends React.Component {
       handleCloseTab={handleCloseTab}
       handleDeleteOrder={handleDeleteOrder}
       menu={menu}
+      getOpenTabs={getOpenTabs}
       />
       )
       
