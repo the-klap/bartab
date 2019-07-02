@@ -3,9 +3,9 @@ class RegistrationsController < Devise::RegistrationsController
 
     def after_sign_in_path_for(resource)
         if resource.class == Admin
-            '/admin_home'
+            '/admin_home/open_tabs'
         elsif resource.class == User
-            '/user_home'
+            '/user_home/opentabs'
         end 
     end
 end

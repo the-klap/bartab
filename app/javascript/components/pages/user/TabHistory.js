@@ -10,7 +10,7 @@ export default class TabHistory extends React.Component {
         
      render(){
         const {closedTabs} =this.props
-        console.log(closedTabs)
+
         const closedSessionsList = closedTabs.map((tab, index) =>  {
                     return (<TabListItem 
                         bar_id={tab.admin_id} 

@@ -76,7 +76,6 @@ class UserHome extends React.Component {
   //Updates user profile with new firstname/lastname
   updateProfile = (newProfile) => {
     const {current_user_id} = this.props
-    console.log(newProfile)
     fetch(`/user_profiles/${current_user_id}`, {
       body: JSON.stringify(newProfile ),
   		headers: { 
@@ -89,7 +88,6 @@ class UserHome extends React.Component {
   
   //creates new profile if profile has not been created
   handleNewProfile = (user_profile_params) => {
-    console.log(user_profile_params)
     fetch('/user_profiles', {
    		body: JSON.stringify(user_profile_params),
    		headers: {'Content-Type': 'application/json'},
@@ -120,6 +118,17 @@ class UserHome extends React.Component {
   	  })
   	  .then(response => response.json())
   	  .then(closedTabs => {this.setState({ closedTabs }) })
+  }
+  
+  //closes out a customer (turns open:true to open:false)
+  handleCloseTab = (tabId) => {
+    fetch(`/tabs/${tabId}`, {
+   		body: JSON.stringify({open:false}),
+   		headers: {'Content-Type': 'application/json'},
+     	method: "PATCH"  
+    	  })
+    	  .then(response => response.json())
+    this.getOpenTabs()
   }
   
   
@@ -162,50 +171,32 @@ class UserHome extends React.Component {
     
     const name = ((current_user_profile===null) ? 'new user' : current_user_profile.firstname)
     
-    
-    console.log(openTabs)
-    console.log(closedTabs)
-
     return (
       <React.Fragment>
         <Container>
         <Router>
-
-          <div>
-          <h6><br />
-            Hey there {name}!<br />
-            <br />
-            </h6>
-          </div>
-
-      
           <div>
             {user_logged_in &&
               <Nav position="center">
 
-              <div class="container" className="navbar">
-              <div class="row">
-              <div class="col-sm">
-              <NavItem className="user_Home">
-                <NavLink href="/user_home">User Home<br /><FontAwesomeIcon icon={faHome}  size="6x"/></NavLink>
-              </NavItem>
-              </div>
-              <div class="col-sm">
+              <div className="container" className="navbar">
+              <div className="row">
+              <div className="col-sm">
               <NavItem className="user_tabHistory">
                 <NavLink href="/user_home/tabhistory">Tab History<br /><FontAwesomeIcon icon={faListUl} size="6x"/></NavLink>
               </NavItem>
               </div>
-              <div class="col-sm">
+              <div className="col-sm">
               <NavItem className="user_mapContainer">
                 <NavLink href="/user_home/mapcontainer">Map <br/><FontAwesomeIcon icon={faMapMarkedAlt} size="6x"/></NavLink>
               </NavItem>
               </div>
-              <div class="col-sm">
+              <div className="col-sm">
               <NavItem className="user_tab">
                 <NavLink href="/user_home/opentabs">Open Tabs <br /><FontAwesomeIcon icon={faBeer} size="6x"/></NavLink>
               </NavItem>
               </div>
-              <div class="col-sm">
+              <div className="col-sm">
               <NavItem className="user_profile">
                 <NavLink href="/user_home/profile">Profile <br /><FontAwesomeIcon icon={faIdCard} size="6x"/></NavLink>
               </NavItem>
@@ -219,6 +210,12 @@ class UserHome extends React.Component {
               </div>
               </Nav>
             }
+          <div>
+          <h6><br />
+            Hey there {name}!<br />
+            <br />
+            </h6>
+          </div>
             {/* changing /userhome to user_home will create an error*/}
             <Route exact path="/userhome" exact component={UserHome} />
             <Route exact path="/user_home/tabhistory" exact render={(props) => <TabHistory {...props}
@@ -226,6 +223,7 @@ class UserHome extends React.Component {
             />} />
             <Route path="/user_home/opentabs" exact render={(props) => <OpenTabs {...props}
                 openTabs={openTabs}
+                handleCloseTab={this.handleCloseTab}
             />} />
             <Route path="/user_home/mapcontainer" exact render={(props) => <MapContainer {...props}
               stores={stores}
