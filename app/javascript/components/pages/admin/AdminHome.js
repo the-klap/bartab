@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
-import { Nav, NavItem, NavLink } from 'reactstrap'
+import { Nav, NavItem, NavLink, Container } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBeer,
          faMapMarkedAlt, 
@@ -134,6 +134,7 @@ class AdminHome extends React.Component {
   		method: "POST"  
 	  })
 	  .then(response => response.json())
+	  this.getMenu()
 
   }
   
@@ -144,7 +145,7 @@ class AdminHome extends React.Component {
       	method: "DELETE"  
     	  })
     	  .then(response => response.json())
-
+  this.getMenu()
   }
   
   //closes out a customer (turns open:true to open:false)
@@ -155,6 +156,7 @@ class AdminHome extends React.Component {
      	method: "PATCH"  
     	  })
     	  .then(response => response.json())
+    this.getOpenTabs()
   }
   
   //adds item to order (TabHistories)
@@ -169,6 +171,7 @@ class AdminHome extends React.Component {
   		method: "POST"  
 	  })
 	  .then(response => response.json())
+	  this.getOpenTabs()
 
   }
 
@@ -179,7 +182,7 @@ class AdminHome extends React.Component {
      	method: "DELETE"  
     	  })
     	  .then(response => response.json())
-
+    this.getOpenTabs()
   }
   
   render () {
@@ -192,6 +195,7 @@ class AdminHome extends React.Component {
 
     return (
       <React.Fragment>
+        <Container>
           <Router>
             <div>
               {admin_logged_in &&
@@ -254,6 +258,7 @@ class AdminHome extends React.Component {
             
           </div>
         </Router>
+      </Container>
     </React.Fragment>
     );
   }

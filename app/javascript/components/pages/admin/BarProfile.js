@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import {Form, FormGroup, Label, Input, Button} from 'reactstrap'
+import {Form, FormGroup, Label, Input, Button, Card, CardTitle, CardText, Col, Row, Jumbotron} from 'reactstrap'
 
 
 class BarProfile extends React.Component {
@@ -37,6 +37,50 @@ class BarProfile extends React.Component {
     console.log(updated_admin_profile)
     return (
       <React.Fragment>
+       <Jumbotron>
+          <h1 className="display-3">{current_admin_profile.establishmentname}</h1>
+          <div className="lead">
+            <Row>
+            Address:
+            </Row>
+            <Row>
+              {current_admin_profile.address1} 
+            </Row>
+            <Row>
+              {current_admin_profile.address2}
+            </Row>
+            <Row>
+              {current_admin_profile.city}, {current_admin_profile.state}, {current_admin_profile.zip}
+            </Row>
+            <Row>
+              {current_admin_profile.country}
+            </Row>
+          </div>
+          <hr className="my-2" />
+          <p>
+            <Col>
+              <Row>
+                Hours:
+              </Row>
+              <Row>
+                {current_admin_profile.hours}
+              </Row>
+              <Row>
+                Info:
+              </Row>
+              <Row>
+                {current_admin_profile.additionalinfo}
+              </Row>
+            </Col>
+          </p>
+          <p className="lead">
+            <Button color="primary">Edit Profile</Button>
+          </p>
+        </Jumbotron>
+        <br/>
+        <hr/>
+        <h2>Edit Profile</h2>
+        <br/>
         <Form>
           <FormGroup >
             <Label>Establishment Name</Label>

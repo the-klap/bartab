@@ -7,10 +7,10 @@ import MenuItem from './MenuItem'
 class CustomerTab extends React.Component {
   constructor(props){
     super(props)
-      this.state = {
-      }
       this.toggle = this.toggle.bind(this);
-      this.state = { collapse: false };
+      this.state = { 
+          collapse: false,
+      };
   }
   
   //passes id to close tab

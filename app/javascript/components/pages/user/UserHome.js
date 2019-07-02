@@ -5,7 +5,7 @@ import  {
          Route,
          Link
         } from "react-router-dom";
-import { Nav, NavItem, NavLink } from 'reactstrap'
+import { Nav, NavItem, NavLink, Container } from 'reactstrap'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBeer,
@@ -15,18 +15,7 @@ import { faBeer,
          faHome,
          faSadCry
        } from '@fortawesome/free-solid-svg-icons';
-// import {Geocode} from "react-geocode";
 
-
-// Geocode.fromAddress().then(
-//   response => {
-//     const { lat, lng } = response.results[0].geometry.location;
-//     console.log(lat, lng);
-//   },
-//   error => {
-//     console.error(error);
-//   }
-// );
 
 
 //components imported to main UserHome
@@ -179,6 +168,7 @@ class UserHome extends React.Component {
 
     return (
       <React.Fragment>
+        <Container>
         <Router>
 
           <div>
@@ -259,6 +249,7 @@ class UserHome extends React.Component {
             />} />
           </div>
         </Router>
+        </Container>
         
       </React.Fragment>
     );
