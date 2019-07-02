@@ -13,14 +13,15 @@ class MenusController < ApplicationController
     def create
         menuItem = current_admin.menus.create(menu_params)
         if menuItem.valid?
-            render json: menuItem
+            render json: current_admin.menus
         else
             render json: menuItem.errors, status: :unprocessable_entity
         end
     end
     
     def destroy
-        render json: Menu.find(params[:id]).destroy
+       menuItem = Menu.find(params[:id]).destroy
+        render json: current_admin.menus
     end
     
     def menu_params

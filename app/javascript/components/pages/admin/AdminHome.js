@@ -81,12 +81,13 @@ class AdminHome extends React.Component {
    		method: "PUT"
    	})
       .then(response => response.json())
+      .then(current_admin_profile => this.setState({current_admin_profile}))
     
   }
   
   //fetch gets menu
   getMenu = () => {
-    fetch('/menus', {
+    return fetch('/menus', {
   		headers: { 
   			'Content-Type': 'application/json'
   		},
@@ -134,8 +135,7 @@ class AdminHome extends React.Component {
   		method: "POST"  
 	  })
 	  .then(response => response.json())
-	  this.getMenu()
-
+	  .then((menu) => {this.setState({menu})})
   }
   
   
@@ -145,7 +145,8 @@ class AdminHome extends React.Component {
       	method: "DELETE"  
     	  })
     	  .then(response => response.json())
-  this.getMenu()
+    	  .then(menu => {this.setState({menu})})
+    
   }
   
   //closes out a customer (turns open:true to open:false)
@@ -156,7 +157,8 @@ class AdminHome extends React.Component {
      	method: "PATCH"  
     	  })
     	  .then(response => response.json())
-    this.getOpenTabs()
+    	  .then(openTabs => {this.setState({openTabs})})
+    
   }
   
   //adds item to order (TabHistories)
@@ -171,7 +173,7 @@ class AdminHome extends React.Component {
   		method: "POST"  
 	  })
 	  .then(response => response.json())
-	  this.getOpenTabs()
+	  .then(openTabs => {this.setState({openTabs})})
 
   }
 
@@ -182,7 +184,7 @@ class AdminHome extends React.Component {
      	method: "DELETE"  
     	  })
     	  .then(response => response.json())
-    this.getOpenTabs()
+        .then(openTabs => {this.setState({openTabs})})
   }
   
   render () {

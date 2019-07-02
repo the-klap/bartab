@@ -131,7 +131,8 @@ class UserHome extends React.Component {
      	method: "PATCH"  
     	  })
     	  .then(response => response.json())
-    this.getOpenTabs()
+    	  .then(openTabs => this.setState({openTabs}))
+    
   }
   
   

@@ -5,9 +5,15 @@ class TabsController < ApplicationController
     end
     
     def update
-        @tab = Tab.find(params[:id])
-        @tab.update(tab_params)
-        render json: @tab
+        tab = Tab.find(params[:id])
+        tab.update(tab_params)
+        @current_tabs = Tab.where(admin_id:current_admin)
+        @open_tabs = @current_tabs.where(open:true)
+        @tabs = []
+        @open_tabs.find_each do |tab|
+            @tabs << tab.as_json(:include => {:tab_histories => {}, :user => {:include => :user_profile}})
+        end
+        render json: @tabs
     end
     
     def create

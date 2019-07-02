@@ -22,7 +22,8 @@ class AdminProfilesController < ApplicationController
     
     def update
         admin_profile = AdminProfile.find_by_admin_id(params[:id])
-        render json: admin_profile.update(admin_profile_params)
+        admin_profile.update(admin_profile_params)
+        render json: current_admin.admin_profile
     end
     
     def admin_profile_params
