@@ -40,7 +40,7 @@ class App extends React.Component {
     
     console.log(`Admin Logged In? ${admin_logged_in}`)
     console.log(`User Logged In?: ${user_logged_in}`)
-    console.log(this.state.admin_profiles)
+
   
   
   

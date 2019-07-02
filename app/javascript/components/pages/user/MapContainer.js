@@ -26,6 +26,17 @@ class MapContainer extends Component {
           }
     }
     
+    componentDidMount = () => {
+     this.fetchMarkers()  
+    }
+    
+    componentDidUpdate = (prevProps) => {
+      if (prevProps.stores === this.props.stores){
+        return true
+      }
+      this.fetchMarkers()
+    }
+    
     openTab = () => {
       console.log(this.state.selectedPlace.storeId)
       // this.props.openTab(this.state.selectedPlace.storeId)
@@ -49,17 +60,7 @@ class MapContainer extends Component {
     }
     
    
-      
-    componentDidMount = () => {
-     this.fetchMarkers()  
-    }
     
-    componentDidUpdate = (prevProps) => {
-      if (prevProps.stores === this.props.stores){
-        return true
-      }
-      this.fetchMarkers()
-    }
     fetchMarkers = () => {
       const newMarkers = []
       this.props.stores.map((store, index) => {

@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
-import { Nav, NavItem, NavLink } from 'reactstrap'
+import { Nav, NavItem, NavLink, Container } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBeer,
          faMapMarkedAlt, 
@@ -35,8 +35,20 @@ class AdminHome extends React.Component {
       }
   }
   
-    //fetch will get current admin profiles
-  componentWillMount() {
+  //fetch will get current admin profiles
+  componentDidMount() {
+    this.getData()
+  }
+  
+
+  // gets current admin profile, the menu for current admin and any open tabs at the admin
+  getData = () => {
+    this.getAdminProfile()
+    this.getMenu()
+    this.getOpenTabs()
+  }
+  
+  getAdminProfile = () => {
     const {current_admin_id} = this.props
     fetch(`/admin_profiles/${current_admin_id}`, {
   		headers: { 
@@ -122,6 +134,8 @@ class AdminHome extends React.Component {
   		method: "POST"  
 	  })
 	  .then(response => response.json())
+	  this.getMenu()
+
   }
   
   
@@ -131,6 +145,7 @@ class AdminHome extends React.Component {
       	method: "DELETE"  
     	  })
     	  .then(response => response.json())
+  this.getMenu()
   }
   
   //closes out a customer (turns open:true to open:false)
@@ -141,20 +156,13 @@ class AdminHome extends React.Component {
      	method: "PATCH"  
     	  })
     	  .then(response => response.json())
+    this.getOpenTabs()
   }
   
-  //adds item to customer order and updates total
+  //adds item to order (TabHistories)
   handleAddOrder = (currentTabTotal, tabId) => {
     const {name, price} = this.state.item
     const newItem = {name:name, price:parseFloat(price), tab_id:tabId}
-    this.handleAddOrderHistory(newItem)
-    this.handleUpdateTotalAdd(currentTabTotal, tabId)
-  }
-  
-  
-    
-  //adds item to order (TabHistories)
-  handleAddOrderHistory = (newItem) => {
     fetch('/tab_histories', {
   		body: JSON.stringify(newItem),  
   		headers: {  
@@ -163,58 +171,18 @@ class AdminHome extends React.Component {
   		method: "POST"  
 	  })
 	  .then(response => response.json())
+	  this.getOpenTabs()
+
   }
-  
-  // add to tab total
-  handleUpdateTotalAdd = ( currentTabTotal, tabId) => {
-    const { price } = this.state.item
-    const newTotal = parseFloat(currentTabTotal) + parseFloat(price)
-    console.log(newTotal)
-    fetch(`/tabs/${tabId}`, {
-   		body: JSON.stringify({total:newTotal}),
-   		headers: {'Content-Type': 'application/json'},
-     	method: "PATCH"  
-    	  })
-    	  .then(response => response.json())
-  }
-  
-  //deltes item from customer order and updates total
-  handleDeleteOrder = (currentTabTotal, priceToSub, tabId, tabHistoryId) => {
-    this.handleUpdateTotalSub(currentTabTotal, priceToSub, tabId)
-    this.handleDeleteOrderHistory(tabHistoryId)
-  }
-  
-  //get tabHistoryItem price
-  getTabHistoryItem = (itemId) => {
-    fetch(`/tab_histories/${itemId}`, {
-  		headers: { 
-  			'Content-Type': 'application/json'
-  		},
-  		method: "GET"
-  	  })
-  	  .then(response => response.json())
-  	  .then(item => {this.setState({ item }) })
-  }
-    
-  // subtract from tab total
-  handleUpdateTotalSub = ( currentTabTotal, priceToSub, tabId) => {
-    const newTotal = parseFloat(currentTabTotal) - parseFloat(priceToSub)
-    console.log(newTotal)
-    fetch(`/tabs/${tabId}`, {
-   		body: JSON.stringify({total:newTotal}),
-   		headers: {'Content-Type': 'application/json'},
-     	method: "PATCH"  
-    	  })
-    	  .then(response => response.json())
-  }
-  
+
   // deletes item from order
-  handleDeleteOrderHistory = (tabHistoryId) => {
+  handleDeleteOrder = (tabHistoryId) => {
     fetch(`/tab_histories/${tabHistoryId}`, {
    		headers: {'Content-Type': 'application/json'},
      	method: "DELETE"  
     	  })
     	  .then(response => response.json())
+    this.getOpenTabs()
   }
   
   render () {
@@ -223,11 +191,11 @@ class AdminHome extends React.Component {
             admin_sign_out_route,
             current_admin_id,
            }=this.props
-     const {customers, menu, current_admin_profile, openTabs} = this.state
-     
-     console.log(current_admin_profile)
+     const {customers, menu, current_admin_profile, openTabs, item} = this.state
+
     return (
       <React.Fragment>
+        <Container>
           <Router>
             <div>
               {admin_logged_in &&
@@ -290,6 +258,7 @@ class AdminHome extends React.Component {
             
           </div>
         </Router>
+      </Container>
     </React.Fragment>
     );
   }

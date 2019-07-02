@@ -10,16 +10,17 @@ class OpenTabs extends React.Component {
       }
   }
   
-  componentDidMount() {
-    this.props.getMenu()
-    this.props.getOpenTabs()
-  }
-  
   
   render () {
-    const {customers, menu, openTabs, handleAddOrder, getMenuItem, handleCloseTab, handleDeleteOrder} = this.props
+    const {customers,
+            menu, 
+            openTabs, 
+            handleAddOrder, 
+            getMenuItem, 
+            handleCloseTab, 
+            handleDeleteOrder, 
+            getOpenTabs} = this.props
     
-    console.log(openTabs)
     
     var customerTabs = openTabs.map((value, index) => <CustomerTab 
       key={index}
@@ -35,8 +36,10 @@ class OpenTabs extends React.Component {
       handleCloseTab={handleCloseTab}
       handleDeleteOrder={handleDeleteOrder}
       menu={menu}
+      getOpenTabs={getOpenTabs}
       />
       )
+      
     return (
       <React.Fragment>
         <Table>
