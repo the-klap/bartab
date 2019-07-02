@@ -5,16 +5,19 @@ import  {
          Route,
          Link
         } from "react-router-dom";
-import { Nav, NavItem, NavLink, Container } from 'reactstrap'
+import { Nav, NavItem, NavLink, Container, Button } from 'reactstrap'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+import "./user.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBeer,
-         faMapMarkedAlt, 
-         faListUl,
-         faIdCard,
-         faHome,
-         faSadCry
-       } from '@fortawesome/free-solid-svg-icons';
+        faMapMarkedAlt, 
+        faListUl,
+        faIdCard,
+        faHome,
+        faSadCry
+      } from '@fortawesome/free-solid-svg-icons';
+// import {Geocode} from "react-geocode";
+
 
 
 
@@ -175,47 +178,53 @@ class UserHome extends React.Component {
       <React.Fragment>
         <Container>
         <Router>
+
           <div>
+          <h6><br />
+            Hey there {name}!<br />
+            <br />
+            </h6>
+            </div>
+              <div>
             {user_logged_in &&
               <Nav position="center">
-
-              <div className="container" className="navbar">
-              <div className="row">
-              <div className="col-sm">
+  
+              <div class="container" className="navbar">
+              <div class="row">
+              <div class="col-sm">
+              <NavItem className="user_Home">
+                <NavLink href="/user_home">User Home<br /><FontAwesomeIcon icon={faHome} size="6x" /></NavLink>
+              </NavItem>
+              </div>
+              <div class="col-sm">
               <NavItem className="user_tabHistory">
-                <NavLink href="/user_home/tabhistory">Tab History<br /><FontAwesomeIcon icon={faListUl} size="6x"/></NavLink>
+                <NavLink href="/user_home/tabhistory">Tab History<br /><FontAwesomeIcon icon={faListUl} size="6x" /></NavLink>
               </NavItem>
               </div>
               <div className="col-sm">
               <NavItem className="user_mapContainer">
-                <NavLink href="/user_home/mapcontainer">Map <br/><FontAwesomeIcon icon={faMapMarkedAlt} size="6x"/></NavLink>
+                <NavLink href="/user_home/mapcontainer">Map <br/><FontAwesomeIcon icon={faMapMarkedAlt} size="6x" /></NavLink>
               </NavItem>
               </div>
               <div className="col-sm">
               <NavItem className="user_tab">
-                <NavLink href="/user_home/opentabs">Open Tabs <br /><FontAwesomeIcon icon={faBeer} size="6x"/></NavLink>
+                <NavLink href="/user_home/opentabs">Open Tabs <br /><FontAwesomeIcon icon={faBeer} size="6x" /></NavLink>
               </NavItem>
               </div>
               <div className="col-sm">
               <NavItem className="user_profile">
-                <NavLink href="/user_home/profile">Profile <br /><FontAwesomeIcon icon={faIdCard} size="6x"/></NavLink>
+                <NavLink href="/user_home/profile">Profile <br /><FontAwesomeIcon icon={faIdCard} size="6x" /></NavLink>
               </NavItem>
               </div>
               <div className="col-sm">
               <NavItem className="user_signout">
-                <NavLink id="adminSignOut" href={user_sign_out_route}>Sign Out<br /><FontAwesomeIcon icon={faSadCry} size="6x"/></NavLink>
+                <NavLink id="adminSignOut" href={user_sign_out_route}>Sign Out<br /><FontAwesomeIcon icon={faSadCry} size="6x" /></NavLink>
               </NavItem>
               </div> 
               </div>
               </div>
               </Nav>
             }
-          <div>
-          <h6><br />
-            Hey there {name}!<br />
-            <br />
-            </h6>
-          </div>
             {/* changing /userhome to user_home will create an error*/}
             <Route exact path="/userhome" exact component={UserHome} />
             <Route exact path="/user_home/tabhistory" exact render={(props) => <TabHistory {...props}

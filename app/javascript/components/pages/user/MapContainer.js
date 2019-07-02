@@ -8,8 +8,8 @@ import InfoWindowEx from './InfoWindowEx.js'
 import StoreList from './StoreList.js'
 
 const mapStyles = {
-  width: '50%',
-  height: '50%'
+  width: '100%',
+  height: '100%'
 };
 
 class MapContainer extends Component {
