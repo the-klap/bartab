@@ -7,15 +7,15 @@ import  {
         } from "react-router-dom";
 import { Nav, NavItem, NavLink, Button } from 'reactstrap'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
-import "./userhome.css"
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faBeer,
-//         faMapMarkedAlt, 
-//         faListUl,
-//         faIdCard,
-//         faHome,
-//         faSadCry
-//       } from '@fortawesome/free-solid-svg-icons';
+import "./user.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBeer,
+        faMapMarkedAlt, 
+        faListUl,
+        faIdCard,
+        faHome,
+        faSadCry
+      } from '@fortawesome/free-solid-svg-icons';
 // import {Geocode} from "react-geocode";
 
 
@@ -187,16 +187,8 @@ class UserHome extends React.Component {
             Hey there {name}!<br />
             <br />
             </h6>
-          </div>
-
-      
-          <div>
-            <Button className="user_home" color="primary" size="lg" block>User Home</Button>
-            <Button className="tab_history" color="secondary" size="lg" block>Tab History</Button>
-            <Button className="map" color="primary" size="lg" block>Map</Button>
-            <Button className="open_tabs" color="secondary" size="lg" block>Open Tabs</Button>
-            <Button className="profile" color="primary" size="lg" block>Profile</Button>
-            <Button className="signout" color="secondary" size="lg" block>Signout</Button>
+            </div>
+              <div>
             {user_logged_in &&
               <Nav position="center">
   
@@ -204,32 +196,32 @@ class UserHome extends React.Component {
               <div class="row">
               <div class="col-sm">
               <NavItem className="user_Home">
-                <NavLink href="/user_home">User Home<br /></NavLink>
+                <NavLink href="/user_home">User Home<br /><FontAwesomeIcon icon={faHome} size="6x" /></NavLink>
               </NavItem>
               </div>
               <div class="col-sm">
               <NavItem className="user_tabHistory">
-                <NavLink href="/user_home/tabhistory">Tab History<br /></NavLink>
+                <NavLink href="/user_home/tabhistory">Tab History<br /><FontAwesomeIcon icon={faListUl} size="6x" /></NavLink>
               </NavItem>
               </div>
               <div class="col-sm">
               <NavItem className="user_mapContainer">
-                <NavLink href="/user_home/mapcontainer">Map <br/></NavLink>
+                <NavLink href="/user_home/mapcontainer">Map <br/><FontAwesomeIcon icon={faMapMarkedAlt} size="6x" /></NavLink>
               </NavItem>
               </div>
               <div class="col-sm">
               <NavItem className="user_tab">
-                <NavLink href="/user_home/opentabs">Open Tabs <br /></NavLink>
+                <NavLink href="/user_home/opentabs">Open Tabs <br /><FontAwesomeIcon icon={faBeer} size="6x" /></NavLink>
               </NavItem>
               </div>
               <div class="col-sm">
               <NavItem className="user_profile">
-                <NavLink href="/user_home/profile">Profile <br /></NavLink>
+                <NavLink href="/user_home/profile">Profile <br /><FontAwesomeIcon icon={faIdCard} size="6x" /></NavLink>
               </NavItem>
               </div>
               <div className="col-sm">
               <NavItem className="user_signout">
-                <NavLink id="adminSignOut" href={user_sign_out_route}>Sign Out<br /></NavLink>
+                <NavLink id="adminSignOut" href={user_sign_out_route}>Sign Out<br /><FontAwesomeIcon icon={faSadCry} size="6x" /></NavLink>
               </NavItem>
               </div> 
               </div>
