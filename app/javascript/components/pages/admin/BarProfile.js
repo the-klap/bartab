@@ -39,23 +39,18 @@ class BarProfile extends React.Component {
       <React.Fragment>
        <Jumbotron>
           <h1 className="display-3">{current_admin_profile.establishmentname}</h1>
-          <div className="lead">
-            <Row>
+          <p className="lead">
             Address:
-            </Row>
-            <Row>
+            <br/>
               {current_admin_profile.address1} 
-            </Row>
-            <Row>
+            <br/>
               {current_admin_profile.address2}
-            </Row>
-            <Row>
+            <br/>
               {current_admin_profile.city}, {current_admin_profile.state}, {current_admin_profile.zip}
-            </Row>
-            <Row>
+            <br/>
               {current_admin_profile.country}
-            </Row>
-          </div>
+            <br/>
+          </p>
           <hr className="my-2" />
           <p>
             <Col>
@@ -74,12 +69,12 @@ class BarProfile extends React.Component {
             </Col>
           </p>
           <p className="lead">
-            <Button color="primary">Edit Profile</Button>
+            <Button href="#editform" color="primary">Edit Profile</Button>
           </p>
         </Jumbotron>
         <br/>
         <hr/>
-        <h2>Edit Profile</h2>
+        <h2 id='editform'>Edit Profile</h2>
         <br/>
         <Form>
           <FormGroup >
