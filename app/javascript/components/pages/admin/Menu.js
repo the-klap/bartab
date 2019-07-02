@@ -46,6 +46,7 @@ class Menu extends React.Component {
 
     return (
       <React.Fragment>
+      <br /> <br />
         <Table>
           <thead>
             <tr>

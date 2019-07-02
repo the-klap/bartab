@@ -191,11 +191,7 @@ class UserHome extends React.Component {
   
               <div class="container" className="navbar">
               <div class="row">
-              <div class="col-sm">
-              <NavItem className="user_Home">
-                <NavLink href="/user_home">User Home<br /><FontAwesomeIcon icon={faHome} size="6x" /></NavLink>
-              </NavItem>
-              </div>
+              
               <div class="col-sm">
               <NavItem className="user_tabHistory">
                 <NavLink href="/user_home/tabhistory">Tab History<br /><FontAwesomeIcon icon={faListUl} size="6x" /></NavLink>

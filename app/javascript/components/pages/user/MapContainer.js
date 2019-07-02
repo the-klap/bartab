@@ -8,7 +8,7 @@ import InfoWindowEx from './InfoWindowEx.js'
 import StoreList from './StoreList.js'
 
 const mapStyles = {
-  width: '100%',
+  width: '90%',
   height: '100%'
 };
 
@@ -153,8 +153,11 @@ class MapContainer extends Component {
             </InfoWindowEx>
           </Map>
         </div>
+        <div>{" "}</div>
         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         <br /><br /><br /><br /><br /><br /><br /><br />
+        <br /><br /><br /><br /><br /><br /><br /><br />
+          <br /><br /><br /><br /><br /><br /><br /><br />
         <div className="open_tab">
         <StoreList 
               stores={this.props.stores}

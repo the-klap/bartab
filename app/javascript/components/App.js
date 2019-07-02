@@ -71,10 +71,10 @@ class App extends React.Component {
 
             
             {(!admin_logged_in && !user_logged_in) &&
-              <Button className='adminButton' href={admin_sign_in_route}>Admin Login</Button>
+              <Button className='admin_Button' href={admin_sign_in_route}>Admin Login</Button>
             }
             {(!user_logged_in && !admin_logged_in) &&
-              <Button className='userButton' href={user_sign_in_route}>User Login</Button>
+              <Button className='user_Button' href={user_sign_in_route}>User Login</Button>
             }
 
           </Router>

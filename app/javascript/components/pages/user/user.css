@@ -35,6 +35,12 @@ h3{
     font-family: 'B612 Mono', monospace;
 }
 
+h6{
+    color: white;
+    font-family: 'B612 Mono', monospace;
+    font-size: 24px;
+    text-shadow: #e0e0e0 1px 1px 0, 2px 2px 0px #000000;
+}
 section {
      background-color: #2AAFF5; /*orange*/
      border-radius: 15px 15px 15px 15px;
@@ -306,7 +312,7 @@ section {
 }
 
 .user_signout{
-  background: #851e3e;/*#34495e*/
+  background: #96ceb4;/*#34495e*/
   border-radius: 15px 15px 15px 15px;
 }
 

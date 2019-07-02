@@ -1,53 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=B612+Mono&display=swap');
 
-@media screen and (min-width: 1100px) {
-  body {
-    background-color:  #FDC12A; /*#FDC12A */
-    text-align: center;
-    }
+.jumbotron{
+    background-color: rgba(250,250,250, 0.2);
 }
-
-/* On screens that are 1100px or less, set the background color to blue */
-@media screen and (max-width: 1100px) {
-  body {
-        background-color:  #FDC12A; /*#FDC12A */  }
-  .button{
-      width: 100%;
-      height: 10%;
-  }
-  .tab_history{
-      width: 100%;
-      height: 10%;
-  }
-  .map{
-      width: 100%;
-      height: 10%;
-  }
-  open_tabs{
-      width: 100%;
-      height: 10%;
-  }
-  profile{
-      width: 100%;
-      height: 10%;
-  }
-  signout{
-      width: 100%;
-      height: 10%;
-  }
-}
-
-
-img { max-width: 100%; }
 
 body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    background-color:  #FDC12A; /*blue#FDC12A*/
     text-align: center;
     border-radius: 15px 15px 15px 15px;
 }
-h1 {
+h8 {
     font-family: 'B612 Mono', monospace;
     display: inline-block;
     margin-top: 50px;
@@ -56,48 +21,44 @@ h1 {
     border-bottom: solid 5px white;
     transform: skew(0, -5deg);
     position: relative;
+    right: 300px;
     font-size: 60px;
-    left: -30%;
 }
+
 h4{
     position: relative;
+    left: 300px;
     color: white;
     font-family: 'B612 Mono', monospace;
+    top: -55px;
     transform: skew(-5deg, 5deg)
 }
+
 h3{
     color: white;
     font-family: 'B612 Mono', monospace;
 }
 
-h6{
-    color:white;
-    font-family: 'B612 Mono', monospace;
-    font-size: 30px;
-}
-
 section {
-     background-color: #2AAFF5; /*orange */
+     background-color: #2AAFF5; /*orange*/
      border-radius: 15px 15px 15px 15px;
-     width: 100%;
 }
-
 #action {
     margin: 0 auto;
-    width: 90%;
+    width: 700px;
     position: relative;
-    height: 20%;
+    height: 230px;
 
 }
 
 #keg {
     position: absolute;
-    height: 70%;
+    height: 200px;
     width: 70px;
     background-color: #656D78;
     border-right: solid 20px #434A54;
     bottom: 0;
-    left: 50%;
+    left: 310px;
 }
 #pipe {
     position: absolute;
@@ -136,15 +97,15 @@ section {
         height: 0px;
     }
     20% {
-         height: 60px;
+         height: 125px;
     }
     40% {
         top: 30px;
-        height: 55px;
+        height: 85px;
     }
     55% {
         top: 30px;
-        height: 45px;
+        height: 60px;
     }
     60%, 100% {
         top: 70px;
@@ -209,19 +170,10 @@ section {
     }
 }
 
-.col-sm{
-   text-align: center;
-    display: inline-block;
-}
-
-.text-left{
-    background-color: rgba(255, 255, 255, 0.2)
-}
-
 .glass {
     position: absolute;
-    height: 80px;
-    width: 60px;
+    height: 100px;
+    width: 70px;
     bottom: 0;
     background-color: rgba(255, 255, 255, 0.0);
     border-radius: 5px;
@@ -234,13 +186,13 @@ section {
         opacity: 0;
         left: 0;
     }
-    20%, 47% {
+    20%, 80% {
         opacity: 1;
-        left: 47%;
+        left: 300px;
     }
     100% {
          opacity: 0;
-        left: 100px;
+        left: 600px;
     }
 }
 
@@ -256,9 +208,9 @@ section {
     position: absolute;
     bottom: 15px;
     margin: 0 5px;
-    height: 50%;
-    width: 50px;
-    background-color: rgba(204, 114, 12, 0.8); /* #FFCE54 */
+    /*height: 80%;*/
+    width: 60px;
+    background-color: rgba(204, 114, 12, 0.8); /* #FFCE54*/
     border-radius: 0 0 5px 5px;
     border-top: solid 0px rgba(255, 206, 84, 0.8);
 
@@ -268,10 +220,10 @@ section {
     position: absolute;
     display: block;
     content: " ";
-    height: 20px;
+    /*height: 20px;*/
     width: 100%;
     background-color: white;
-    top: -20px;
+    /*top: -20px;*/
     border-radius: 5px 5px 0 0;
 
     animation: fillupfoam 5s linear infinite, wave 0.5s alternate infinite;
@@ -330,32 +282,36 @@ section {
 }
 
 
-
-
-/*admin and user buttons */
-
-.admin_Button{
-    width: 50%;
-    border-radius: 15px 15px 15px 15px;
-    height: 40%;
-    border-color: white;
-    
-}
-
-.user_Button{
-    width: 50%;
-    border-radius: 15px 15px 15px 15px;
-    height: 40%;
-    border-color: white;
-}
-
-
-
-
 /*styling to User links */
-.row{
-    margin-left: 0px;
-    margin-right: 0px;
+
+.user_Home{
+  background: #96ceb4;/*#3498db*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.user_tabHistory{
+  background: #ffeead;/*#3498db*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.user_mapContainer{
+  background: #ff6f69;/*#2ecc71*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.user_tab{
+  background: #ffcc5c;/*#34495e*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.user_profile{
+  background: #651e3e;/*#34495e*/
+  border-radius: 15px 15px 15px 15px;
+}
+
+.user_signout{
+  background: #96ceb4;/*#34495e*/
+  border-radius: 15px 15px 15px 15px;
 }
 
 .user_Home {
@@ -402,19 +358,19 @@ section {
 .user_signout:hover { border-width: 10px; }
 
 
-.app_main_page{
-    text-align: center;
-    display: inline-block;
-    width: 100%;
-    height:60%;
+/*admin and user buttons */
+
+.adminButton{
+    width: 50%;
+    border-radius: 15px 15px 15px 15px;
+    height: 30%;
+    
 }
 
-.footer{
-  bottom: 80px;
-}
-
-.navbar{
-    padding: 0px;
+.userButton{
+    width: 50%;
+    border-radius: 15px 15px 15px 15px;
+    height: 30%
 }
 
 
@@ -466,17 +422,5 @@ section {
 .admin_Signout {
   border: solid 3px #FFFFFF;
   transition: border-width 0.3s linear;
-}
-
-.map_div{
-}
-
-.open_tab{
-    border: solid 3px #FFFFFF ;
-    border-radius: 15px 15px 15px 15px;
-    padding: 5px;   
-}
-
-.store_card {
-    backgroun-color: rgba(250,250,250,0.4);
+  
 }
