@@ -42,6 +42,7 @@ class OpenTabs extends React.Component {
       
     return (
       <React.Fragment>
+      <br /> <br />
         <Table>
             <tr>
               <th>#</th>

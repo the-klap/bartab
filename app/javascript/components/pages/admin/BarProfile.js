@@ -37,7 +37,8 @@ class BarProfile extends React.Component {
     console.log(updated_admin_profile)
     return (
       <React.Fragment>
-       <Jumbotron>
+      <br /> <br />
+       <Jumbotron className="jumbotron">
           <h1 className="display-3">{current_admin_profile.establishmentname}</h1>
           <p className="lead">
             Address:

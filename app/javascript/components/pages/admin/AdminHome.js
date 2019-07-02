@@ -16,7 +16,7 @@ import OpenTabs from "./OpenTabs";
 import BarProfile from "./BarProfile";
 import CreateBarProfile from "./CreateBarProfile";
 import Menu from "./Menu";
-
+import './admin.css';
 
 
 class AdminHome extends React.Component {
