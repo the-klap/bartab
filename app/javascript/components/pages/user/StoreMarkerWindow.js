@@ -21,7 +21,7 @@ class StoreMarkerWindow extends React.Component {
           <CardBody>
             <CardTitle>{location}</CardTitle>
             <CardText>{info}</CardText>
-            <Button onClick={this.openTab}>Open Tab</Button>
+            <Button href="/user_home/opentabs" onClick={this.openTab}>Open Tab</Button>
           </CardBody>
         </Card>
       </React.Fragment>

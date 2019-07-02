@@ -12,10 +12,6 @@ class Menu extends React.Component {
       }
   }
   
-  componentWillMount() {
-    this.props.getMenu()
-  }
-  
   handleChange = (event) => {
     let {newItem} = this.state
     newItem[event.target.name] = event.target.value
@@ -56,12 +52,14 @@ class Menu extends React.Component {
               <th>#</th>
               <th>Name</th>
               <th>Price</th>
+              <th>Remove from Menu</th>
             </tr>
           </thead>
             
             {menuList}
             
         </Table>
+        <hr/>
         <Form className='newItem'>
           <Row form>
             <Col>
@@ -77,7 +75,12 @@ class Menu extends React.Component {
               </FormGroup>
             </Col>
             <Col>
-              <Button onClick={this.handleClick}>Add</Button>
+              <Row>
+                <Label for="add">Add to Menu</Label>
+              </Row>
+              <Row>
+                <Button name="add" onClick={this.handleClick}>Add</Button>
+              </Row>
             </Col>
           </Row>
         </Form>
