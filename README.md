@@ -1,24 +1,14 @@
-# README
+how to set this up in a Cloud 9 environment 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. create new Cloud 9 server 
 
-Things you may want to cover:
+2. Choose 'Ubuntu' environment when setting up a new Cloud 9 Instance
 
-* Ruby version
+3. From the command line, run: \curl -sSL https://raw.githubusercontent.com/LEARNAcademy/cloud9-config/master/setup.sh | bash -s
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+4. git clone https://github.com/the-klap/bartab.git
+5. cd bartab/
+6. bundle install
+7. if you have an error that says anything other than to run step 9, run the curl command again.
+8. yarn install --check-files
+9. rails db:setup
