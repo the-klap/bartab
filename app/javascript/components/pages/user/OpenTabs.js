@@ -11,10 +11,12 @@ class OpenTabs extends React.Component {
     }
 
     render(){
-        const {openTabs} = this.props
+        const {openTabs, handleCloseTab} = this.props
         const openSessionsTotal = openTabs.map((tab, index) =>  {
                 return (<TabListItem 
-                            bar_id={tab.admin_id} 
+                            bar_id={tab.admin_id}
+                            open={tab.open}
+                            tabId={tab.id}
                             total={tab.total} 
                             orders={tab.tab_histories}
                             key={index}
@@ -25,6 +27,7 @@ class OpenTabs extends React.Component {
                             state={tab.admin.admin_profile.state}
                             zip={tab.admin.admin_profile.zip}
                             country={tab.admin.admin_profile.country}
+                            handleCloseTab={handleCloseTab}
                         />
                     )
             })

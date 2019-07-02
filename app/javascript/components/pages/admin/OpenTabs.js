@@ -10,20 +10,6 @@ class OpenTabs extends React.Component {
       }
   }
   
-  // componentWillMount() {
-    
-  // }
-  
-  // componentDidUpdate = (prevProps) => {
-  //   if (this.props.openTabs !== prevProps.openTabs){
-  //     this.props.getOpenTabs()
-  //   } else if (this.props.menu !== prevProps.menu){
-  //     this.props.getMenu()
-  //   } else {
-  //     return true
-  //   }
-  // }
-  
   
   render () {
     const {customers,
