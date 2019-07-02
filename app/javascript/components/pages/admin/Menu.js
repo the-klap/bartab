@@ -12,6 +12,12 @@ class Menu extends React.Component {
       }
   }
   
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.menu !== this.props.menu){
+      
+    }
+  }
+  
   handleChange = (event) => {
     let {newItem} = this.state
     newItem[event.target.name] = event.target.value
