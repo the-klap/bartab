@@ -34,6 +34,8 @@ class OpenTabs extends React.Component {
             console.log(openTabs)
         return(
              <React.Fragment>
+             <br /> <br /><br /> <br />
+                <h6>Open Tabs</h6>
             {openTabs.length===0 && <h2>No Open Tabs</h2>}
                {openSessionsTotal}
             </React.Fragment>

@@ -49,7 +49,8 @@ class AboutUs extends React.Component {
       modal: false
     };
     this.state = {
-      activeIndex: 0
+      activeIndex: 0,
+      direction: null,
     };
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
@@ -58,7 +59,12 @@ class AboutUs extends React.Component {
     this.onExited = this.onExited.bind(this);
     this.toggle = this.toggle.bind(this);
   }
-
+  handleSelect(selectedIndex, e) {
+    this.setState({
+      index: selectedIndex,
+      direction: e.direction,
+    });
+  }
   onExiting() {
     this.animating = true;
   }
@@ -101,11 +107,14 @@ class AboutUs extends React.Component {
       modal: !prevState.modal
     }));
   }
+  
+  
 
   render() {
+    const { index, direction } = this.state
     const items = [
       {
-        src: "https://files.slack.com/files-pri/T04B40L2C-FL2NKPEE8/image_from_ios.jpg",
+        src: "https://cattinderfrontscreen.s3-us-west-1.amazonaws.com/image_from_ios-1.jpg",
         altText: "About Us",
         caption: <div>
           <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} About Us </Button>
@@ -160,8 +169,8 @@ class AboutUs extends React.Component {
     const slides = items.map(item => {
       return (
         <CarouselItem
-          onExiting={this.onExiting}
-          onExited={this.onExited}
+          ActiveIndex={index}
+          direction={direction}
           key={item.src}
         >
           <img src={item.src} alt={item.altText} />
