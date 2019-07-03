@@ -18,6 +18,7 @@ class UserProfilesController < ApplicationController
     def update
         user_profile = UserProfile.find_by_user_id(params[:id])
         user_profile.update(user_profile_params)
+        render json: current_user.user_profile
     end
     
     def user_profile_params
