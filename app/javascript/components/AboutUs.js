@@ -1,5 +1,9 @@
 import React from "react";
 import {
+  faBeer,
+  faDizzy
+} from '@fortawesome/free-solid-svg-icons';
+import {
   Button,
   Modal,
   ModalHeader,
@@ -15,14 +19,14 @@ import {
 const items = [
   {
     src: "https://files.slack.com/files-pri/T04B40L2C-FL2NKPEE8/image_from_ios.jpg",
-    altText: "About Us",
+    altText: "",
     caption: " "
   },
   {
     src:
       "http://4.images.southparkstudios.com/images/shows/south-park/clip-thumbnails/season-7/0708/south-park-s07e08c06-kyles-had-enough-16x9.jpg?quality=0.8",
     altText: "",
-    caption: "KYLE"
+    caption: ""
   },
   {
     src: "https://memegenerator.net/img/instances/81809689.jpg",
@@ -32,12 +36,12 @@ const items = [
   {
     src: "https://i.imgflip.com/1gqoya.jpg",
     altText: "",
-    caption: "Luke"
+    caption: ""
   },
   {
     src:
       "https://m.media-amazon.com/images/M/MV5BMjg1NGM1Y2MtY2JiMS00NWZhLThkZWItYTYyMjcwOTYwMTI1XkEyXkFqcGdeQXVyMjYwNDA2MDE@._V1_.jpg",
-    altText: "Peter",
+    altText: "",
     caption: ""
   }
 ];
@@ -107,25 +111,33 @@ class AboutUs extends React.Component {
       modal: !prevState.modal
     }));
   }
-  
-  
+
+
 
   render() {
     const { index, direction } = this.state
     const items = [
       {
         src: "https://cattinderfrontscreen.s3-us-west-1.amazonaws.com/image_from_ios-1.jpg",
-        altText: "About Us",
+        altText: " ",
         caption: <div>
           <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} About Us </Button>
           <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
             <ModalHeader toggle={this.toggle} charCode="Y">We Are Team KLAP</ModalHeader>
             <ModalBody>
               We like to drink Beer and not forget to close our Tab
+              <br />
+              Kyle
+              <br />
+              Luke
+              <br />
+              Aaron
+              <br />
+              Peter
           </ModalBody>
             <ModalFooter>
-              <Button color="primary" onClick={this.toggle}>Interested ?</Button>{' '}
-              <Button color="secondary" onClick={this.toggle}>Close</Button>
+              <Button color="success" onClick={this.toggle}><fontAwesome font={faBeer} />Let's Drink</Button>{' '}
+              <Button color="danger" onClick={this.toggle}><fontAwesome font={faDizzy} />Go Home You're Drunk</Button>
             </ModalFooter>
           </Modal>
         </div>
@@ -134,19 +146,7 @@ class AboutUs extends React.Component {
         src:
           "http://4.images.southparkstudios.com/images/shows/south-park/clip-thumbnails/season-7/0708/south-park-s07e08c06-kyles-had-enough-16x9.jpg?quality=0.8",
         altText: "",
-        caption: <div>
-          <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} About Me </Button>
-          <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-            <ModalHeader toggle={this.toggle} charCode="Y">My Name is Kyle</ModalHeader>
-            <ModalBody>
-              Wanna See my IG?
-        </ModalBody>
-            <ModalFooter>
-              <Button color="primary" onClick={this.toggle}>Interested ?</Button>{' '}
-              <Button color="secondary" onClick={this.toggle}>Close</Button>
-            </ModalFooter>
-          </Modal>
-        </div>
+        caption: ""
       },
       {
         src: "https://memegenerator.net/img/instances/81809689.jpg",
@@ -156,12 +156,12 @@ class AboutUs extends React.Component {
       {
         src: "https://i.imgflip.com/1gqoya.jpg",
         altText: "",
-        caption: "Luke"
+        caption: ""
       },
       {
         src:
           "https://m.media-amazon.com/images/M/MV5BMjg1NGM1Y2MtY2JiMS00NWZhLThkZWItYTYyMjcwOTYwMTI1XkEyXkFqcGdeQXVyMjYwNDA2MDE@._V1_.jpg",
-        altText: "Peter",
+        altText: "",
         caption: ""
       }
     ];
@@ -207,6 +207,7 @@ class AboutUs extends React.Component {
             onClickHandler={this.next}
           />
         </Carousel>
+        <div>{" "}</div>
       </React.Fragment>
 
     );
