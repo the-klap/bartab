@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import ReactDOM from 'react-dom';
-import { InfoWindow } from 'google-maps-react';
+// import { InfoWindow } from 'google-maps-react';
 
 class InfoWindowEx extends React.Component {
   constructor(props) {
@@ -20,14 +20,23 @@ class InfoWindowEx extends React.Component {
     );
     this.infoWindowRef.current.infowindow.setContent(this.containerElement);
   }
-  render() {
-    return (
-      <InfoWindow
-        onOpen={this.onInfoWindowOpen}
-        ref={this.infoWindowRef}
-        {...this.props}
-      />
-    );
+  // render() {
+  //   return (
+  //     <InfoWindow
+  //       onOpen={this.onInfoWindowOpen}
+  //       ref={this.infoWindowRef}
+  //       {...this.props}
+  //     />
+  //   );
+//  }
+  render(){
+    return(
+      <div>
+      hello
+      </div>
+    )
+    
   }
 }
+
 export default InfoWindowEx
