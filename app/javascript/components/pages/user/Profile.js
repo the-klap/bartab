@@ -40,7 +40,8 @@ class Profile extends React.Component {
     
       return(
         <React.Fragment>
-          <h3>this is your profile!</h3>
+        <br /> <br /><br /> <br />
+          <h6>this is your profile!</h6>
                 
             {/* first and last name */}
             <Form>
