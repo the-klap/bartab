@@ -156,8 +156,7 @@ class MapContainer extends Component {
         <div>{" "}</div>
         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         <br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br />
-          <br /><br /><br /><br /><br /><br /><br /><br />
+        <br /><br />
         <div className="open_tab">
         <StoreList 
               stores={this.props.stores}
