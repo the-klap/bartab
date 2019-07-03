@@ -87,6 +87,7 @@ class UserHome extends React.Component {
   		method: "PUT"
   	  })
   	  .then(response => response.json())
+  	  .then(current_user_profile => this.setState({current_user_profile}))
   }
   
   //creates new profile if profile has not been created
@@ -97,6 +98,7 @@ class UserHome extends React.Component {
    		method: "POST"
    	})
     .then(response => response.json())
+    .then(current_user_profile => this.setState({current_user_profile}))
   }
   
   // gets all open tabs with current_user.id (open:true)
