@@ -1,4 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=B612+Mono&display=swap');
+ 
+  h5 { color: blue; }
+
+  .textcolor {
+      color: blue;
+      font-size: 50px;
+      font-family: sans-serif;
+  }
+  
+  .text_color {
+      color: red;
+      font-size: 50px;
+      font-family: sans-serif;
+      
+  }
 
 @media screen and (min-width: 1100px) {
   body {

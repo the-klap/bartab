@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import AdminHome from './pages/admin/AdminHome'
 import UserHome from './pages/user/UserHome'
 import {Container, Button} from "reactstrap"
+import AboutUs from "./AboutUs";
 
 class App extends React.Component {
    constructor(props){
@@ -76,6 +77,8 @@ class App extends React.Component {
             {(!user_logged_in && !admin_logged_in) &&
               <Button className='user_Button' href={user_sign_in_route}>User Login</Button>
             }
+            
+            {!user_logged_in && !admin_logged_in && <AboutUs />}
 
           </Router>
           </div>
