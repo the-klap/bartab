@@ -74,8 +74,8 @@ class Profile extends React.Component {
                 </Col>
               </Row>
             </Form>
-            
-            <h3>Choose a Profile Picture </h3>
+            <br /> <br />
+            <h6>Choose a Profile Picture </h6>
                  
             {/* Choose your profile picture*/}
             <div class="input-group">
