@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+// import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { Button } from 'reactstrap';
 
 import UserHome from './UserHome.js'
@@ -111,48 +111,9 @@ class MapContainer extends Component {
       <React.Fragment>
         <br /> <br />
         <div className="map_div">
-        
-          <Map
-            google={this.props.google}
-            onMouseover={this.onMapOver}
-            zoom={14}
-            style={mapStyles}
-            initialCenter={{
-             lat: 32.7091,
-             lng: -117.1580
-            }}
-          >    
-            {this.state.displayMarkers.map((coordinates, index) => {
-              const{storeId, lat, lng, name, location, info} = coordinates
-              return (
-                      <Marker onClick={this.onClick}
-                          key={index}
-                          id={storeId}
-                          name={name}
-                          position = {{lat, lng}}
-                          location={location}
-                          info= {info}
-                      >
-                      </Marker>
-                    )
-            })}
-            <InfoWindowEx
-              marker={this.state.activeMarker}
-              visible={this.state.showingInfoWindow}
-              onClose={this.onClose}
-              >
-              <div>
-                  <StoreMarkerWindow 
-                    name={this.state.selectedPlace.name}
-                    location={this.state.selectedPlace.location}
-                    info={this.state.selectedPlace.info}
-                    id={this.state.selectedPlace.id}
-                    openTab={this.props.openTab}
-                    />
-                </div>
-            </InfoWindowEx>
-          </Map>
-        </div>
+          hello
+
+         </div>
         <div>{" "}</div>
         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         <br /><br /><br /><br /><br /><br /><br /><br />
