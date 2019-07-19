@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
-import { Button } from 'reactstrap';
+import { Button, Card } from 'reactstrap';
 
 import UserHome from './UserHome.js'
 import StoreMarkerWindow from './StoreMarkerWindow.js'
@@ -8,8 +8,8 @@ import InfoWindowEx from './InfoWindowEx.js'
 import StoreList from './StoreList.js'
 
 const mapStyles = {
-  width: '90%',
-  height: '90%',
+  width: '100%',
+  height: '100vh',
 };
 
 class MapContainer extends Component {
@@ -108,65 +108,48 @@ class MapContainer extends Component {
     }=this.props
     
     return (
-      <React.Fragment>
-        <br /> <br />
-        <div className="map_div">
-        
-          <Map
-            google={this.props.google}
-            onMouseover={this.onMapOver}
-            zoom={14}
-            style={mapStyles}
-            initialCenter={{
-             lat: 32.7091,
-             lng: -117.1580
-            }}
-          >    
-            {this.state.displayMarkers.map((coordinates, index) => {
-              const{storeId, lat, lng, name, location, info} = coordinates
-              return (
-                      <Marker onClick={this.onClick}
-                          key={index}
-                          id={storeId}
-                          name={name}
-                          position = {{lat, lng}}
-                          location={location}
-                          info= {info}
-                      >
-                      </Marker>
-                    )
-            })}
-            <InfoWindowEx
-              marker={this.state.activeMarker}
-              visible={this.state.showingInfoWindow}
-              onClose={this.onClose}
-              >
-              <div>
-                  <StoreMarkerWindow 
-                    name={this.state.selectedPlace.name}
-                    location={this.state.selectedPlace.location}
-                    info={this.state.selectedPlace.info}
-                    id={this.state.selectedPlace.id}
-                    openTab={this.props.openTab}
-                    />
-                </div>
-            </InfoWindowEx>
-          </Map>
-        </div>
-        <div>{" "}</div>
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br />
-        <div className="open_tab">
-        <StoreList 
-              stores={this.props.stores}
+      <div className="mapContainer" style={mapStyles}>
+        <Map
+          google={this.props.google}
+          onMouseover={this.onMapOver}
+          zoom={14}
+          style={mapStyles}
+          initialCenter={{
+           lat: 32.7091,
+           lng: -117.1580
+          }}
+        >    
+        {this.state.displayMarkers.map((coordinates, index) => {
+          const{storeId, lat, lng, name, location, info} = coordinates
+          return (
+            <Marker onClick={this.onClick}
+              key={index}
+              id={storeId}
+              name={name}
+              position = {{lat, lng}}
+              location={location}
+              info= {info}
+            >
+            </Marker>
+          )
+        })}
+        <InfoWindowEx
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+          onClose={this.onClose}
+        >
+          <div>
+            <StoreMarkerWindow 
+              name={this.state.selectedPlace.name}
+              location={this.state.selectedPlace.location}
+              info={this.state.selectedPlace.info}
+              id={this.state.selectedPlace.id}
               openTab={this.props.openTab}
-        />
-        {this.props.success &&
-        		<Redirect to="/user_home/opentabs" />
-        }
-        </div>
-      </React.Fragment>
+              />
+          </div>
+        </InfoWindowEx>
+        </Map>
+      </div>
     );
   }
 }

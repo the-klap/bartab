@@ -16,14 +16,13 @@ import { faBeer,
         faHome,
         faSadCry
       } from '@fortawesome/free-solid-svg-icons';
-// import {Geocode} from "react-geocode";
 
 
 
 
 //components imported to main UserHome
 import HappyHour from './HappyHour.js'
-import MapContainer from './MapContainer.js'
+import FindBar from './FindBar.js'
 import Profile from './Profile.js'
 import OpenTabs from './OpenTabs.js'
 import TabHistory from './TabHistory.js'
@@ -192,17 +191,17 @@ class UserHome extends React.Component {
             {user_logged_in &&
               <Nav position="center">
   
-              <div class="container" className="navbar">
-              <div class="row">
+              <div className="container" className="navbar">
+              <div className="row">
               
-              <div class="col-sm">
+              <div className="col-sm">
               <NavItem className="user_tabHistory">
                 <NavLink href="/user_home/tabhistory">Tab History<br /><FontAwesomeIcon icon={faListUl} size="6x" /></NavLink>
               </NavItem>
               </div>
               <div className="col-sm">
               <NavItem className="user_mapContainer">
-                <NavLink href="/user_home/mapcontainer">Map <br/><FontAwesomeIcon icon={faMapMarkedAlt} size="6x" /></NavLink>
+                <NavLink href="/user_home/start_tab">Start Tab <br/><FontAwesomeIcon icon={faMapMarkedAlt} size="6x" /></NavLink>
               </NavItem>
               </div>
               <div className="col-sm">
@@ -233,7 +232,7 @@ class UserHome extends React.Component {
                 openTabs={openTabs}
                 handleCloseTab={this.handleCloseTab}
             />} />
-            <Route path="/user_home/mapcontainer" exact render={(props) => <MapContainer {...props}
+            <Route path="/user_home/start_tab" exact render={(props) => <FindBar {...props}
               stores={stores}
               openTab={this.openTab}
               success={success}
