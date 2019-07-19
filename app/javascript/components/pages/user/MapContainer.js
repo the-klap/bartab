@@ -9,7 +9,7 @@ import StoreList from './StoreList.js'
 
 const mapStyles = {
   width: '90%',
-  height: '100%'
+  height: '90%',
 };
 
 class MapContainer extends Component {
