@@ -173,6 +173,7 @@ class UserHome extends React.Component {
      }=this.props
 
     const { current_user_profile, openTabs, closedTabs, success, stores }=this.state
+        console.log(openTabs.length)
     
     const name = ((current_user_profile===null) ? 'new user' : current_user_profile.firstname)
     
@@ -224,7 +225,17 @@ class UserHome extends React.Component {
               </Nav>
             }
             {/* changing /userhome to user_home will create an error*/}
-            <Route exact path="/userhome" exact component={UserHome} />
+            <Route exact path="/user_home" exact render={(props) =>
+              ((openTabs.length>0) ? 
+                <OpenTabs {...props}
+                  openTabs={openTabs}
+                  handleCloseTab={this.handleCloseTab}
+                /> : 
+                <FindBar {...props}
+                  stores={stores}
+                  openTab={this.openTab}
+                />)
+            }/>
             <Route exact path="/user_home/tabhistory" exact render={(props) => <TabHistory {...props}
               closedTabs={closedTabs}
             />} />
