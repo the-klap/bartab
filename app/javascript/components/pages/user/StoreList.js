@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import StoreInfo from './StoreInfo'
 
 class StoreList extends React.Component {

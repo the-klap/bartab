@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import {Form, FormGroup, Label, Input, Button, Card, CardTitle, CardText, Col, Row, Jumbotron} from 'reactstrap'
 
 

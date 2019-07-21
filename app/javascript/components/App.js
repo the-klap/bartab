@@ -1,7 +1,6 @@
 import React from "react"
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
-import PropTypes from "prop-types"
 import './app.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 

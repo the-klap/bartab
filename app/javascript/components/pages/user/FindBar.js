@@ -14,6 +14,7 @@ class FindBar extends React.Component {
             success={success}
           />
         </div>
+        <br/>
         <StoreList
           stores={stores}
           openTab={openTab}

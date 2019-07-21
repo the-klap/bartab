@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText } from 'reactstrap';
 class StoreMarkerWindow extends React.Component {
   constructor(props){

@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import { Nav, NavItem, NavLink, Container } from 'reactstrap'

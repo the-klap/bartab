@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import {Table, Button, Form, FormGroup, Label, Input, Row, Col, 
 UncontrolledCollapse, Collapse, Card, CardBody, CardTitle, CardSubtitle} from 'reactstrap'
 import MenuItem from './MenuItem'
