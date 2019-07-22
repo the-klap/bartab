@@ -20,7 +20,6 @@ import { faBeer,
 
 
 //components imported to main UserHome
-import HappyHour from './HappyHour.js'
 import FindBar from './FindBar.js'
 import Profile from './Profile.js'
 import OpenTabs from './OpenTabs.js'
