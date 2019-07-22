@@ -5,7 +5,6 @@ import  {
          Link
         } from "react-router-dom";
 import { Nav, NavItem, NavLink, Container, Button } from 'reactstrap'
-import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import "./user.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBeer,
