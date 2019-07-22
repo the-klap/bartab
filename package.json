@@ -32,5 +32,8 @@
     "roots": [
       "app/javascript/components"
     ]
+  },
+  "devDependencies": {
+    "prettier": "1.18.2"
   }
 }
