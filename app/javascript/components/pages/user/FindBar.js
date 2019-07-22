@@ -1,5 +1,4 @@
 import React from "react"
-import MapContainer from "./MapContainer"
 import StoreList from './StoreList'
 
 class FindBar extends React.Component {
