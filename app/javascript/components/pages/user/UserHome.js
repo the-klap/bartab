@@ -256,7 +256,6 @@ class UserHome extends React.Component {
                 updateProfile={this.updateProfile}
               />)
             }/>
-            <Route path="/user_home/happyhour" exact component={HappyHour} />
             <Route path="/user_home/storelist" exact render={(props) => <StoreList {...props}
               stores={stores}
               openTab={this.openTab}
