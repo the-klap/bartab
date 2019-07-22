@@ -5,7 +5,6 @@ import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import UserHome from './UserHome.js'
 import StoreMarkerWindow from './StoreMarkerWindow.js'
 import InfoWindowEx from './InfoWindowEx.js'
-import StoreList from './StoreList.js'
 
 const mapStyles = {
   width: '100%',
