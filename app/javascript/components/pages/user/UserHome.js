@@ -5,6 +5,7 @@ import  {
          Link
         } from "react-router-dom";
 import { Nav, NavItem, NavLink, Container, Button } from 'reactstrap'
+import ReactDOM from 'react-dom'
 import "./user.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBeer,

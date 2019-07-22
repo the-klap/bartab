@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Card } from 'reactstrap';
+import ReactDOM from 'react-dom'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 
 import UserHome from './UserHome.js'
