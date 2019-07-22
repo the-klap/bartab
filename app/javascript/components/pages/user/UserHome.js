@@ -172,7 +172,7 @@ class UserHome extends React.Component {
      }=this.props
 
     const { current_user_profile, openTabs, closedTabs, success, stores }=this.state
-        console.log(openTabs.length)
+
     
     const name = ((current_user_profile===null) ? 'new user' : current_user_profile.firstname)
     
