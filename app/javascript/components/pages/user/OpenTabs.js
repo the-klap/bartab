@@ -1,5 +1,6 @@
 import React from "react"
-import TabListItem from './TabListItem'
+import TabListItem from './TabListItem.js'
+import ReactDOM from 'react-dom'
 
 
 class OpenTabs extends React.Component {

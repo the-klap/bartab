@@ -1,7 +1,9 @@
 import React from "react"
 import {Table} from 'reactstrap'
-import MenuItem from './MenuItem'
+import MenuItem from './MenuItem.js'
 import {Form, FormGroup, Label, Input, Button, Row, Col} from 'reactstrap'
+import ReactDOM from 'react-dom'
+
 
 class Menu extends React.Component {
   constructor(props){

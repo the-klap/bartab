@@ -1,5 +1,7 @@
 import React from "react"
 import { Row, Col, Card, Button, CardTitle, CardText, CardBody, Collapse, CardSubtitle,Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import ReactDOM from 'react-dom'
+
 class TabListItem extends React.Component {
    constructor(props) {
     super(props);

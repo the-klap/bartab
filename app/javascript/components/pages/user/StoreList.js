@@ -1,5 +1,7 @@
 import React from "react"
-import StoreInfo from './StoreInfo'
+import StoreInfo from './StoreInfo.js'
+import ReactDOM from 'react-dom'
+
 
 class StoreList extends React.Component {
   render () {

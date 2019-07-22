@@ -15,6 +15,8 @@ import {
   CarouselIndicators,
   CarouselCaption,
 } from "reactstrap";
+import ReactDOM from 'react-dom'
+
 
 const items = [
   {

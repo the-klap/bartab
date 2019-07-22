@@ -1,6 +1,8 @@
 import React from "react"
 import {Table} from 'reactstrap'
-import CustomerTab from './CustomerTab'
+import CustomerTab from './CustomerTab.js'
+import ReactDOM from 'react-dom'
+
 
 class OpenTabs extends React.Component {
   constructor(props){

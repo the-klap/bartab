@@ -1,6 +1,6 @@
 import React from "react"
 import {Form, FormGroup, Label, Input, Button, Card, CardTitle, CardText, Col, Row, Jumbotron} from 'reactstrap'
-
+import ReactDOM from 'react-dom'
 
 class BarProfile extends React.Component {
   constructor(props){

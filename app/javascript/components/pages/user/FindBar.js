@@ -1,8 +1,8 @@
 import React from "react"
 import ReactDOM from 'react-dom'
 
-import MapContainer from "./MapContainer"
-import StoreList from './StoreList'
+import MapContainer from "./MapContainer.js"
+import StoreList from './StoreList.js'
 
 class FindBar extends React.Component {
   render () {

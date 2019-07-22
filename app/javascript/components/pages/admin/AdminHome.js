@@ -11,10 +11,10 @@ import { faBeer,
          faSadCry
        } from '@fortawesome/free-solid-svg-icons';
 
-import OpenTabs from "./OpenTabs";
-import BarProfile from "./BarProfile";
-import CreateBarProfile from "./CreateBarProfile";
-import Menu from "./Menu";
+import OpenTabs from "./OpenTabs.js";
+import BarProfile from "./BarProfile.js";
+import CreateBarProfile from "./CreateBarProfile.js";
+import Menu from "./Menu.js";
 import './admin.css';
 
 

@@ -2,15 +2,14 @@ import React from "react"
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import './app.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-
-
-import HomePage from './pages/HomePage';
-import Login from './pages/Login';
-import AdminHome from './pages/admin/AdminHome'
-import UserHome from './pages/user/UserHome'
 import {Container, Button} from "reactstrap"
-import AboutUs from "./AboutUs";
+
+
+import HomePage from './pages/HomePage.js';
+import Login from './pages/Login.js';
+import AdminHome from './pages/admin/AdminHome.js'
+import UserHome from './pages/user/UserHome.js'
+import AboutUs from "./AboutUs.js";
 
 class App extends React.Component {
    constructor(props){

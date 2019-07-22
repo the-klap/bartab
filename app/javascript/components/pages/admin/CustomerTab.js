@@ -1,7 +1,9 @@
 import React from "react"
 import {Table, Button, Form, FormGroup, Label, Input, Row, Col, 
 UncontrolledCollapse, Collapse, Card, CardBody, CardTitle, CardSubtitle} from 'reactstrap'
-import MenuItem from './MenuItem'
+import MenuItem from './MenuItem.js'
+import ReactDOM from 'react-dom'
+
 
 class CustomerTab extends React.Component {
   constructor(props){

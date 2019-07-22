@@ -1,5 +1,6 @@
 import React from "react"
 import {Form, FormGroup, Label, Input, Button, Row, Col} from 'reactstrap'
+import ReactDOM from 'react-dom'
 
 
 class CreateUserProfile extends React.Component {

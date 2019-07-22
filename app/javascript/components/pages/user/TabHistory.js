@@ -1,6 +1,8 @@
 import React from "react"
-import TabListItem from './TabListItem'
+import TabListItem from './TabListItem.js'
 import { Row } from 'reactstrap'
+import ReactDOM from 'react-dom'
+
 
 export default class TabHistory extends React.Component {
     constructor(){

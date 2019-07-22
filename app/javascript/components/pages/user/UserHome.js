@@ -25,8 +25,8 @@ import FindBar from './FindBar.js'
 import Profile from './Profile.js'
 import OpenTabs from './OpenTabs.js'
 import TabHistory from './TabHistory.js'
-import StoreList from './StoreList'
-import CreateUserProfile from './CreateUserProfile'
+import StoreList from './StoreList.js'
+import CreateUserProfile from './CreateUserProfile.js'
 
 
 class UserHome extends React.Component {
