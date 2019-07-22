@@ -7,14 +7,6 @@ class FindBar extends React.Component {
     const {stores, openTab, success} = this.props
     return (
       <div className="findbar" >
-        <div className="mapcomponent">
-          <MapContainer
-            stores={stores}
-            openTab={openTab}
-            success={success}
-          />
-        </div>
-        <br/>
         <StoreList
           stores={stores}
           openTab={openTab}
