@@ -9,6 +9,7 @@ import InfoWindowEx from './InfoWindowEx.js'
 const mapStyles = {
   width: '100%',
   height: '100vh',
+  position: 'relative',
 };
 
 class MapContainer extends Component {
