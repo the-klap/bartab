@@ -1,7 +1,7 @@
-import React from "react"
-import PropTypes from "prop-types"
-import ReactDOM from 'react-dom';
-import { InfoWindow } from 'google-maps-react';
+import React from "react";
+import PropTypes from "prop-types";
+import ReactDOM from "react-dom";
+import { InfoWindow } from "google-maps-react";
 
 class InfoWindowEx extends React.Component {
   constructor(props) {
@@ -30,4 +30,4 @@ class InfoWindowEx extends React.Component {
     );
   }
 }
-export default InfoWindowEx
+export default InfoWindowEx;
