@@ -22,7 +22,8 @@
     "react-test-renderer": "^16.8.6",
     "react_ujs": "^2.5.0",
     "reactstrap": "^8.0.0",
-    "webpack-dev-server": "^3.7.1"
+    "webpack-dev-server": "^3.7.1",
+    "webpacker-react": "^0.3.2"
   },
   "scripts": {
     "test": "jest",
